@@ -1,23 +1,26 @@
 import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail } from 'lucide-react';
-import { Button } from './ui/button';
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About Us' },
-  { href: '#services', label: 'Services' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#values', label: 'Core Values' },
-  { href: '#contact', label: 'Contact Us' },
+  { href: '/', label: 'Home' },
+  { href: '/about', label: 'About Us' },
+  { href: '/services', label: 'Services' },
+  { href: '/projects', label: 'Projects' },
+  { href: '/equipment', label: 'Equipments' },
+  { href: '/policy', label: 'Policy' },
+  { href: '/vacancies', label: 'Vacancies' },
+  { href: '/contact', label: 'Contact Us' },
 ];
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const location = useLocation();
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
       {/* Top bar with contact info */}
-      <div className="bg-header py-2 px-4">
+      <div className="bg-header-bg py-2 px-4">
         <div className="container-wide flex justify-between items-center">
           <div className="flex items-center gap-6">
             <a href="mailto:info@hemaconstruction.com" className="flex items-center gap-2 text-sm text-header-foreground/80 hover:text-primary transition-colors">
@@ -36,7 +39,7 @@ const Header = () => {
       <nav className="bg-background/95 backdrop-blur-md shadow-md">
         <div className="container-wide flex justify-between items-center py-4 px-4">
           {/* Logo */}
-          <a href="#home" className="flex items-center gap-3">
+          <Link to="/" className="flex items-center gap-3">
             <div className="flex items-center">
               <div className="w-10 h-10 bg-primary flex items-center justify-center">
                 <span className="text-primary-foreground font-heading font-bold text-xl">H</span>
@@ -46,18 +49,22 @@ const Header = () => {
                 <span className="block text-xs text-muted-foreground uppercase tracking-widest">Construction Ltd</span>
               </div>
             </div>
-          </a>
+          </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden lg:flex items-center gap-6">
             {navLinks.map((link) => (
-              <a
+              <Link
                 key={link.href}
-                href={link.href}
-                className="nav-link text-sm font-medium text-foreground/80 hover:text-primary py-2"
+                to={link.href}
+                className={`nav-link text-sm font-medium py-2 transition-colors ${
+                  location.pathname === link.href 
+                    ? 'text-primary' 
+                    : 'text-foreground/80 hover:text-primary'
+                }`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
 
@@ -74,16 +81,20 @@ const Header = () => {
         {/* Mobile Navigation */}
         {isMenuOpen && (
           <div className="lg:hidden bg-background border-t border-border animate-fade-in">
-            <div className="container-wide py-4 px-4 flex flex-col gap-4">
+            <div className="container-wide py-4 px-4 flex flex-col gap-2">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.href}
-                  href={link.href}
+                  to={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-foreground/80 hover:text-primary py-2 border-b border-border/50 last:border-0"
+                  className={`py-3 px-2 border-b border-border/50 last:border-0 ${
+                    location.pathname === link.href 
+                      ? 'text-primary font-medium' 
+                      : 'text-foreground/80 hover:text-primary'
+                  }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               ))}
             </div>
           </div>
