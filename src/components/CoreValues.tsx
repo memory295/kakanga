@@ -35,13 +35,16 @@ const values = [
 
 const CoreValues = () => {
   return (
-    <section id="values" className="section-padding bg-header-bg">
+    <section id="values" className="section-padding bg-[#1a1a2e]">
       <div className="container-wide">
         <div className="text-center mb-16">
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-header-foreground mb-4">
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+            What We Stand For
+          </span>
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-white mb-4">
             Core Values
           </h2>
-          <p className="text-header-foreground/70 max-w-2xl mx-auto">
+          <p className="text-gray-400 max-w-2xl mx-auto">
             Our core values guide everything we do and define who we are as a company.
           </p>
         </div>
@@ -50,18 +53,18 @@ const CoreValues = () => {
           {values.map((value, index) => (
             <div
               key={value.title}
-              className="group relative bg-header-foreground/5 rounded-lg p-6 border border-header-foreground/10 hover:border-primary/50 transition-all duration-300 hover:bg-header-foreground/10"
+              className="group relative bg-white/5 rounded-lg p-6 border border-white/10 hover:border-primary/50 transition-all duration-300 hover:bg-white/10"
             >
-              <div className="absolute -top-4 -left-4 w-10 h-10 bg-primary rounded-full flex items-center justify-center font-heading font-bold text-primary-foreground text-lg">
+              <div className="absolute -top-4 -left-4 w-10 h-10 bg-primary rounded-full flex items-center justify-center font-heading font-bold text-white text-lg">
                 {value.number}
               </div>
               <div className="mb-4 pt-4">
                 <value.icon className="w-8 h-8 text-primary" />
               </div>
-              <h3 className="font-heading font-bold text-lg text-header-foreground mb-3">
+              <h3 className="font-heading font-bold text-lg text-white mb-3">
                 {value.title}
               </h3>
-              <p className="text-header-foreground/60 text-sm leading-relaxed">
+              <p className="text-gray-400 text-sm leading-relaxed">
                 {value.description}
               </p>
             </div>

@@ -79,6 +79,9 @@ const PolicyPage = () => {
       <section className="section-padding">
         <div className="container-wide">
           <div className="text-center mb-12">
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+              Our Standards
+            </span>
             <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
               Our <span className="text-primary">Commitment</span>
             </h2>
