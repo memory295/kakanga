@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import landLevelingImg from '@/assets/service-land-leveling.jpg';
@@ -33,6 +34,9 @@ const Services = () => {
     <section id="services" className="section-padding bg-background">
       <div className="container-wide">
         <div className="text-center mb-16">
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+            What We Do
+          </span>
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
             Our Services
           </h2>
@@ -63,12 +67,20 @@ const Services = () => {
                 <p className="text-muted-foreground text-sm leading-relaxed mb-4">
                   {service.description}
                 </p>
-                <Button variant="link" className="p-0 h-auto text-primary">
+                <Link to="/services" className="inline-flex items-center text-primary font-medium text-sm hover:gap-2 transition-all">
                   Learn More <ArrowRight className="w-4 h-4 ml-1" />
-                </Button>
+                </Link>
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link to="/services">
+            <Button size="lg" className="gap-2">
+              View All Services <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>

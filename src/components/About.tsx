@@ -1,4 +1,5 @@
-import { Target, Eye, Download } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { Target, Eye, Download, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 
 const About = () => {
@@ -30,6 +31,9 @@ const About = () => {
         {/* About Company */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+              About Us
+            </span>
             <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-2">
               About Hema Construction LTD
             </h2>
@@ -42,12 +46,17 @@ const About = () => {
             <p className="text-muted-foreground leading-relaxed mb-8">
               With years of experience and a dedicated team of professionals, we deliver excellence in every project, from road construction to complex civil engineering works.
             </p>
-            <Button variant="default" size="lg" asChild>
-              <a href="#contact" className="flex items-center gap-2">
+            <div className="flex flex-wrap gap-4">
+              <Button variant="default" size="lg" className="gap-2">
                 <Download className="w-5 h-5" />
                 Download Company Profile
-              </a>
-            </Button>
+              </Button>
+              <Link to="/about">
+                <Button variant="outline" size="lg" className="gap-2">
+                  Learn More <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+            </div>
           </div>
           <div className="relative">
             <div className="bg-primary/10 rounded-lg p-8">
