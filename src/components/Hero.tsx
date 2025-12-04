@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
 import heroImage from '@/assets/hero-construction.jpg';
 import { ChevronDown } from 'lucide-react';
@@ -25,10 +26,10 @@ const Hero = () => {
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center animate-slide-up" style={{ animationDelay: '0.4s' }}>
           <Button variant="hero" size="xl" asChild>
-            <a href="#services">Our Services</a>
+            <Link to="/services">Our Services</Link>
           </Button>
           <Button variant="hero-outline" size="xl" asChild>
-            <a href="#contact">Get a Quote</a>
+            <Link to="/contact">Get a Quote</Link>
           </Button>
         </div>
       </div>

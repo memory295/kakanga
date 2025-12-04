@@ -35,7 +35,7 @@ const values = [
 
 const CoreValues = () => {
   return (
-    <section id="values" className="section-padding bg-header">
+    <section id="values" className="section-padding bg-header-bg">
       <div className="container-wide">
         <div className="text-center mb-16">
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-header-foreground mb-4">

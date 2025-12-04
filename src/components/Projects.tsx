@@ -1,5 +1,7 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from './ui/button';
+import { ArrowRight } from 'lucide-react';
 import landLevelingImg from '@/assets/service-land-leveling.jpg';
 import roadWorksImg from '@/assets/service-road-works.jpg';
 import drillingImg from '@/assets/service-drilling.jpg';
@@ -51,6 +53,9 @@ const Projects = () => {
     <section id="projects" className="section-padding bg-section-alt">
       <div className="container-wide">
         <div className="text-center mb-12">
+          <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+            Our Portfolio
+          </span>
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
             Explore a selection of our remarkable projects
           </h2>
@@ -73,7 +78,7 @@ const Projects = () => {
 
         {/* Projects Grid */}
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project, index) => (
+          {filteredProjects.map((project) => (
             <div
               key={project.title}
               className="group relative overflow-hidden rounded-lg shadow-md card-hover"
@@ -96,6 +101,14 @@ const Projects = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="text-center mt-12">
+          <Link to="/projects">
+            <Button size="lg" className="gap-2">
+              View All Projects <ArrowRight className="w-4 h-4" />
+            </Button>
+          </Link>
         </div>
       </div>
     </section>
