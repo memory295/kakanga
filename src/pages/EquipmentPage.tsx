@@ -1,54 +1,62 @@
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
+import excavatorImg from "@/assets/equipment-excavator.jpg";
+import bulldozerImg from "@/assets/equipment-bulldozer.jpg";
+import graderImg from "@/assets/equipment-grader.jpg";
+import rollerImg from "@/assets/equipment-roller.jpg";
+import dumpTruckImg from "@/assets/equipment-dump-truck.jpg";
+import loaderImg from "@/assets/equipment-loader.jpg";
+import concreteImg from "@/assets/equipment-concrete.jpg";
+import drillingImg from "@/assets/equipment-drilling.jpg";
 
 const equipment = [
   {
     name: "Excavators",
     description: "Modern hydraulic excavators for earthmoving and excavation work",
     specs: ["20-50 ton capacity", "Various bucket sizes", "Long reach available"],
-    image: "/placeholder.svg",
+    image: excavatorImg,
   },
   {
     name: "Bulldozers",
     description: "Powerful bulldozers for land clearing and grading operations",
     specs: ["D6-D9 class", "GPS guided", "Ripper attachments"],
-    image: "/placeholder.svg",
+    image: bulldozerImg,
   },
   {
     name: "Graders",
     description: "Precision motor graders for road construction and maintenance",
     specs: ["14-16ft blade", "Automatic controls", "GPS enabled"],
-    image: "/placeholder.svg",
+    image: graderImg,
   },
   {
     name: "Compactors",
     description: "Vibratory and static rollers for soil and asphalt compaction",
     specs: ["10-20 ton", "Padfoot & smooth drum", "Self-propelled"],
-    image: "/placeholder.svg",
+    image: rollerImg,
   },
   {
     name: "Dump Trucks",
     description: "Fleet of dump trucks for material transportation",
     specs: ["25-40 ton capacity", "All-terrain capable", "Well maintained"],
-    image: "/placeholder.svg",
+    image: dumpTruckImg,
   },
   {
     name: "Loaders",
     description: "Wheel and track loaders for material handling",
     specs: ["3-5 cubic meter bucket", "Quick coupler", "Various attachments"],
-    image: "/placeholder.svg",
+    image: loaderImg,
   },
   {
     name: "Concrete Equipment",
     description: "Mixers, pumps, and batching plants for concrete works",
     specs: ["Mobile batching", "Concrete pumps", "Transit mixers"],
-    image: "/placeholder.svg",
+    image: concreteImg,
   },
   {
     name: "Drilling Rigs",
     description: "Specialized drilling equipment for foundation and blasting",
     specs: ["Rotary drills", "DTH hammers", "Core drilling"],
-    image: "/placeholder.svg",
+    image: drillingImg,
   },
 ];
 
@@ -60,8 +68,11 @@ const EquipmentPage = () => {
       <section className="section-padding">
         <div className="container-wide">
           <div className="text-center mb-12">
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+              Our Fleet
+            </span>
             <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
-              Modern <span className="text-primary">Fleet</span>
+              Modern <span className="text-primary">Equipment</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               We maintain a comprehensive fleet of modern construction equipment 
@@ -75,7 +86,7 @@ const EquipmentPage = () => {
                 key={index}
                 className="bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
               >
-                <div className="aspect-[4/3] overflow-hidden bg-muted">
+                <div className="aspect-[4/3] overflow-hidden">
                   <img 
                     src={item.image} 
                     alt={item.name}
@@ -105,24 +116,24 @@ const EquipmentPage = () => {
       </section>
 
       {/* Equipment Stats */}
-      <section className="py-16 bg-header-bg text-header-foreground">
+      <section className="py-16 bg-[#1a1a2e] text-white">
         <div className="container-wide px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="text-4xl font-bold font-heading text-primary mb-2">100+</div>
-              <div className="text-header-foreground/80">Total Equipment</div>
+              <div className="text-gray-400">Total Equipment</div>
             </div>
             <div>
               <div className="text-4xl font-bold font-heading text-primary mb-2">95%</div>
-              <div className="text-header-foreground/80">Operational Rate</div>
+              <div className="text-gray-400">Operational Rate</div>
             </div>
             <div>
               <div className="text-4xl font-bold font-heading text-primary mb-2">24/7</div>
-              <div className="text-header-foreground/80">Maintenance Support</div>
+              <div className="text-gray-400">Maintenance Support</div>
             </div>
             <div>
               <div className="text-4xl font-bold font-heading text-primary mb-2">Modern</div>
-              <div className="text-header-foreground/80">GPS Technology</div>
+              <div className="text-gray-400">GPS Technology</div>
             </div>
           </div>
         </div>

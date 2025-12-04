@@ -1,6 +1,7 @@
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import { Target, Eye, Users, Award, CheckCircle } from "lucide-react";
+import aboutTeamImg from "@/assets/about-team.jpg";
 
 const stats = [
   { number: "15+", label: "Years Experience" },
@@ -28,6 +29,9 @@ const AboutPage = () => {
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
+              <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+                Who We Are
+              </span>
               <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
                 Building Excellence Since <span className="text-primary">2009</span>
               </h2>
@@ -55,12 +59,12 @@ const AboutPage = () => {
             <div className="relative">
               <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
                 <img 
-                  src="/placeholder.svg" 
+                  src={aboutTeamImg} 
                   alt="Hema Construction Team" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="absolute -bottom-6 -left-6 bg-primary text-primary-foreground p-6 rounded-lg shadow-lg">
+              <div className="absolute -bottom-6 -left-6 bg-primary text-white p-6 rounded-lg shadow-lg">
                 <div className="text-4xl font-bold font-heading">15+</div>
                 <div className="text-sm">Years of Excellence</div>
               </div>
@@ -70,7 +74,7 @@ const AboutPage = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 bg-header-bg text-header-foreground">
+      <section className="py-16 bg-[#1a1a2e] text-white">
         <div className="container-wide px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             {stats.map((stat, index) => (
@@ -78,7 +82,7 @@ const AboutPage = () => {
                 <div className="text-4xl md:text-5xl font-bold font-heading text-primary mb-2">
                   {stat.number}
                 </div>
-                <div className="text-header-foreground/80">{stat.label}</div>
+                <div className="text-gray-400">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -126,6 +130,9 @@ const AboutPage = () => {
       <section className="section-padding">
         <div className="container-wide">
           <div className="text-center mb-12">
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+              Why Us
+            </span>
             <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Why Choose Us</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               We bring together expertise, innovation, and dedication to deliver outstanding results

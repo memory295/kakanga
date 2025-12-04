@@ -2,6 +2,10 @@ import { useState } from "react";
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import { MapPin } from "lucide-react";
+import serviceLandLeveling from "@/assets/service-land-leveling.jpg";
+import serviceRoadWorks from "@/assets/service-road-works.jpg";
+import serviceDrilling from "@/assets/service-drilling.jpg";
+import serviceConcrete from "@/assets/service-concrete.jpg";
 
 const categories = ["All", "Roads", "Bridges", "Land Development", "Commercial"];
 
@@ -11,56 +15,56 @@ const projects = [
     category: "Roads",
     location: "Lilongwe - Blantyre",
     year: "2023",
-    image: "/placeholder.svg",
+    image: serviceRoadWorks,
   },
   {
     title: "Kamuzu Bridge Extension",
     category: "Bridges",
     location: "Lilongwe",
     year: "2023",
-    image: "/placeholder.svg",
+    image: serviceConcrete,
   },
   {
     title: "Industrial Park Development",
     category: "Land Development",
     location: "Blantyre",
     year: "2022",
-    image: "/placeholder.svg",
+    image: serviceLandLeveling,
   },
   {
     title: "Shopping Mall Construction",
     category: "Commercial",
     location: "Mzuzu",
     year: "2022",
-    image: "/placeholder.svg",
+    image: serviceConcrete,
   },
   {
     title: "Township Road Network",
     category: "Roads",
     location: "Zomba",
     year: "2022",
-    image: "/placeholder.svg",
+    image: serviceRoadWorks,
   },
   {
     title: "River Crossing Bridge",
     category: "Bridges",
     location: "Mangochi",
     year: "2021",
-    image: "/placeholder.svg",
+    image: serviceDrilling,
   },
   {
     title: "Agricultural Land Preparation",
     category: "Land Development",
     location: "Kasungu",
     year: "2021",
-    image: "/placeholder.svg",
+    image: serviceLandLeveling,
   },
   {
     title: "Office Complex",
     category: "Commercial",
     location: "Lilongwe",
     year: "2021",
-    image: "/placeholder.svg",
+    image: serviceConcrete,
   },
 ];
 
@@ -78,6 +82,9 @@ const ProjectsPage = () => {
       <section className="section-padding">
         <div className="container-wide">
           <div className="text-center mb-12">
+            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+              Our Portfolio
+            </span>
             <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
               Featured <span className="text-primary">Projects</span>
             </h2>
@@ -94,7 +101,7 @@ const ProjectsPage = () => {
                 onClick={() => setActiveCategory(category)}
                 className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                   activeCategory === category
-                    ? "bg-primary text-primary-foreground"
+                    ? "bg-primary text-white"
                     : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
                 }`}
               >
