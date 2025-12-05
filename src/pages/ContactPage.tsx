@@ -21,7 +21,7 @@ const contactInfo = [
   {
     icon: Mail,
     title: "Email Address",
-    details: ["info@hemaconstruction.com", "projects@hemaconstruction.com"],
+    details: ["info@kakangaconstructions.com", "projects@kakangaconstructions.com"],
   },
   {
     icon: Clock,
@@ -166,7 +166,7 @@ const ContactPage = () => {
           allowFullScreen
           loading="lazy"
           referrerPolicy="no-referrer-when-downgrade"
-          title="Hema Construction Location"
+          title="Kakanga Constructions Location"
         />
       </section>
     </Layout>

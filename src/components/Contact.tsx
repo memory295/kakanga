@@ -70,7 +70,7 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="font-heading font-semibold text-lg text-foreground mb-1">Email Address</h3>
-                <p className="text-muted-foreground">info@hemaconstruction.com</p>
+                <p className="text-muted-foreground">info@kakangaconstructions.com</p>
               </div>
             </div>
             <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors">

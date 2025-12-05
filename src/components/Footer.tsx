@@ -22,7 +22,7 @@ const Footer = () => {
                 </div>
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed mb-6">
-                Hema Construction Limited is a leading Civil and Building Construction Company based in Malawi, registered in the UNLIMITED CATEGORY with NCIC.
+                Kakanga Constructions is a leading Civil and Building Construction Company based in Malawi, registered in the UNLIMITED CATEGORY with NCIC.
               </p>
               <div className="flex gap-3">
                 <a href="#" className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all">
@@ -152,7 +152,7 @@ const Footer = () => {
                 </li>
                 <li className="flex items-start gap-3">
                   <Mail className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-400 text-sm">hema2mw@yahoo.com</span>
+                  <span className="text-gray-400 text-sm">info@kakangaconstructions.com</span>
                 </li>
               </ul>
             </div>
@@ -165,7 +165,7 @@ const Footer = () => {
         <div className="container-wide px-4">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="text-gray-500 text-sm">
-              © {new Date().getFullYear()} Hema Construction Ltd. All rights reserved.
+              © {new Date().getFullYear()} Kakanga Constructions. All rights reserved.
             </p>
             <div className="flex gap-6">
               <Link to="/policy" className="text-gray-500 hover:text-primary text-sm transition-colors">

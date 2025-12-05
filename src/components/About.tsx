@@ -35,13 +35,13 @@ const About = () => {
               About Us
             </span>
             <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-2">
-              About Hema Construction LTD
+              About Kakanga Constructions
             </h2>
             <p className="text-primary font-medium text-lg mb-6">
               "Offering Comprehensive Construction Solutions tailored to your every need"
             </p>
             <p className="text-muted-foreground leading-relaxed mb-6">
-              Hema Construction Limited is a leading Civil and Building Construction Company based in Malawi. As a company registered in the UNLIMITED CATEGORY with the National Construction Industry Council (NCIC) for both Building and Civil Construction, we have established ourselves as a trusted partner in infrastructure development.
+              Kakanga Constructions is a leading Civil and Building Construction Company based in Malawi. As a company registered in the UNLIMITED CATEGORY with the National Construction Industry Council (NCIC) for both Building and Civil Construction, we have established ourselves as a trusted partner in infrastructure development.
             </p>
             <p className="text-muted-foreground leading-relaxed mb-8">
               With years of experience and a dedicated team of professionals, we deliver excellence in every project, from road construction to complex civil engineering works.

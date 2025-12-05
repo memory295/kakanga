@@ -36,7 +36,7 @@ const AboutPage = () => {
                 Building Excellence Since <span className="text-primary">2009</span>
               </h2>
               <p className="text-muted-foreground mb-4 leading-relaxed">
-                Hema Construction is a leading construction company in Malawi, dedicated to delivering 
+                Kakanga Constructions is a leading construction company in Malawi, dedicated to delivering 
                 high-quality infrastructure projects that drive development and improve communities. 
                 With over 15 years of experience, we have established ourselves as a trusted partner 
                 for both public and private sector projects.
@@ -60,7 +60,7 @@ const AboutPage = () => {
               <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-lg">
                 <img 
                   src={aboutTeamImg} 
-                  alt="Hema Construction Team" 
+                  alt="Kakanga Constructions Team" 
                   className="w-full h-full object-cover"
                 />
               </div>

@@ -23,9 +23,9 @@ const Header = () => {
       <div className="bg-header-bg py-2 px-4">
         <div className="container-wide flex justify-between items-center">
           <div className="flex items-center gap-6">
-            <a href="mailto:info@hemaconstruction.com" className="flex items-center gap-2 text-sm text-header-foreground/80 hover:text-primary transition-colors">
+            <a href="mailto:info@kakangaconstructions.com" className="flex items-center gap-2 text-sm text-header-foreground/80 hover:text-primary transition-colors">
               <Mail className="w-4 h-4 text-primary" />
-              <span className="hidden sm:inline">info@hemaconstruction.com</span>
+              <span className="hidden sm:inline">info@kakangaconstructions.com</span>
             </a>
             <a href="tel:+265999951283" className="flex items-center gap-2 text-sm text-header-foreground/80 hover:text-primary transition-colors">
               <Phone className="w-4 h-4 text-primary" />

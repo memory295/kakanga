@@ -17,7 +17,7 @@ const policies = [
   {
     icon: Leaf,
     title: "Environmental Policy",
-    description: "Hema Construction is dedicated to minimizing our environmental impact and promoting sustainable construction practices. We continuously seek ways to reduce waste, conserve resources, and protect natural ecosystems.",
+    description: "Kakanga Constructions is dedicated to minimizing our environmental impact and promoting sustainable construction practices. We continuously seek ways to reduce waste, conserve resources, and protect natural ecosystems.",
     points: [
       "Waste management and recycling programs",
       "Dust and noise control measures",
@@ -50,7 +50,7 @@ const policies = [
   {
     icon: Users,
     title: "Equal Opportunity Policy",
-    description: "Hema Construction is an equal opportunity employer. We value diversity and are committed to creating an inclusive environment where all employees can thrive regardless of their background.",
+    description: "Kakanga Constructions is an equal opportunity employer. We value diversity and are committed to creating an inclusive environment where all employees can thrive regardless of their background.",
     points: [
       "Non-discriminatory hiring practices",
       "Equal pay for equal work",
