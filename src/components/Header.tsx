@@ -41,12 +41,14 @@ const Header = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
             <div className="flex items-center">
-              <div className="w-10 h-10 bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-heading font-bold text-xl">H</span>
-              </div>
-              <div className="ml-2">
-                <span className="font-heading font-bold text-xl text-foreground tracking-tight">HEMA</span>
-                <span className="block text-xs text-muted-foreground uppercase tracking-widest">Construction Ltd</span>
+              <img 
+                src="/images/kakangalogo.jpg" 
+                alt="Kakanga Constructions Logo" 
+                className="w-12 h-12 object-contain"
+              />
+              <div className="ml-3">
+                <span className="font-heading font-bold text-xl text-foreground tracking-tight">KAKANGA</span>
+                <span className="block text-xs text-muted-foreground uppercase tracking-widest">Constructions</span>
               </div>
             </div>
           </Link>

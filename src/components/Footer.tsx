@@ -11,12 +11,14 @@ const Footer = () => {
             {/* Company Info */}
             <div>
               <Link to="/" className="flex items-center gap-3 mb-6">
-                <div className="w-12 h-12 bg-primary flex items-center justify-center">
-                  <span className="text-white font-heading font-bold text-2xl">H</span>
-                </div>
+                <img 
+                  src="/images/kakangalogo.jpg" 
+                  alt="Kakanga Constructions Logo" 
+                  className="w-14 h-14 object-contain"
+                />
                 <div>
-                  <span className="font-heading font-bold text-xl text-white tracking-tight">HEMA</span>
-                  <span className="block text-xs text-gray-400 uppercase tracking-widest">Construction Ltd</span>
+                  <span className="font-heading font-bold text-xl text-white tracking-tight">KAKANGA</span>
+                  <span className="block text-xs text-gray-400 uppercase tracking-widest">Constructions</span>
                 </div>
               </Link>
               <p className="text-gray-400 text-sm leading-relaxed mb-6">
