@@ -85,10 +85,10 @@ const ProjectsPage = () => {
             <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
               Our Portfolio
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
+            <h2 className="font-heading font-bold text-3xl md:text-4xl text-[#1a1a2e] mb-4">
               Featured <span className="text-primary">Projects</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="text-gray-700 text-sm leading-relaxed max-w-2xl mx-auto">
               Explore our portfolio of successful construction projects across Malawi
             </p>
           </div>
@@ -99,10 +99,10 @@ const ProjectsPage = () => {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
+                className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${
                   activeCategory === category
-                    ? "bg-primary text-white"
-                    : "bg-muted text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                    ? "bg-white shadow-sm text-primary"
+                    : "bg-gradient-to-b from-gray-200 to-gray-100 text-[#1a1a2e] hover:bg-white/70"
                 }`}
               >
                 {category}
@@ -115,9 +115,9 @@ const ProjectsPage = () => {
             {filteredProjects.map((project, index) => (
               <div 
                 key={index}
-                className="group bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300"
+                className="group rounded-lg border border-gray-200 bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="aspect-[4/3] overflow-hidden bg-black/10">
                   <img 
                     src={project.image} 
                     alt={project.title}
@@ -128,10 +128,10 @@ const ProjectsPage = () => {
                   <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full mb-3">
                     {project.category}
                   </span>
-                  <h3 className="text-xl font-bold font-heading mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="font-heading font-bold text-xl text-[#1a1a2e] mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <div className="flex items-center gap-2 text-muted-foreground text-sm">
+                  <div className="flex items-center gap-2 text-gray-700 text-sm">
                     <MapPin className="w-4 h-4" />
                     <span>{project.location}</span>
                     <span className="mx-2">•</span>
