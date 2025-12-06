@@ -42,7 +42,7 @@ const Header = () => {
           <Link to="/" className="flex items-center gap-3">
             <div className="flex items-center">
               <img 
-                src="/images/kakangalogo.jpg" 
+                src="/images/kakangalogo.png" 
                 alt="Kakanga Constructions Logo" 
                 className="w-14 h-14 object-contain"
               />
