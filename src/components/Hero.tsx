@@ -40,7 +40,7 @@ const Hero = () => {
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-[110vh] flex items-center justify-center overflow-hidden">
       {/* Background Video */}
       <div className="absolute inset-0">
         <video
@@ -76,16 +76,16 @@ const Hero = () => {
             <div className="hidden sm:block h-[36vh] w-2 rounded-full bg-primary shadow-lg" />
             {/* Slogan text aligned to pillar start/end with four lines spanning the pillar */}
             <div className="text-left h-[36vh] flex flex-col justify-between">
-              <p className="font-heading font-bold uppercase text-2xl md:text-4xl lg:text-5xl text-primary-foreground tracking-tight leading-tight">
+              <p className="font-heading font-bold uppercase text-xl md:text-3xl lg:text-4xl text-primary-foreground tracking-tight leading-tight">
                 Building with quality
               </p>
-              <p className="font-heading font-bold uppercase text-2xl md:text-4xl lg:text-5xl text-primary-foreground tracking-tight leading-tight">
+              <p className="font-heading font-bold uppercase text-xl md:text-3xl lg:text-4xl text-primary-foreground tracking-tight leading-tight">
                 and integrity
               </p>
-              <p className="font-heading font-bold uppercase text-2xl md:text-4xl lg:text-5xl text-primary-foreground tracking-tight leading-tight">
+              <p className="font-heading font-bold uppercase text-xl md:text-3xl lg:text-4xl text-primary-foreground tracking-tight leading-tight">
                 to move
               </p>
-              <p className="font-heading font-bold uppercase text-2xl md:text-4xl lg:text-5xl text-primary-foreground tracking-tight leading-tight">
+              <p className="font-heading font-bold uppercase text-xl md:text-3xl lg:text-4xl text-primary-foreground tracking-tight leading-tight">
                 Malawi forward.
               </p>
             </div>

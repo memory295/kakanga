@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Phone, Mail } from 'lucide-react';
 
@@ -15,7 +15,19 @@ const navLinks = [
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const bannerHeight = window.innerHeight; // Approximate banner height
+      setIsScrolled(scrollTop > bannerHeight * 0.7); // Trigger when 70% of banner is scrolled
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
@@ -36,7 +48,7 @@ const Header = () => {
       </div>
 
       {/* Main navigation (transparent over hero) */}
-      <nav className="bg-transparent">
+      <nav className={`transition-all duration-300 ${isScrolled ? 'bg-[#1a1a2e]/95 backdrop-blur-md shadow-md' : 'bg-transparent'}`}>
         <div className="container-wide flex justify-between items-center py-4 px-4">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
