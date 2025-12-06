@@ -73,7 +73,7 @@ const Hero = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-8">
             {/* Vertical blue pillar (thicker & shorter, centered) */}
-            <div className="hidden sm:block h-[36vh] w-6 rounded-full bg-primary shadow-lg" />
+            <div className="hidden sm:block h-[36vh] w-2 rounded-full bg-primary shadow-lg" />
             {/* Slogan text aligned to pillar start/end with four lines spanning the pillar */}
             <div className="text-left h-[36vh] flex flex-col justify-between">
               <p className="font-heading font-bold uppercase text-2xl md:text-4xl lg:text-5xl text-primary-foreground tracking-tight leading-tight">
