@@ -60,6 +60,27 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
+## Background Video on Home Page
+
+The home page hero now supports a full-bleed background video.
+
+- Add a construction-themed video file at `public/construction.mp4` (MP4, reasonably small for web, e.g., 5–20MB).
+- Optional: add a fallback poster image at `public/images/hero-fallback.jpg` for initial load.
+- The video autoplays, is muted, loops, and plays inline.
+
+To test locally:
+
+```sh
+npm i
+npm run dev
+```
+
+If you prefer using an external video URL, replace the `src` in `src/components/Hero.tsx` with your link (ensure CORS and streaming are allowed), for example:
+
+```tsx
+<source src="https://example.com/your-construction-video.mp4" type="video/mp4" />
+```
+
 ## How can I deploy this project?
 
 Simply open [Lovable](https://lovable.dev/projects/49b72445-8d10-463e-b472-e5209a9c794a) and click on Share -> Publish.

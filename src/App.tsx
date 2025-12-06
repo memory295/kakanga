@@ -12,6 +12,8 @@ import PolicyPage from "./pages/PolicyPage";
 import VacanciesPage from "./pages/VacanciesPage";
 import ContactPage from "./pages/ContactPage";
 import NotFound from "./pages/NotFound";
+import ProfilePage from "./pages/ProfilePage";
+import ProfileExtractPage from "./pages/ProfileExtractPage";
 
 const queryClient = new QueryClient();
 
@@ -28,6 +30,8 @@ const App = () => (
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/equipment" element={<EquipmentPage />} />
           <Route path="/policy" element={<PolicyPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/profile-extract" element={<ProfileExtractPage />} />
           <Route path="/vacancies" element={<VacanciesPage />} />
           <Route path="/contact" element={<ContactPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

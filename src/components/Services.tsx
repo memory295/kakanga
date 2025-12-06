@@ -31,7 +31,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section id="services" className="section-padding bg-background">
+    <section id="services" className="pt-0 md:pt-0 pb-16 md:pb-20 bg-section-alt">
       <div className="container-wide">
         <div className="text-center mb-16">
           <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
@@ -45,34 +45,38 @@ const Services = () => {
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <div
-              key={service.title}
-              className="group bg-card rounded-lg overflow-hidden shadow-md card-hover"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="relative h-48 overflow-hidden">
-                <img
-                  src={service.image}
-                  alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="space-y-8 md:space-y-12">
+          {services.map((service, index) => {
+            const isEven = index % 2 === 0;
+            return (
+              <div
+                key={service.title}
+                className={`flex flex-col md:flex-row ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-6 md:gap-10`}
+              >
+                <div className="w-full md:w-1/2">
+                  <div className="relative h-56 md:h-64 overflow-hidden rounded-lg shadow-md">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="w-full h-full object-cover transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 md:hover:opacity-100 transition-opacity duration-300" />
+                  </div>
+                </div>
+                <div className="w-full md:w-1/2">
+                  <h3 className="font-heading font-bold text-2xl text-foreground mb-3">
+                    {service.title}
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-4">
+                    {service.description}
+                  </p>
+                  <Link to="/services" className="inline-flex items-center text-primary font-medium hover:gap-2 transition-all">
+                    Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                  </Link>
+                </div>
               </div>
-              <div className="p-6">
-                <h3 className="font-heading font-bold text-lg text-foreground mb-3 group-hover:text-primary transition-colors">
-                  {service.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
-                  {service.description}
-                </p>
-                <Link to="/services" className="inline-flex items-center text-primary font-medium text-sm hover:gap-2 transition-all">
-                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
         <div className="text-center mt-12">

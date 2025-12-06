@@ -1,13 +1,56 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Target, Eye, Download, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 
 const About = () => {
+  const lines = [
+    'What sets us apart is our dedication to modern',
+    'construction techniques and sustainable practices.',
+    'We specialize in prefabricated structures, which',
+    'allow for faster, more cost-effective, and',
+    'environmentally friendly building solutions without',
+    'compromising durability. Our team stays ahead of',
+    'industry trends by incorporating advanced materials',
+    'and smart construction methods, ensuring that',
+    'every project we undertake is built to last. Whether',
+    "it's a custom designed home, a steel warehouse, or",
+    'a government infrastructure project, we bring the',
+    'same level of precision  and  professionalism  to',
+    'every build we deliver.',
+  ];
+
+  // Exactly two paragraphs (two slides of three lines each)
+  const slides: string[][] = [lines.slice(0, 3), lines.slice(3, 6)];
+  const [activeSlide, setActiveSlide] = useState(0);
+
   return (
-    <section id="about" className="section-padding bg-section-alt">
+    <section id="about" className="bg-section-alt pt-6 md:pt-8 pb-16 md:pb-24 px-4 md:px-8">
       <div className="container-wide">
-        {/* Vision & Mission */}
-        <div className="grid md:grid-cols-2 gap-8 mb-20">
+        {/* Intro text slider (positioned close to hero tagline) */}
+        <div className="mt-1 mb-7 md:mb-9">
+          <div className="container-wide mx-auto text-center">
+            {slides[activeSlide].map((l, i) => (
+              <p key={i} className="text-foreground text-base md:text-lg leading-snug">
+                {l}
+              </p>
+            ))}
+          </div>
+          <div className="mt-2 flex items-center justify-center gap-2">
+            {[0, 1].map((idx) => (
+              <button
+                key={idx}
+                aria-label={`Slide ${idx + 1}`}
+                onClick={() => setActiveSlide(idx)}
+                className={`w-2.5 h-2.5 rounded-full transition-colors ${
+                  activeSlide === idx ? 'bg-primary' : 'bg-primary/30 hover:bg-primary/60'
+                }`}
+              />
+            ))}
+          </div>
+        </div>
+        {/* Vision & Mission (ultra-tight spacing) */}
+        <div className="grid md:grid-cols-2 gap-6 mb-4">
           <div className="bg-card p-8 rounded-lg shadow-md card-hover">
             <div className="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-6">
               <Eye className="w-7 h-7 text-primary" />
@@ -28,59 +71,7 @@ const About = () => {
           </div>
         </div>
 
-        {/* About Company */}
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div>
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
-              About Us
-            </span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-2">
-              About Kakanga Constructions
-            </h2>
-            <p className="text-primary font-medium text-lg mb-6">
-              "Offering Comprehensive Construction Solutions tailored to your every need"
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-6">
-              Kakanga Constructions is a leading Civil and Building Construction Company based in Malawi. As a company registered in the UNLIMITED CATEGORY with the National Construction Industry Council (NCIC) for both Building and Civil Construction, we have established ourselves as a trusted partner in infrastructure development.
-            </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
-              With years of experience and a dedicated team of professionals, we deliver excellence in every project, from road construction to complex civil engineering works.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button variant="default" size="lg" className="gap-2">
-                <Download className="w-5 h-5" />
-                Download Company Profile
-              </Button>
-              <Link to="/about">
-                <Button variant="outline" size="lg" className="gap-2">
-                  Learn More <ArrowRight className="w-4 h-4" />
-                </Button>
-              </Link>
-            </div>
-          </div>
-          <div className="relative">
-            <div className="bg-primary/10 rounded-lg p-8">
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center p-6 bg-card rounded-lg shadow-sm">
-                  <span className="block font-heading font-bold text-4xl text-primary mb-2">15+</span>
-                  <span className="text-muted-foreground text-sm">Years Experience</span>
-                </div>
-                <div className="text-center p-6 bg-card rounded-lg shadow-sm">
-                  <span className="block font-heading font-bold text-4xl text-primary mb-2">200+</span>
-                  <span className="text-muted-foreground text-sm">Projects Completed</span>
-                </div>
-                <div className="text-center p-6 bg-card rounded-lg shadow-sm">
-                  <span className="block font-heading font-bold text-4xl text-primary mb-2">150+</span>
-                  <span className="text-muted-foreground text-sm">Team Members</span>
-                </div>
-                <div className="text-center p-6 bg-card rounded-lg shadow-sm">
-                  <span className="block font-heading font-bold text-4xl text-primary mb-2">50+</span>
-                  <span className="text-muted-foreground text-sm">Equipment Fleet</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        {/* About Company section removed as requested */}
       </div>
     </section>
   );
