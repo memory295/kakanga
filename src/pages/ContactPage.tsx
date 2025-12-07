@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { MapPin, Phone, Mail, Clock, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
 
 const contactInfo = [
   {
@@ -15,13 +16,13 @@ const contactInfo = [
   },
   {
     icon: Phone,
-    title: "Phone Numbers",
-    details: ["+265 1 234 567", "+265 999 123 456"],
+    title: "Mobile",
+    details: ["+265 995 650 428", "+265 882 500 960"],
   },
   {
     icon: Mail,
-    title: "Email Address",
-    details: ["info@kakangaconstructions.com", "projects@kakangaconstructions.com"],
+    title: "E-mail",
+    details: ["ckakanga@gmail.com", "kabaghe63@gmail.com"],
   },
   {
     icon: Clock,
@@ -32,6 +33,7 @@ const contactInfo = [
 
 const ContactPage = () => {
   const { toast } = useToast();
+  const [isSending, setIsSending] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -40,13 +42,56 @@ const ContactPage = () => {
     message: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
-    setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    if (isSending) return;
+    setIsSending(true);
+    try {
+      toast({ title: "Sending…", description: "Submitting your message now." });
+
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error("EmailJS not configured");
+      }
+
+      const templateParams = {
+        to_email: "memorynamtunda@gmail.com",
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, { publicKey });
+
+      toast({
+        title: "Message Sent",
+        description: "Thank you for contacting us. We'll get back to you soon.",
+      });
+      setFormData({ name: "", email: "", phone: "", subject: "", message: "" });
+    } catch (err) {
+      // Fallback: open mail client
+      const to = "memorynamtunda@gmail.com";
+      const subject = encodeURIComponent(`[Kakanga Website] ${formData.subject}`);
+      const bodyLines = [
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        formData.phone ? `Phone: ${formData.phone}` : undefined,
+        "",
+        formData.message,
+      ].filter(Boolean) as string[];
+      const body = encodeURIComponent(bodyLines.join("\n"));
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      toast({
+        title: "Opening mail client…",
+        description: "EmailJS not configured or network slow. Sending via your email app.",
+      });
+    }
+    setIsSending(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -92,62 +137,62 @@ const ContactPage = () => {
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium mb-2">Your Name</label>
                       <Input 
                         name="name"
                         value={formData.name}
                         onChange={handleChange}
-                        placeholder="John Doe"
+                        aria-label="Full Name"
+                        placeholder="Full Name"
                         required
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Email Address</label>
                       <Input 
                         name="email"
                         type="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="john@example.com"
+                        aria-label="Email Address"
+                        placeholder="Email Address"
                         required
                       />
                     </div>
                   </div>
                   <div className="grid md:grid-cols-2 gap-6">
                     <div>
-                      <label className="block text-sm font-medium mb-2">Phone Number</label>
                       <Input 
                         name="phone"
                         value={formData.phone}
                         onChange={handleChange}
-                        placeholder="+265 999 123 456"
+                        aria-label="Phone Number"
+                        placeholder="Phone Number"
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium mb-2">Subject</label>
                       <Input 
                         name="subject"
                         value={formData.subject}
                         onChange={handleChange}
-                        placeholder="Project Inquiry"
+                        aria-label="Subject"
+                        placeholder="Subject"
                         required
                       />
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium mb-2">Your Message</label>
                     <Textarea 
                       name="message"
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Tell us about your project..."
+                      aria-label="Message"
+                      placeholder="Message"
                       rows={6}
                       required
                     />
                   </div>
-                  <Button type="submit" size="lg" className="gap-2">
+                  <Button type="submit" size="lg" className="gap-2" disabled={isSending}>
                     <Send className="w-4 h-4" />
-                    Send Message
+                    {isSending ? "Sending…" : "Send Message"}
                   </Button>
                 </form>
               </div>

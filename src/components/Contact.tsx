@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { MapPin, Phone, Mail, Clock, Send } from 'lucide-react';
 import { Button } from './ui/button';
 import { useToast } from '@/hooks/use-toast';
+import emailjs from '@emailjs/browser';
 
 const Contact = () => {
   const { toast } = useToast();
+  const [isSending, setIsSending] = useState(false);
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -14,13 +16,57 @@ const Contact = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message Sent!",
-      description: "Thank you for contacting us. We'll get back to you soon.",
-    });
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    if (isSending) return;
+    setIsSending(true);
+    try {
+      toast({ title: 'Sending…', description: 'Submitting your message now.' });
+
+      // EmailJS configuration from environment (vite env variables)
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
+
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error('EmailJS not configured');
+      }
+
+      const templateParams = {
+        to_email: 'memorynamtunda@gmail.com',
+        from_name: formData.name,
+        from_email: formData.email,
+        phone: formData.phone,
+        subject: formData.subject,
+        message: formData.message,
+      };
+
+      await emailjs.send(serviceId, templateId, templateParams, { publicKey });
+
+      toast({
+        title: 'Message Sent',
+        description: 'Thank you for contacting us. We\'ll get back to you soon.',
+      });
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    } catch (err) {
+      // Fallback: open mail client so the user can still send
+      const to = 'memorynamtunda@gmail.com';
+      const subject = encodeURIComponent(`[Kakanga Website] ${formData.subject}`);
+      const bodyLines = [
+        `Name: ${formData.name}`,
+        `Email: ${formData.email}`,
+        formData.phone ? `Phone: ${formData.phone}` : undefined,
+        '',
+        formData.message,
+      ].filter(Boolean) as string[];
+      const body = encodeURIComponent(bodyLines.join('\n'));
+      window.location.href = `mailto:${to}?subject=${subject}&body=${body}`;
+      toast({
+        title: 'Opening mail client…',
+        description: 'EmailJS not configured or network slow. Sending via your email app.',
+      });
+    }
+    setIsSending(false);
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -59,9 +105,9 @@ const Contact = () => {
                 <Phone className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-heading font-semibold text-lg text-foreground mb-1">Phone Number</h3>
-                <p className="text-muted-foreground">+265 999 951 283</p>
-                <p className="text-muted-foreground">+265 1 234 567</p>
+                <h3 className="font-heading font-semibold text-lg text-foreground mb-1">Mobile</h3>
+                <p className="text-muted-foreground">+265 995 650 428</p>
+                <p className="text-muted-foreground">+265 882 500 960</p>
               </div>
             </div>
             <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
@@ -69,8 +115,9 @@ const Contact = () => {
                 <Mail className="w-6 h-6 text-primary" />
               </div>
               <div>
-                <h3 className="font-heading font-semibold text-lg text-foreground mb-1">Email Address</h3>
-                <p className="text-muted-foreground">info@kakangaconstructions.com</p>
+                <h3 className="font-heading font-semibold text-lg text-foreground mb-1">E-mail</h3>
+                <p className="text-muted-foreground">ckakanga@gmail.com</p>
+                <p className="text-muted-foreground">kabaghe63@gmail.com</p>
               </div>
             </div>
             <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
@@ -99,85 +146,75 @@ const Contact = () => {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
-                    Full Name
-                  </label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder="John Doe"
+                    aria-label="Full Name"
+                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                    placeholder="Full Name"
                     required
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
-                    Email Address
-                  </label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder="john@example.com"
+                    aria-label="Email Address"
+                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                    placeholder="Email Address"
                     required
                   />
                 </div>
               </div>
               <div className="grid sm:grid-cols-2 gap-4">
                 <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-foreground mb-2">
-                    Phone Number
-                  </label>
                   <input
                     type="tel"
                     id="phone"
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder="+265 999 000 000"
+                    aria-label="Phone Number"
+                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                    placeholder="Phone Number"
                   />
                 </div>
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-foreground mb-2">
-                    Subject
-                  </label>
                   <input
                     type="text"
                     id="subject"
                     name="subject"
                     value={formData.subject}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                    placeholder="Project Inquiry"
+                    aria-label="Subject"
+                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                    placeholder="Subject"
                     required
                   />
                 </div>
               </div>
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
-                  Message
-                </label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
                   rows={4}
-                  className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none transition-all"
-                  placeholder="Tell us about your project..."
+                  aria-label="Message"
+                  className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none transition-all placeholder:text-muted-foreground"
+                  placeholder="Message"
                   required
                 />
               </div>
-              <Button type="submit" size="lg" className="w-full gap-2">
+              <Button type="submit" size="lg" className="w-full gap-2" disabled={isSending}>
                 <Send className="w-4 h-4" />
-                Send Message
+                {isSending ? 'Sending…' : 'Send Message'}
               </Button>
             </form>
           </div>

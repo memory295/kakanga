@@ -57,7 +57,7 @@ const About = () => {
             </div>
             <h3 className="font-heading font-bold text-xl mb-4 text-foreground">Our Vision</h3>
             <p className="text-muted-foreground leading-relaxed">
-              To be the leading construction company in Malawi, delivering high-quality projects that transform communities and contribute to the sustainable development of the nation.
+              To grow and become a successful bigger company that can work even International, whereby so doing creating job opportunities for the non working people, helping the Government to develop our country and improve lives of our Employees.
             </p>
           </div>
           <div className="bg-card p-8 rounded-lg shadow-md card-hover">
@@ -66,7 +66,7 @@ const About = () => {
             </div>
             <h3 className="font-heading font-bold text-xl mb-4 text-foreground">Our Mission</h3>
             <p className="text-muted-foreground leading-relaxed">
-              Our mission is to provide exceptional construction services through innovation, integrity, and collaboration, meeting the diverse needs of our clients while prioritizing the well-being of our employees, partners, and the environment.
+              A quality products, satisfactory services, accountability and Safety is our mission.
             </p>
           </div>
         </div>
