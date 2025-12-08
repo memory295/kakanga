@@ -93,17 +93,7 @@ const Hero = () => {
         </div>
       </div>
 
-      {/* Bottom tagline in place of former arrow */}
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-full px-4">
-        <div className="container-wide flex justify-center">
-          <p
-            className="font-heading font-semibold uppercase text-primary text-sm md:text-base lg:text-lg text-center"
-            style={{ background: 'transparent' }}
-          >
-            At Kakanga, innovation shapes every structure we create.
-          </p>
-        </div>
-      </div>
+
     </section>
   );
 };

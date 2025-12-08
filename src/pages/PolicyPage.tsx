@@ -95,7 +95,7 @@ const PolicyPage = () => {
             {policies.map((policy, index) => (
               <div 
                 key={index}
-                className="bg-card rounded-lg p-8 shadow-md hover:shadow-lg transition-shadow"
+                className="bg-white/30 hover:bg-white/60 rounded-lg p-8 transition-all duration-300 border border-gray-200 hover:shadow-sm"
               >
                 <div className="flex flex-col md:flex-row gap-6">
                   <div className="flex-shrink-0">

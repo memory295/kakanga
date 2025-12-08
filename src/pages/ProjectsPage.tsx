@@ -115,13 +115,13 @@ const ProjectsPage = () => {
             {filteredProjects.map((project, index) => (
               <div 
                 key={index}
-                className="group rounded-lg border border-gray-200 bg-white overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300"
+                className="group bg-white/30 rounded-lg border border-gray-200"
               >
-                <div className="aspect-[4/3] overflow-hidden bg-black/10">
+                <div className="aspect-[4/3] overflow-hidden rounded-lg bg-black/10">
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-6">

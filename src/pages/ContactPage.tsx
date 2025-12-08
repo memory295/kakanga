@@ -190,7 +190,7 @@ const ContactPage = () => {
                       required
                     />
                   </div>
-                  <Button type="submit" size="lg" className="gap-2" disabled={isSending}>
+                  <Button type="submit" size="lg" className="gap-2 shadow-sm hover:shadow-md" disabled={isSending}>
                     <Send className="w-4 h-4" />
                     {isSending ? "Sending…" : "Send Message"}
                   </Button>

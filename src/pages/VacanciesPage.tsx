@@ -80,7 +80,7 @@ const VacanciesPage = () => {
               {vacancies.map((vacancy, index) => (
                 <div 
                   key={index}
-                  className="bg-card rounded-lg p-6 md:p-8 shadow-md hover:shadow-lg transition-shadow border border-border"
+                  className="bg-white/30 hover:bg-white/60 rounded-lg p-6 md:p-8 transition-all duration-300 border border-gray-200 hover:shadow-sm"
                 >
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                     <div className="flex-1">
