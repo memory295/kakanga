@@ -1,70 +1,56 @@
 import { useState } from "react";
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
-import { MapPin } from "lucide-react";
+import { MapPin, Briefcase } from "lucide-react";
 import serviceLandLeveling from "@/assets/service-land-leveling.jpg";
 import serviceRoadWorks from "@/assets/service-road-works.jpg";
 import serviceDrilling from "@/assets/service-drilling.jpg";
 import serviceConcrete from "@/assets/service-concrete.jpg";
 
-const categories = ["All", "Roads", "Bridges", "Land Development", "Commercial"];
+const categories = ["All", "Residential", "Community", "Government", "Fabrication", "Prefabricated"];
 
 const projects = [
   {
-    title: "M1 Road Rehabilitation",
-    category: "Roads",
-    location: "Lilongwe - Blantyre",
-    year: "2023",
-    image: serviceRoadWorks,
-  },
-  {
-    title: "Kamuzu Bridge Extension",
-    category: "Bridges",
-    location: "Lilongwe",
-    year: "2023",
+    title: "Maintenance of a Residential House",
+    category: "Residential",
+    client: "CCAP General Assembly",
+    location: "Area 47, Sector 2",
     image: serviceConcrete,
   },
   {
-    title: "Industrial Park Development",
-    category: "Land Development",
-    location: "Blantyre",
-    year: "2022",
-    image: serviceLandLeveling,
-  },
-  {
-    title: "Shopping Mall Construction",
-    category: "Commercial",
-    location: "Mzuzu",
-    year: "2022",
+    title: "Construction of Community Library",
+    category: "Community",
+    client: "Change Her World (NGO)",
+    location: "Chilumba - Karonga District",
     image: serviceConcrete,
   },
   {
-    title: "Township Road Network",
-    category: "Roads",
-    location: "Zomba",
-    year: "2022",
-    image: serviceRoadWorks,
+    title: "Ministry of Lands House Maintenance",
+    category: "Government",
+    client: "Ministry of Lands",
+    location: "Mzuzu City",
+    image: serviceConcrete,
   },
   {
-    title: "River Crossing Bridge",
-    category: "Bridges",
-    location: "Mangochi",
-    year: "2021",
+    title: "Car Van Fabrication into Office",
+    category: "Fabrication",
+    client: "Katsuka Honey Production",
+    location: "Blantyre City",
     image: serviceDrilling,
   },
   {
-    title: "Agricultural Land Preparation",
-    category: "Land Development",
-    location: "Kasungu",
-    year: "2021",
-    image: serviceLandLeveling,
+    title: "Shipping Container Fabrication",
+    category: "Fabrication",
+    client: "Malawi Bureau of Standards",
+    location: "Songwe Boarder Post, Karonga",
+    image: serviceDrilling,
   },
   {
-    title: "Office Complex",
-    category: "Commercial",
-    location: "Lilongwe",
-    year: "2021",
-    image: serviceConcrete,
+    title: "Prefabricated Office Project",
+    category: "Prefabricated",
+    client: "DODMA",
+    location: "Karonga and Salima Districts",
+    image: serviceLandLeveling,
   },
 ];
 
@@ -77,7 +63,7 @@ const ProjectsPage = () => {
 
   return (
     <Layout>
-      <PageHeader title="Our Projects" />
+      <PageHeader title="Our Projects" backgroundImage="/images/project.png" />
       
       <section className="section-padding">
         <div className="container-wide">
@@ -131,12 +117,16 @@ const ProjectsPage = () => {
                   <h3 className="font-heading font-bold text-xl text-[#1a1a2e] mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <div className="flex items-center gap-2 text-gray-700 text-sm">
+                  <div className="flex items-center gap-2 text-gray-700 text-sm mb-1">
                     <MapPin className="w-4 h-4" />
                     <span>{project.location}</span>
-                    <span className="mx-2">•</span>
-                    <span>{project.year}</span>
                   </div>
+                  {"client" in project && (
+                    <div className="flex items-center gap-2 text-gray-700 text-sm">
+                      <Briefcase className="w-4 h-4" />
+                      <span>{(project as any).client}</span>
+                    </div>
+                  )}
                 </div>
               </div>
             ))}

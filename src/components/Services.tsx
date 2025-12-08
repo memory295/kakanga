@@ -8,23 +8,33 @@ import concreteImg from '@/assets/service-concrete.jpg';
 
 const services = [
   {
-    title: 'Land Leveling',
-    description: 'With years of experience in the construction industry, our company has established a solid reputation for providing exceptional land leveling services.',
-    image: landLevelingImg,
+    title: 'House Design and Construction',
+    description:
+      'We professionally design structures and construct. We also construct all kinds of designs presented to us. Trust us, we will transform your document/plan into that reality as planned without changing any feature or dimensions on the plan.',
+    image: concreteImg,
   },
   {
-    title: 'Road Works',
-    description: 'At our construction company, we take pride in our expertise and experience in road construction. We have successfully executed numerous road projects.',
+    title: 'Civil Works',
+    description:
+      'Installing culverts for drainage, reshaping surfaces for smooth travel, and building small bridges for safe crossings — improving roads for better access and less maintenance.',
     image: roadWorksImg,
   },
   {
-    title: 'Drilling and Excavation',
-    description: 'With a wealth of experience in the construction industry, our company excels in various drilling works and excavation projects.',
+    title: 'Prefabricated Structures',
+    description:
+      'We offer professional installation of prefabricated structures, including panel buildings and steel warehouses. Our process includes site preparation, foundation laying, and quick assembly of pre-made walls, roofs, and frames. With precise factory-made components, we ensure fast, cost effective, and durable construction — perfect for warehouses, workshops, and storage facilities.',
+    image: landLevelingImg,
+  },
+  {
+    title: 'Supply of Construction Materials',
+    description:
+      'We provide end-to-end import solutions for prefabricated structures and materials from China, ensuring quality, compliance, and timely delivery.',
     image: drillingImg,
   },
   {
-    title: 'Concrete Works',
-    description: 'As a reputable construction company, we have amassed extensive experience in executing various concrete works projects with precision.',
+    title: 'Steel Structures Construction',
+    description:
+      'We build different infrastructures, for example houses or offices, foam and concrete works, and masonry works.',
     image: concreteImg,
   },
 ];

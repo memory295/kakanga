@@ -38,20 +38,23 @@ const AboutPage = () => {
               <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
                 Who We Are
               </span>
-              <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
-                Building Excellence Since <span className="text-primary">2009</span>
+              <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6 uppercase">
+                Quality is Our Mission Since <span className="text-primary">2011</span>
               </h2>
               <p className="text-muted-foreground mb-4 leading-relaxed">
-                Kakanga Constructions is a leading construction company in Malawi, dedicated to delivering
-                high-quality infrastructure projects that drive development and improve communities.
-                With over 15 years of experience, we have established ourselves as a trusted partner
-                for both public and private sector projects.
+                Kakanga Construction is a leading Malawian construction company known for excellence in building design, civil engineering, and prefabricated structures. We turn visions into reality through innovative, reliable solutions that meet international standards.
+              </p>
+              <p className="text-muted-foreground mb-4 leading-relaxed">
+                We deliver residential homes, commercial developments, industrial warehouses, and public infrastructure. Our quality craftsmanship and exceptional client service make us a trusted partner in Malawi’s fast‑growing construction industry.
+              </p>
+              <p className="text-muted-foreground mb-4 leading-relaxed">
+                What sets us apart is our focus on modern building techniques and sustainable practices. We specialize in prefabricated structures—offering faster, more cost‑effective, and environmentally friendly construction without compromising durability. By integrating advanced materials and smart engineering, every project is built to withstand time and conditions.
+              </p>
+              <p className="text-muted-foreground mb-4 leading-relaxed">
+                From custom‑designed homes and steel warehouses to government infrastructure, we apply the same level of precision, innovation, and professionalism across all our work.
               </p>
               <p className="text-muted-foreground mb-6 leading-relaxed">
-                Our commitment to excellence, safety, and sustainability has made us the preferred
-                choice for complex construction projects across the nation. We pride ourselves on
-                our ability to deliver projects on time and within budget while maintaining the
-                highest standards of quality.
+                Our skilled team of engineers, architects, and builders upholds our standards of excellence through continuous training and strict adherence to safety regulations. A collaborative approach ensures efficient execution, maintaining both quality and budget discipline.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {expertise.map((item, index) => (
@@ -83,14 +86,22 @@ const AboutPage = () => {
               { name: 'INNOCENT MAPSYERE', role: 'Site Agent', photo: '/images/team/innocent.jpg' },
             ].map((m) => (
               <div key={m.name} className="bg-card rounded-lg shadow-sm overflow-hidden">
-                <div className="relative h-40 md:h-48">
-                  <img
-                    src={m.photo}
-                    alt={m.name}
-                    className="w-full h-full object-cover rounded-md border border-border"
-                    onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-                  />
-                  <div className="absolute inset-0 hidden [img+&]:hidden bg-gradient-to-br from-primary/20 to-indigo-500/10" />
+                <div className="p-3">
+                  <div className="rounded-xl border-2 border-primary/20 bg-secondary/60 p-2 shadow-sm relative">
+                    <span className="absolute -top-1 -left-1 w-6 h-6 rounded-tr-xl bg-primary/60" aria-hidden="true" />
+                    <div className="relative h-40 md:h-48 rounded-md overflow-hidden bg-white shadow">
+                      <img
+                        src={m.photo}
+                        alt={m.name}
+                        className="w-full h-full object-cover transition-transform duration-500"
+                        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+                      />
+                      <div className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-100 bg-gradient-to-t from-black/20 to-transparent transition-opacity duration-300" />
+                      <div className="absolute top-2 left-2 bg-primary text-primary-foreground text-[10px] font-semibold px-2 py-1 rounded">
+                        Team
+                      </div>
+                    </div>
+                  </div>
                 </div>
                 <div className="p-4 text-center">
                   <h3 className="font-heading font-semibold text-base text-foreground leading-tight">{m.name}</h3>

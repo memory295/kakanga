@@ -10,60 +10,80 @@ import serviceConcrete from "@/assets/service-concrete.jpg";
 
 const services = [
   {
-    id: "land-leveling",
-    title: "Land Leveling",
-    description: "Professional land leveling and grading services for construction sites, agricultural land, and development projects. We ensure precise elevation control and proper drainage.",
-    image: serviceLandLeveling,
-    features: ["Site Preparation", "Grading & Leveling", "Drainage Solutions", "Earthmoving"],
-  },
-  {
-    id: "road-works",
-    title: "Road Works",
-    description: "Comprehensive road construction and rehabilitation services including new road construction, road maintenance, and surface treatments for all types of roads.",
-    image: serviceRoadWorks,
-    features: ["New Road Construction", "Road Rehabilitation", "Surface Treatments", "Drainage Systems"],
-  },
-  {
-    id: "drilling",
-    title: "Drilling & Blasting",
-    description: "Specialized drilling and controlled blasting operations for mining, quarrying, and construction projects. Safety and precision are our top priorities.",
-    image: serviceDrilling,
-    features: ["Rock Drilling", "Controlled Blasting", "Quarry Operations", "Foundation Drilling"],
-  },
-  {
-    id: "concrete",
-    title: "Concrete Works",
-    description: "High-quality concrete works including structural concrete, foundations, retaining walls, and specialized concrete structures for various applications.",
+    id: "house-design-construction",
+    title: "House Design and Construction",
+    description:
+      "We professionally design structures and construct. We also construct all kinds of designs presented to us. Trust us, we will transform your document/plan into that reality as planned without changing any feature or dimensions on the plan.",
     image: serviceConcrete,
-    features: ["Structural Concrete", "Foundations", "Retaining Walls", "Concrete Structures"],
+    features: [
+      "Architectural Design",
+      "Structural Engineering",
+      "Plan-to-Reality Execution",
+      "Quality Finishes",
+    ],
   },
   {
-    id: "earthworks",
-    title: "Earthworks & Excavation",
-    description: "Expert earthworks and excavation services for site development, including bulk earthmoving, trenching, and foundation excavation.",
-    image: serviceLandLeveling,
-    features: ["Bulk Earthmoving", "Trenching", "Foundation Excavation", "Site Clearing"],
-  },
-  {
-    id: "bridges",
-    title: "Bridge Construction",
-    description: "Design and construction of bridges and culverts using modern techniques and materials to ensure durability and structural integrity.",
+    id: "civil-works",
+    title: "Civil Works",
+    description:
+      "Installing culverts for drainage, reshaping surfaces for smooth travel, and building small bridges for safe crossings — improving roads for better access and less maintenance.",
     image: serviceRoadWorks,
-    features: ["Bridge Design", "Culvert Installation", "Structural Works", "Rehabilitation"],
+    features: [
+      "Culvert Installation",
+      "Surface Reshaping",
+      "Small Bridges",
+      "Road Improvements",
+    ],
+  },
+  {
+    id: "prefabricated-structures",
+    title: "Prefabricated Structures",
+    description:
+      "We offer professional installation of prefabricated structures, including panel buildings and steel warehouses. Our process includes site preparation, foundation laying, and quick assembly of pre-made walls, roofs, and frames. With precise factory-made components, we ensure fast, cost effective, and durable construction — perfect for warehouses, workshops, and storage facilities.",
+    image: serviceLandLeveling,
+    features: [
+      "Site Preparation",
+      "Foundations",
+      "Quick Assembly",
+      "Warehouses & Workshops",
+    ],
+  },
+  {
+    id: "materials-supply",
+    title: "Supply of Construction Materials",
+    description:
+      "We provide end-to-end import solutions for prefabricated structures and materials from China, ensuring quality, compliance, and timely delivery.",
+    image: serviceDrilling,
+    features: [
+      "Sourcing & Procurement",
+      "Quality Assurance",
+      "Customs & Compliance",
+      "Timely Delivery",
+    ],
+  },
+  {
+    id: "steel-structures",
+    title: "Steel Structures Construction",
+    description:
+      "We build different infrastructures, for example houses or offices, foam and concrete works, and masonry works.",
+    image: serviceConcrete,
+    features: [
+      "Steel Framing",
+      "Concrete & Masonry",
+      "Industrial & Commercial",
+      "Office & Housing",
+    ],
   },
 ];
 
 const ServicesPage = () => {
   return (
     <Layout>
-      <PageHeader title="Our Services" />
+      <PageHeader title="Our Services" backgroundImage="/images/services-cta.jpg" />
       
       <section className="section-padding">
         <div className="container-wide">
           <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
-              What We <span className="text-primary">Offer</span>
-            </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               We provide comprehensive construction services with a commitment to quality, 
               safety, and timely delivery
@@ -115,8 +135,18 @@ const ServicesPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 bg-primary text-primary-foreground">
-        <div className="container-wide px-4 text-center">
+      <section className="relative py-16 bg-primary text-primary-foreground">
+        {/* Background image with overlay; blue bg is fallback */}
+        <div className="absolute inset-0">
+          <img
+            src="/images/services-cta.jpg"
+            alt=""
+            className="w-full h-full object-cover"
+            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
+          />
+          <div className="absolute inset-0 bg-primary/60" />
+        </div>
+        <div className="container-wide px-4 text-center relative z-10">
           <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
             Ready to Start Your Project?
           </h2>

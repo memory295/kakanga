@@ -15,11 +15,11 @@ const PageHeader = ({ title, backgroundImage }: PageHeaderProps) => {
           ? `url(${backgroundImage})` 
           : 'linear-gradient(135deg, hsl(var(--header-bg)), hsl(var(--primary)))',
         backgroundSize: 'cover',
-        backgroundPosition: backgroundImage ? 'center top' : 'center',
+        backgroundPosition: backgroundImage ? 'center' : 'center',
       }}
     >
       {/* Lighter overlay for image clarity, plus subtle bottom gradient for text readability */}
-      <div className="absolute inset-0 bg-header-bg/25" />
+      <div className="absolute inset-0 bg-header-bg/12" />
       <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-header-bg/30 to-transparent" />
       <div className="relative z-10 text-center text-header-foreground">
         <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4">{title}</h1>
