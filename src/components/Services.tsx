@@ -10,32 +10,26 @@ const services = [
   {
     title: 'House Design and Construction',
     description:
-      'We professionally design structures and construct. We also construct all kinds of designs presented to us. Trust us, we will transform your document/plan into that reality as planned without changing any feature or dimensions on the plan.',
+      'Professional design and construction services. We transform your plans into reality with precision, maintaining all features and dimensions as specified.',
     image: concreteImg,
   },
   {
     title: 'Civil Works',
     description:
-      'Installing culverts for drainage, reshaping surfaces for smooth travel, and building small bridges for safe crossings — improving roads for better access and less maintenance.',
+      'Installing culverts for drainage, reshaping surfaces, and building bridges. We improve roads for better access and reduced maintenance.',
     image: roadWorksImg,
   },
   {
     title: 'Prefabricated Structures',
     description:
-      'We offer professional installation of prefabricated structures, including panel buildings and steel warehouses. Our process includes site preparation, foundation laying, and quick assembly of pre-made walls, roofs, and frames. With precise factory-made components, we ensure fast, cost effective, and durable construction — perfect for warehouses, workshops, and storage facilities.',
+      'Professional installation of prefab buildings and steel warehouses. Quick assembly with factory-made components for fast, durable construction.',
     image: landLevelingImg,
   },
   {
     title: 'Supply of Construction Materials',
     description:
-      'We provide end-to-end import solutions for prefabricated structures and materials from China, ensuring quality, compliance, and timely delivery.',
+      'End-to-end import solutions for prefabricated structures and materials from China. Quality assurance with timely delivery guaranteed.',
     image: drillingImg,
-  },
-  {
-    title: 'Steel Structures Construction',
-    description:
-      'We build different infrastructures, for example houses or offices, foam and concrete works, and masonry works.',
-    image: concreteImg,
   },
 ];
 
