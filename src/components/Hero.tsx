@@ -76,16 +76,16 @@ const Hero = () => {
             <div className="hidden sm:block h-[36vh] w-2 rounded-full bg-primary shadow-lg" />
             {/* Slogan text aligned to pillar start/end with four lines spanning the pillar */}
             <div className="text-left h-[36vh] flex flex-col justify-between">
-              <p className="font-heading font-bold uppercase text-xl md:text-3xl lg:text-4xl text-primary-foreground tracking-tight leading-tight">
+              <p className="heading-2 text-primary-foreground uppercase">
                 Building with quality
               </p>
-              <p className="font-heading font-bold uppercase text-xl md:text-3xl lg:text-4xl text-primary-foreground tracking-tight leading-tight">
+              <p className="heading-2 text-primary-foreground uppercase">
                 and integrity
               </p>
-              <p className="font-heading font-bold uppercase text-xl md:text-3xl lg:text-4xl text-primary-foreground tracking-tight leading-tight">
+              <p className="heading-2 text-primary-foreground uppercase">
                 to move
               </p>
-              <p className="font-heading font-bold uppercase text-xl md:text-3xl lg:text-4xl text-primary-foreground tracking-tight leading-tight">
+              <p className="heading-2 text-primary-foreground uppercase">
                 Malawi forward.
               </p>
             </div>

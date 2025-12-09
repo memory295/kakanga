@@ -81,7 +81,7 @@ const Projects = () => {
           {filteredProjects.map((project) => (
             <div
               key={project.title}
-              className="group relative overflow-hidden rounded-lg shadow-md card-hover"
+              className="group relative overflow-hidden rounded-lg border border-gray-100"
             >
               <div className="relative h-64">
                 <img

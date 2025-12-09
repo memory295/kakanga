@@ -91,7 +91,7 @@ const Contact = () => {
         <div className="grid lg:grid-cols-2 gap-12">
           {/* Contact Info */}
           <div className="space-y-6">
-            <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
+            <div className="flex items-start gap-4 p-4 bg-white/30 rounded-lg border border-gray-100 hover:bg-white/50 transition-colors">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                 <MapPin className="w-6 h-6 text-primary" />
               </div>
@@ -100,7 +100,7 @@ const Contact = () => {
                 <p className="text-muted-foreground">Area 47, Sector 4, Lilongwe, Malawi</p>
               </div>
             </div>
-            <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
+            <div className="flex items-start gap-4 p-4 bg-white/30 rounded-lg border border-gray-100 hover:bg-white/50 transition-colors">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Phone className="w-6 h-6 text-primary" />
               </div>
@@ -110,7 +110,7 @@ const Contact = () => {
                 <p className="text-muted-foreground">+265 882 500 960</p>
               </div>
             </div>
-            <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
+            <div className="flex items-start gap-4 p-4 bg-white/30 rounded-lg border border-gray-100 hover:bg-white/50 transition-colors">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
                 <Mail className="w-6 h-6 text-primary" />
               </div>
@@ -141,7 +141,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-card p-8 rounded-lg shadow-lg border border-border">
+          <div className="bg-white/30 p-8 rounded-lg border border-gray-100">
             <h3 className="font-heading font-semibold text-xl mb-6">Send Us a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">

@@ -38,13 +38,13 @@ const Services = () => {
     <section id="services" className="section-padding bg-background">
       <div className="container-wide">
         <div className="text-center mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+          <span className="caption text-primary mb-2 block">
             What We Do
           </span>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+          <h2 className="heading-2 mb-4">
             Our Services
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="body-base max-w-2xl mx-auto">
             We offer comprehensive construction solutions tailored to meet your every need, from land preparation to complete infrastructure development.
           </p>
         </div>
@@ -53,10 +53,10 @@ const Services = () => {
           {services.map((service, index) => (
             <div
               key={service.title}
-              className="group bg-card rounded-lg overflow-hidden shadow-md card-hover"
+              className="group bg-white/30 rounded-lg border border-gray-100"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="relative h-48 overflow-hidden">
+              <div className="relative h-48 overflow-hidden rounded-lg">
                 <img
                   src={service.image}
                   alt={service.title}
@@ -65,13 +65,13 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="p-6">
-                <h3 className="font-heading font-bold text-lg text-foreground mb-3 group-hover:text-primary transition-colors">
+                <h3 className="heading-5 mb-3 group-hover:text-primary transition-colors">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-4">
+                <p className="body-small mb-4">
                   {service.description}
                 </p>
-                <Link to="/services" className="inline-flex items-center text-primary font-medium text-sm hover:gap-2 transition-all">
+                <Link to="/services" className="inline-flex items-center text-primary label hover:gap-2 transition-all">
                   Learn More <ArrowRight className="w-4 h-4 ml-1" />
                 </Link>
               </div>

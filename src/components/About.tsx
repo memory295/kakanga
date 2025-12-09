@@ -10,19 +10,19 @@ const About = () => {
         {/* About Company */}
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           <div>
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+            <span className="caption text-primary mb-2 block">
               About Us
             </span>
-            <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-2">
+            <h2 className="heading-2 mb-2">
               About Kakanga Constructions
             </h2>
-            <p className="text-primary font-medium text-lg mb-6">
+            <p className="body-large text-primary font-medium mb-6">
               "Offering Comprehensive Construction Solutions tailored to your every need"
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-6">
+            <p className="body-base mb-6">
               Kakanga Constructions is a leading Civil and Building Construction Company based in Malawi. As a company registered in the UNLIMITED CATEGORY with the National Construction Industry Council (NCIC) for both Building and Civil Construction, we have established ourselves as a trusted partner in infrastructure development.
             </p>
-            <p className="text-muted-foreground leading-relaxed mb-8">
+            <p className="body-base mb-8">
               With years of experience and a dedicated team of professionals, we deliver excellence in every project, from road construction to complex civil engineering works.
             </p>
             <div className="flex flex-wrap gap-4">
@@ -40,21 +40,21 @@ const About = () => {
           <div className="relative">
             <div className="bg-primary/10 rounded-lg p-8">
               <div className="grid grid-cols-2 gap-6">
-                <div className="text-center p-6 bg-card rounded-lg shadow-sm">
-                  <span className="block font-heading font-bold text-4xl text-primary mb-2">15+</span>
-                  <span className="text-muted-foreground text-sm">Years Experience</span>
+                <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
+                  <span className="block heading-1 text-primary mb-2">15+</span>
+                  <span className="caption">Years Experience</span>
                 </div>
-                <div className="text-center p-6 bg-card rounded-lg shadow-sm">
-                  <span className="block font-heading font-bold text-4xl text-primary mb-2">200+</span>
-                  <span className="text-muted-foreground text-sm">Projects Completed</span>
+                <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
+                  <span className="block heading-1 text-primary mb-2">200+</span>
+                  <span className="caption">Projects Completed</span>
                 </div>
-                <div className="text-center p-6 bg-card rounded-lg shadow-sm">
-                  <span className="block font-heading font-bold text-4xl text-primary mb-2">150+</span>
-                  <span className="text-muted-foreground text-sm">Team Members</span>
+                <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
+                  <span className="block heading-1 text-primary mb-2">150+</span>
+                  <span className="caption">Team Members</span>
                 </div>
-                <div className="text-center p-6 bg-card rounded-lg shadow-sm">
-                  <span className="block font-heading font-bold text-4xl text-primary mb-2">50+</span>
-                  <span className="text-muted-foreground text-sm">Equipment Fleet</span>
+                <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
+                  <span className="block heading-1 text-primary mb-2">50+</span>
+                  <span className="caption">Equipment Fleet</span>
                 </div>
               </div>
             </div>
