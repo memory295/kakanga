@@ -26,10 +26,14 @@ const About = () => {
               With years of experience and a dedicated team of professionals, we deliver excellence in every project, from road construction to complex civil engineering works.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Button variant="default" size="lg" className="gap-2">
-                <Download className="w-5 h-5" />
-                Download Company Profile
-              </Button>
+              <a href="/kakanga-profile.pdf" download className="inline-flex">
+                <Button asChild variant="default" size="lg" className="gap-2">
+                  <span className="inline-flex items-center gap-2">
+                    <Download className="w-5 h-5" />
+                    Download Company Profile
+                  </span>
+                </Button>
+              </a>
               <Link to="/about">
                 <Button variant="outline" size="lg" className="gap-2">
                   Learn More <ArrowRight className="w-4 h-4" />
