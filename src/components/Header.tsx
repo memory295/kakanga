@@ -121,17 +121,17 @@ const Header = () => {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden bg-background/95 backdrop-blur-md border-t border-border animate-fade-in">
+          <div className="lg:hidden bg-[hsl(210_25%_12%)] backdrop-blur-md border-t border-white/10 animate-fade-in">
             <div className="container-wide py-4 px-4 flex flex-col gap-2">
               {navLinks.map((link) => (
                 <Link
                   key={link.href}
                   to={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className={`py-3 px-2 border-b border-border/50 last:border-0 ${
+                  className={`py-3 px-2 border-b border-white/10 last:border-0 ${
                     location.pathname === link.href 
                       ? 'text-primary font-medium' 
-                      : 'text-header-foreground/90 hover:text-primary'
+                      : 'text-white/90 hover:text-primary'
                   }`}
                 >
                   {link.label}
