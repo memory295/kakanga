@@ -10,83 +10,73 @@ const services = [
   {
     title: 'House Design and Construction',
     description:
-      'We professionally design structures and construct. We also construct all kinds of designs presented to us. Trust us, we will transform your document/plan into that reality as planned without changing any feature or dimensions on the plan.',
+      'Professional design and construction services. We transform your plans into reality with precision, maintaining all features and dimensions as specified.',
     image: concreteImg,
   },
   {
     title: 'Civil Works',
     description:
-      'Installing culverts for drainage, reshaping surfaces for smooth travel, and building small bridges for safe crossings — improving roads for better access and less maintenance.',
+      'Installing culverts for drainage, reshaping surfaces, and building bridges. We improve roads for better access and reduced maintenance.',
     image: roadWorksImg,
   },
   {
     title: 'Prefabricated Structures',
     description:
-      'We offer professional installation of prefabricated structures, including panel buildings and steel warehouses. Our process includes site preparation, foundation laying, and quick assembly of pre-made walls, roofs, and frames. With precise factory-made components, we ensure fast, cost effective, and durable construction — perfect for warehouses, workshops, and storage facilities.',
+      'Professional installation of prefab buildings and steel warehouses. Quick assembly with factory-made components for fast, durable construction.',
     image: landLevelingImg,
   },
   {
     title: 'Supply of Construction Materials',
     description:
-      'We provide end-to-end import solutions for prefabricated structures and materials from China, ensuring quality, compliance, and timely delivery.',
+      'End-to-end import solutions for prefabricated structures and materials from China. Quality assurance with timely delivery guaranteed.',
     image: drillingImg,
-  },
-  {
-    title: 'Steel Structures Construction',
-    description:
-      'We build different infrastructures, for example houses or offices, foam and concrete works, and masonry works.',
-    image: concreteImg,
   },
 ];
 
 const Services = () => {
   return (
-    <section id="services" className="pt-0 md:pt-0 pb-16 md:pb-20 bg-section-alt">
+    <section id="services" className="section-padding bg-background">
       <div className="container-wide">
         <div className="text-center mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+          <span className="caption text-primary mb-2 block">
             What We Do
           </span>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+          <h2 className="heading-2 mb-4">
             Our Services
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="body-base max-w-2xl mx-auto">
             We offer comprehensive construction solutions tailored to meet your every need, from land preparation to complete infrastructure development.
           </p>
         </div>
 
-        <div className="space-y-8 md:space-y-12">
-          {services.map((service, index) => {
-            const isEven = index % 2 === 0;
-            return (
-              <div
-                key={service.title}
-                className={`flex flex-col md:flex-row ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-6 md:gap-10`}
-              >
-                <div className="w-full md:w-1/2">
-                  <div className="relative h-56 md:h-64 overflow-hidden rounded-lg shadow-md">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="w-full h-full object-cover transition-transform duration-500"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 md:hover:opacity-100 transition-opacity duration-300" />
-                  </div>
-                </div>
-                <div className="w-full md:w-1/2">
-                  <h3 className="font-heading font-bold text-2xl text-foreground mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    {service.description}
-                  </p>
-                  <Link to="/services" className="inline-flex items-center text-primary font-medium hover:gap-2 transition-all">
-                    Learn More <ArrowRight className="w-4 h-4 ml-1" />
-                  </Link>
-                </div>
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {services.map((service, index) => (
+            <div
+              key={service.title}
+              className="group bg-white/30 rounded-lg border border-gray-100"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="relative h-48 overflow-hidden rounded-lg">
+                <img
+                  src={service.image}
+                  alt={service.title}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-            );
-          })}
+              <div className="p-6">
+                <h3 className="heading-5 mb-3 group-hover:text-primary transition-colors">
+                  {service.title}
+                </h3>
+                <p className="body-small mb-4">
+                  {service.description}
+                </p>
+                <Link to="/services" className="inline-flex items-center text-primary label hover:gap-2 transition-all">
+                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                </Link>
+              </div>
+            </div>
+          ))}
         </div>
 
         <div className="text-center mt-12">

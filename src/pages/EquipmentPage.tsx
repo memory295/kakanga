@@ -84,13 +84,13 @@ const EquipmentPage = () => {
             {equipment.map((item, index) => (
               <div 
                 key={index}
-                className="bg-card rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 group"
+                className="group bg-white/30 rounded-lg border border-gray-200"
               >
-                <div className="aspect-[4/3] overflow-hidden">
+                <div className="aspect-[4/3] overflow-hidden rounded-lg">
                   <img 
                     src={item.image} 
                     alt={item.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
                   />
                 </div>
                 <div className="p-5">
@@ -111,30 +111,6 @@ const EquipmentPage = () => {
                 </div>
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Equipment Stats */}
-      <section className="py-16 bg-[#1a1a2e] text-white">
-        <div className="container-wide px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold font-heading text-primary mb-2">100+</div>
-              <div className="text-gray-400">Total Equipment</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold font-heading text-primary mb-2">95%</div>
-              <div className="text-gray-400">Operational Rate</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold font-heading text-primary mb-2">24/7</div>
-              <div className="text-gray-400">Maintenance Support</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold font-heading text-primary mb-2">Modern</div>
-              <div className="text-gray-400">GPS Technology</div>
-            </div>
           </div>
         </div>
       </section>
