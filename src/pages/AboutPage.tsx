@@ -3,6 +3,7 @@ import PageHeader from "@/components/PageHeader";
 import { Target, Eye, Users, Award, CheckCircle, ChevronLeft, ChevronRight } from "lucide-react";
 import aboutTeamImg from "@/assets/about-team.jpg";
 import { useEffect, useMemo, useState } from "react";
+import { useLocation } from "react-router-dom";
 
 const stats = [
   { number: "15+", label: "Years Experience" },
@@ -21,14 +22,25 @@ const expertise = [
 ];
 
 const AboutPage = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.replace('#', '');
+      const el = document.getElementById(id);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  }, [location]);
+
   return (
     <Layout>
       <PageHeader title="Who We Are" backgroundImage={aboutTeamImg} />
-      {/* Header grey band to mirror Home's transition */}
-      <div className="w-full h-10 bg-muted/60" aria-hidden="true" />
+      
       
       {/* Company Overview */}
-      <section className="section-padding">
+      <section id="who-we-are" className="section-padding scroll-mt-24">
         <div className="container-wide">
           <div className="flex items-start gap-6">
             {/* Left blue pillar */}
@@ -70,7 +82,7 @@ const AboutPage = () => {
       </section>
 
       {/* Our Team */}
-      <section className="section-padding bg-section-alt">
+      <section id="our-team" className="section-padding bg-section-alt scroll-mt-24">
         <div className="container-wide">
           <div className="text-center mb-12">
             <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">Our Team</span>
@@ -130,7 +142,7 @@ const AboutPage = () => {
       </section>
 
       {/* Vision & Mission */}
-      <section className="section-padding bg-muted/50">
+      <section id="vision-mission" className="section-padding bg-muted/50 scroll-mt-24">
         <div className="container-wide">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Vision */}
@@ -163,7 +175,7 @@ const AboutPage = () => {
       </section>
 
       {/* Why Choose Us - Core Values style layout with slideshow */}
-      <section id="why-us" className="section-padding bg-white">
+      <section id="why-us" className="section-padding bg-white scroll-mt-24">
         <div className="container-wide">
           <div className="text-center mb-8 md:mb-12">
             <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">Why Us</span>

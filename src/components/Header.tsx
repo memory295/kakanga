@@ -84,9 +84,9 @@ const Header = () => {
                     {/* Hover dropdown menu */}
                     <div className="absolute left-0 mt-2 w-56 bg-background/95 backdrop-blur-md border border-border rounded-md shadow-lg hidden group-hover:block">
                       <div className="py-2">
-                        <Link to="/about" className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/40">Who we are</Link>
-                        <a href="#about" className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/40">Our Vision & Mission</a>
-                        <Link to="/about#team" className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/40">Our Team</Link>
+                        <Link to="/about#who-we-are" className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/40">Who we are</Link>
+                        <Link to="/about#vision-mission" className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/40">Our Vision & Mission</Link>
+                        <Link to="/about#our-team" className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/40">Our Team</Link>
                         <Link to="/about#why-us" className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/40">Why Us</Link>
                       </div>
                     </div>
