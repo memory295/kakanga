@@ -85,7 +85,7 @@ const ProjectsPage = () => {
               <button
                 key={category}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2 rounded-md text-sm font-medium transition-colors ${
+                className={`px-6 py-2 rounded-md label transition-colors ${
                   activeCategory === category
                     ? "bg-white shadow-sm text-primary"
                     : "bg-gradient-to-b from-gray-200 to-gray-100 text-[#1a1a2e] hover:bg-white/70"
@@ -111,13 +111,13 @@ const ProjectsPage = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs font-medium rounded-full mb-3">
+                  <span className="inline-block px-3 py-1 bg-primary/10 text-primary body-xs font-medium rounded-full mb-3">
                     {project.category}
                   </span>
-                  <h3 className="font-heading font-bold text-xl text-[#1a1a2e] mb-2 group-hover:text-primary transition-colors">
+                  <h3 className="heading-5 text-[#1a1a2e] mb-2 group-hover:text-primary transition-colors">
                     {project.title}
                   </h3>
-                  <div className="flex items-center gap-2 text-gray-700 text-sm mb-1">
+                  <div className="flex items-center gap-2 text-gray-700 body-small mb-1">
                     <MapPin className="w-4 h-4" />
                     <span>{project.location}</span>
                   </div>

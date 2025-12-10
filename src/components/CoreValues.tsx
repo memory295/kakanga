@@ -92,7 +92,7 @@ const CoreValues = () => {
                 <button
                   key={item.title}
                   onClick={item.onClick}
-                  className={`w-full flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
+                  className={`w-full flex items-center gap-3 rounded-md px-3 py-2 label transition-colors ${
                     item.active
                       ? "bg-white shadow-sm text-primary"
                       : "hover:bg-white/70"
@@ -109,9 +109,9 @@ const CoreValues = () => {
           <div className="flex flex-col items-start justify-center text-left px-4 pr-6 md:pr-10">
             <div className="flex items-center gap-2 mb-3">
               <active.icon className="w-6 h-6 text-primary" />
-              <h3 className="font-heading font-bold text-xl text-[#1a1a2e]">{active.title}</h3>
+              <h3 className="heading-5 text-[#1a1a2e]">{active.title}</h3>
             </div>
-            <p className="text-gray-700 text-sm leading-relaxed max-w-md ml-2">
+            <p className="body-small text-gray-700 max-w-md ml-2">
               {active.description}
             </p>
             <a

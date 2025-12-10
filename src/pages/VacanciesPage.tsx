@@ -84,10 +84,10 @@ const VacanciesPage = () => {
                 >
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                     <div className="flex-1">
-                      <h3 className="text-xl md:text-2xl font-bold font-heading mb-3">
-                        {vacancy.title}
+                      <h3 className="heading-4 mb-3">
+                        {job.title}
                       </h3>
-                      <div className="flex flex-wrap gap-4 mb-4 text-sm text-muted-foreground">
+                      <div className="flex flex-wrap gap-4 mb-4 body-small">
                         <span className="flex items-center gap-1">
                           <MapPin className="w-4 h-4" />
                           {vacancy.location}
@@ -108,7 +108,7 @@ const VacanciesPage = () => {
                         <h4 className="font-semibold mb-2">Requirements:</h4>
                         <ul className="grid md:grid-cols-2 gap-2">
                           {vacancy.requirements.map((req, idx) => (
-                            <li key={idx} className="flex items-center gap-2 text-sm text-muted-foreground">
+                            <li key={idx} className="flex items-center gap-2 body-small">
                               <div className="w-1.5 h-1.5 bg-primary rounded-full" />
                               {req}
                             </li>
@@ -128,7 +128,7 @@ const VacanciesPage = () => {
           ) : (
             <div className="text-center py-16 bg-muted/50 rounded-lg">
               <Briefcase className="w-16 h-16 text-muted-foreground mx-auto mb-4" />
-              <h3 className="text-xl font-bold font-heading mb-2">No Current Openings</h3>
+              <h3 className="heading-5 mb-2">No Current Openings</h3>
               <p className="text-muted-foreground">
                 We don't have any vacancies at the moment. Please check back later.
               </p>

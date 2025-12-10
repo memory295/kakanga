@@ -35,11 +35,11 @@ const Header = () => {
       <div className="bg-white/90 backdrop-blur-sm py-1 px-4 shadow-sm">
         <div className="container-wide flex justify-between items-center">
           <div className="flex items-center gap-6">
-            <a href="mailto:info@kakangaconstructions.com" className="flex items-center gap-2 text-sm text-foreground/80 hover:text-primary transition-colors">
+            <a href="mailto:info@kakangaconstructions.com" className="flex items-center gap-2 contact-info text-foreground/80 hover:text-primary transition-colors">
               <Mail className="w-4 h-4 text-primary" />
               <span className="hidden sm:inline">info@kakangaconstructions.com</span>
             </a>
-            <a href="tel:+265999951283" className="flex items-center gap-2 text-sm text-foreground/80 hover:text-primary transition-colors">
+            <a href="tel:+265999951283" className="flex items-center gap-2 contact-info text-foreground/80 hover:text-primary transition-colors">
               <Phone className="w-4 h-4 text-primary" />
               <span className="hidden sm:inline">+265 999 951 283</span>
             </a>
@@ -59,7 +59,7 @@ const Header = () => {
                 className="w-14 h-14 object-contain"
               />
               <div className="ml-3">
-                <span className="font-heading font-bold text-2xl text-header-foreground tracking-tight">KAKANGA</span>
+                <span className="heading-4 text-header-foreground">KAKANGA</span>
                 <span className="block text-[0.7rem] text-header-foreground/70 uppercase tracking-widest">Constructions</span>
               </div>
             </div>
@@ -73,7 +73,7 @@ const Header = () => {
                   <div key={link.href} className="relative group">
                     <Link
                       to={link.href}
-                      className={`nav-link text-base font-medium py-2 transition-colors ${
+                      className={`nav-link nav-text py-2 transition-colors ${
                         location.pathname === link.href 
                           ? 'text-primary' 
                           : 'text-header-foreground/80 group-hover:text-primary'
@@ -84,10 +84,10 @@ const Header = () => {
                     {/* Hover dropdown menu */}
                     <div className="absolute left-0 mt-2 w-56 bg-background/95 backdrop-blur-md border border-border rounded-md shadow-lg hidden group-hover:block">
                       <div className="py-2">
-                        <Link to="/about#who-we-are" className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/40">Who we are</Link>
-                        <Link to="/about#our-team" className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/40">Our Team</Link>
-                        <Link to="/about#vision-mission" className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/40">Our Vision and Mission</Link>
-                        <Link to="/about#why-us" className="block px-3 py-2 text-sm text-foreground/80 hover:text-primary hover:bg-muted/40">Why Us</Link>
+                        <Link to="/about#who-we-are" className="block px-3 py-2 nav-dropdown text-foreground/80 hover:text-primary hover:bg-muted/40">Who we are</Link>
+                        <Link to="/about#our-team" className="block px-3 py-2 nav-dropdown text-foreground/80 hover:text-primary hover:bg-muted/40">Our Team</Link>
+                        <Link to="/about#vision-mission" className="block px-3 py-2 nav-dropdown text-foreground/80 hover:text-primary hover:bg-muted/40">Our Vision and Mission</Link>
+                        <Link to="/about#why-us" className="block px-3 py-2 nav-dropdown text-foreground/80 hover:text-primary hover:bg-muted/40">Why Us</Link>
                       </div>
                     </div>
                   </div>
@@ -97,7 +97,7 @@ const Header = () => {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`nav-link text-base font-medium py-2 transition-colors ${
+                  className={`nav-link nav-text py-2 transition-colors ${
                     location.pathname === link.href 
                       ? 'text-primary' 
                       : 'text-header-foreground/80 hover:text-primary'

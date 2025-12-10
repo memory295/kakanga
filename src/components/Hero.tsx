@@ -77,17 +77,17 @@ const Hero = () => {
             {/* Slogan text aligned to pillar start/end with four lines spanning the pillar */}
             <div className="text-left h-[36vh] flex flex-col justify-center space-y-1">
               <div className="relative">
-                <h1 className="font-heading font-bold text-2xl md:text-4xl lg:text-5xl text-white leading-tight tracking-wide">
+                <h1 className="hero-title">
                   Building with <span className="text-primary font-semibold">quality</span>
                 </h1>
                 <div className="w-16 h-0.5 bg-primary mt-2 opacity-80"></div>
               </div>
               
-              <h1 className="font-heading font-bold text-2xl md:text-4xl lg:text-5xl text-white leading-tight tracking-wide ml-8">
+              <h1 className="hero-title ml-8">
                 and <span className="text-primary font-semibold">integrity</span>
               </h1>
               
-              <h1 className="font-heading font-bold text-2xl md:text-4xl lg:text-5xl text-white leading-tight tracking-wide">
+              <h1 className="hero-title">
                 to move <span className="text-primary font-semibold">Malawi</span> forward.
               </h1>
             </div>

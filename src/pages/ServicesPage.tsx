@@ -108,7 +108,7 @@ const ServicesPage = () => {
                   </div>
                 </div>
                 <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                  <h3 className="text-2xl md:text-3xl font-bold font-heading mb-4">
+                  <h3 className="heading-3 mb-4">
                     {service.title}
                   </h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed">
@@ -118,7 +118,7 @@ const ServicesPage = () => {
                     {service.features.map((feature, idx) => (
                       <li key={idx} className="flex items-center gap-2">
                         <div className="w-2 h-2 bg-primary rounded-full" />
-                        <span className="text-sm">{feature}</span>
+                        <span className="body-small">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -147,7 +147,7 @@ const ServicesPage = () => {
           <div className="absolute inset-0 bg-primary/60" />
         </div>
         <div className="container-wide px-4 text-center relative z-10">
-          <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
+          <h2 className="heading-2 mb-4">
             Ready to Start Your Project?
           </h2>
           <p className="mb-8 max-w-2xl mx-auto opacity-90">

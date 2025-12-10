@@ -71,7 +71,7 @@ const Services = () => {
                 <p className="body-small mb-4">
                   {service.description}
                 </p>
-                <Link to="/services" className="inline-flex items-center text-primary text-xs font-medium uppercase tracking-wide hover:gap-2 transition-all">
+                <Link to="/services" className="inline-flex items-center text-primary button-text hover:gap-2 transition-all">
                   Learn More <ArrowRight className="w-3 h-3 ml-1" />
                 </Link>
               </div>

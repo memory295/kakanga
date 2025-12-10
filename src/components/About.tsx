@@ -16,7 +16,7 @@ const About = () => {
             <h2 className="heading-3 mb-3">
               About Kakanga Constructions
             </h2>
-            <p className="text-lg md:text-xl text-primary font-medium mb-6 leading-relaxed">
+            <p className="highlight-large mb-6">
               "Offering Comprehensive Construction Solutions tailored to your every need"
             </p>
             <p className="body-small mb-6">
@@ -45,20 +45,20 @@ const About = () => {
             <div className="bg-primary/10 rounded-lg p-8">
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
-                  <span className="block text-3xl md:text-4xl font-heading font-bold text-primary mb-2">15+</span>
-                  <span className="text-sm font-medium text-muted-foreground">Years Experience</span>
+                  <span className="block stat-number mb-2">15+</span>
+                  <span className="stat-label">Years Experience</span>
                 </div>
                 <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
-                  <span className="block text-3xl md:text-4xl font-heading font-bold text-primary mb-2">200+</span>
-                  <span className="text-sm font-medium text-muted-foreground">Projects Completed</span>
+                  <span className="block stat-number mb-2">200+</span>
+                  <span className="stat-label">Projects Completed</span>
                 </div>
                 <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
-                  <span className="block text-3xl md:text-4xl font-heading font-bold text-primary mb-2">150+</span>
-                  <span className="text-sm font-medium text-muted-foreground">Team Members</span>
+                  <span className="block stat-number mb-2">150+</span>
+                  <span className="stat-label">Team Members</span>
                 </div>
                 <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
-                  <span className="block text-3xl md:text-4xl font-heading font-bold text-primary mb-2">50+</span>
-                  <span className="text-sm font-medium text-muted-foreground">Equipment Fleet</span>
+                  <span className="block stat-number mb-2">50+</span>
+                  <span className="stat-label">Equipment Fleet</span>
                 </div>
               </div>
             </div>
