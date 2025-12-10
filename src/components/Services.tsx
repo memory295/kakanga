@@ -71,8 +71,8 @@ const Services = () => {
                 <p className="body-small mb-4">
                   {service.description}
                 </p>
-                <Link to="/services" className="inline-flex items-center text-primary label hover:gap-2 transition-all">
-                  Learn More <ArrowRight className="w-4 h-4 ml-1" />
+                <Link to="/services" className="inline-flex items-center text-primary text-xs font-medium uppercase tracking-wide hover:gap-2 transition-all">
+                  Learn More <ArrowRight className="w-3 h-3 ml-1" />
                 </Link>
               </div>
             </div>
@@ -81,8 +81,8 @@ const Services = () => {
 
         <div className="text-center mt-12">
           <Link to="/services">
-            <Button size="lg" className="gap-2">
-              View All Services <ArrowRight className="w-4 h-4" />
+            <Button size="default" className="gap-2">
+              View All Services <ArrowRight className="w-3 h-3" />
             </Button>
           </Link>
         </div>

@@ -13,30 +13,30 @@ const About = () => {
             <span className="caption text-primary mb-2 block">
               About Us
             </span>
-            <h2 className="heading-2 mb-2">
+            <h2 className="heading-3 mb-3">
               About Kakanga Constructions
             </h2>
-            <p className="body-large text-primary font-medium mb-6">
+            <p className="text-lg md:text-xl text-primary font-medium mb-6 leading-relaxed">
               "Offering Comprehensive Construction Solutions tailored to your every need"
             </p>
-            <p className="body-base mb-6">
+            <p className="body-small mb-6">
               Kakanga Constructions is a leading Civil and Building Construction Company based in Malawi. As a company registered in the UNLIMITED CATEGORY with the National Construction Industry Council (NCIC) for both Building and Civil Construction, we have established ourselves as a trusted partner in infrastructure development.
             </p>
-            <p className="body-base mb-8">
+            <p className="body-small mb-8">
               With years of experience and a dedicated team of professionals, we deliver excellence in every project, from road construction to complex civil engineering works.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               <a href="/kakanga-profile.pdf" download className="inline-flex">
-                <Button asChild variant="default" size="lg" className="gap-2">
+                <Button asChild variant="default" size="default" className="gap-2">
                   <span className="inline-flex items-center gap-2">
-                    <Download className="w-5 h-5" />
+                    <Download className="w-4 h-4" />
                     Download Company Profile
                   </span>
                 </Button>
               </a>
               <Link to="/about">
-                <Button variant="outline" size="lg" className="gap-2">
-                  Learn More <ArrowRight className="w-4 h-4" />
+                <Button variant="outline" size="default" className="gap-2">
+                  Learn More <ArrowRight className="w-3 h-3" />
                 </Button>
               </Link>
             </div>
@@ -45,20 +45,20 @@ const About = () => {
             <div className="bg-primary/10 rounded-lg p-8">
               <div className="grid grid-cols-2 gap-6">
                 <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
-                  <span className="block heading-1 text-primary mb-2">15+</span>
-                  <span className="caption">Years Experience</span>
+                  <span className="block text-3xl md:text-4xl font-heading font-bold text-primary mb-2">15+</span>
+                  <span className="text-sm font-medium text-muted-foreground">Years Experience</span>
                 </div>
                 <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
-                  <span className="block heading-1 text-primary mb-2">200+</span>
-                  <span className="caption">Projects Completed</span>
+                  <span className="block text-3xl md:text-4xl font-heading font-bold text-primary mb-2">200+</span>
+                  <span className="text-sm font-medium text-muted-foreground">Projects Completed</span>
                 </div>
                 <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
-                  <span className="block heading-1 text-primary mb-2">150+</span>
-                  <span className="caption">Team Members</span>
+                  <span className="block text-3xl md:text-4xl font-heading font-bold text-primary mb-2">150+</span>
+                  <span className="text-sm font-medium text-muted-foreground">Team Members</span>
                 </div>
                 <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
-                  <span className="block heading-1 text-primary mb-2">50+</span>
-                  <span className="caption">Equipment Fleet</span>
+                  <span className="block text-3xl md:text-4xl font-heading font-bold text-primary mb-2">50+</span>
+                  <span className="text-sm font-medium text-muted-foreground">Equipment Fleet</span>
                 </div>
               </div>
             </div>
