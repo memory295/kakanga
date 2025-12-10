@@ -75,19 +75,21 @@ const Hero = () => {
             {/* Vertical blue pillar (thicker & shorter, centered) */}
             <div className="hidden sm:block h-[36vh] w-2 rounded-full bg-primary shadow-lg" />
             {/* Slogan text aligned to pillar start/end with four lines spanning the pillar */}
-            <div className="text-left h-[36vh] flex flex-col justify-between">
-              <p className="heading-2 text-primary-foreground uppercase">
-                Building with quality
-              </p>
-              <p className="heading-2 text-primary-foreground uppercase">
-                and integrity
-              </p>
-              <p className="heading-2 text-primary-foreground uppercase">
-                to move
-              </p>
-              <p className="heading-2 text-primary-foreground uppercase">
-                Malawi forward.
-              </p>
+            <div className="text-left h-[36vh] flex flex-col justify-center space-y-1">
+              <div className="relative">
+                <h1 className="font-heading font-bold text-2xl md:text-4xl lg:text-5xl text-white leading-tight tracking-wide">
+                  Building with <span className="text-primary font-semibold">quality</span>
+                </h1>
+                <div className="w-16 h-0.5 bg-primary mt-2 opacity-80"></div>
+              </div>
+              
+              <h1 className="font-heading font-bold text-2xl md:text-4xl lg:text-5xl text-white leading-tight tracking-wide ml-8">
+                and <span className="text-primary font-semibold">integrity</span>
+              </h1>
+              
+              <h1 className="font-heading font-bold text-2xl md:text-4xl lg:text-5xl text-white leading-tight tracking-wide">
+                to move <span className="text-primary font-semibold">Malawi</span> forward.
+              </h1>
             </div>
           </div>
         </div>

@@ -173,6 +173,8 @@
     @apply font-heading font-semibold text-sm uppercase tracking-wider;
   }
 
+
+
   .hero-overlay {
     background: linear-gradient(
       to bottom,
