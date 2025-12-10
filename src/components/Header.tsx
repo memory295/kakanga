@@ -73,7 +73,7 @@ const Header = () => {
                   <div key={link.href} className="relative group">
                     <Link
                       to={link.href}
-                      className={`nav-link text-sm font-medium py-2 transition-colors ${
+                      className={`nav-link text-base font-medium py-2 transition-colors ${
                         location.pathname === link.href 
                           ? 'text-primary' 
                           : 'text-header-foreground/80 group-hover:text-primary'
@@ -97,7 +97,7 @@ const Header = () => {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`nav-link text-sm font-medium py-2 transition-colors ${
+                  className={`nav-link text-base font-medium py-2 transition-colors ${
                     location.pathname === link.href 
                       ? 'text-primary' 
                       : 'text-header-foreground/80 hover:text-primary'
