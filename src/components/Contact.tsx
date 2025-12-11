@@ -131,13 +131,7 @@ const Contact = () => {
               </div>
             </div>
 
-            <div className="pt-4">
-              <Link to="/contact">
-                <Button variant="outline" className="w-full">
-                  View Full Contact Page
-                </Button>
-              </Link>
-            </div>
+
           </div>
 
           {/* Contact Form */}

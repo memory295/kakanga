@@ -71,12 +71,12 @@ const Footer = () => {
                     Projects
                   </Link>
                 </li>
-                <li>
+                {/* <li>
                   <Link to="/equipment" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
                     Equipment
                   </Link>
-                </li>
+                </li> */}
                 <li>
                   <Link to="/vacancies" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
