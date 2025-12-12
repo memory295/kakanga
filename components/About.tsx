@@ -44,6 +44,27 @@ const About = () => {
             </div>
           </div>
 
+          {/* Stats Section */}
+          <div className="bg-primary/10 rounded-lg p-8 h-full flex items-center">
+            <div className="grid grid-cols-2 gap-6 w-full">
+              <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
+                <span className="block text-3xl md:text-4xl font-heading font-bold text-primary mb-2">15+</span>
+                <span className="text-sm font-medium text-muted-foreground">Years Experience</span>
+              </div>
+              <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
+                <span className="block text-3xl md:text-4xl font-heading font-bold text-primary mb-2">200+</span>
+                <span className="text-sm font-medium text-muted-foreground">Projects Completed</span>
+              </div>
+              <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
+                <span className="block text-3xl md:text-4xl font-heading font-bold text-primary mb-2">150+</span>
+                <span className="text-sm font-medium text-muted-foreground">Team Members</span>
+              </div>
+              <div className="text-center p-6 bg-white/30 rounded-lg border border-gray-100">
+                <span className="block text-3xl md:text-4xl font-heading font-bold text-primary mb-2">50+</span>
+                <span className="text-sm font-medium text-muted-foreground">Equipment Fleet</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
