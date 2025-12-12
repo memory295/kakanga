@@ -112,7 +112,7 @@ const Header = () => {
 
           {/* Mobile menu button */}
           <button
-           
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden p-2 text-header-foreground"
             aria-label="Toggle menu"
           >
@@ -128,7 +128,7 @@ const Header = () => {
                 <Link
                   key={link.href}
                   href={link.href}
-                 
+                  onClick={() => setIsMenuOpen(false)}
                   className={`py-3 px-2 border-b border-white/10 last:border-0 ${
                     pathname === link.href 
                       ? 'text-primary font-medium' 
