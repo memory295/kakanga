@@ -85,7 +85,7 @@ const VacanciesPage = () => {
                   <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
                     <div className="flex-1">
                       <h3 className="heading-4 mb-3">
-                        {job.title}
+                        {vacancy.title}
                       </h3>
                       <div className="flex flex-wrap gap-4 mb-4 body-small">
                         <span className="flex items-center gap-1">

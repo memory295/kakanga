@@ -48,25 +48,25 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <Link to="/" onClick={() => window.scrollTo(0, 0)} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link to="/about" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <Link to="/about" onClick={() => window.scrollTo(0, 0)} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <Link to="/services" onClick={() => window.scrollTo(0, 0)} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
                     Services
                   </Link>
                 </li>
                 <li>
-                  <Link to="/projects" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <Link to="/projects" onClick={() => window.scrollTo(0, 0)} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
                     Projects
                   </Link>
@@ -78,7 +78,7 @@ const Footer = () => {
                   </Link>
                 </li> */}
                 <li>
-                  <Link to="/vacancies" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <Link to="/vacancies" onClick={() => window.scrollTo(0, 0)} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
                     Vacancies
                   </Link>
@@ -94,37 +94,136 @@ const Footer = () => {
               </h4>
               <ul className="space-y-3">
                 <li>
-                  <Link to="/services" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <Link to="/services" onClick={(e) => {
+                    const scrollToService = () => {
+                      const element = document.getElementById('prefabricated-structures');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      } else {
+                        // Try again after a longer delay if element not found
+                        setTimeout(scrollToService, 500);
+                      }
+                    };
+                    
+                    // If already on services page, scroll immediately
+                    if (window.location.pathname === '/services') {
+                      e.preventDefault();
+                      scrollToService();
+                    } else {
+                      // Navigate first, then scroll after page loads
+                      setTimeout(scrollToService, 500);
+                    }
+                  }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
                     Land Leveling
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <Link to="/services" onClick={(e) => {
+                    const scrollToService = () => {
+                      const element = document.getElementById('civil-works');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      } else {
+                        setTimeout(scrollToService, 500);
+                      }
+                    };
+                    
+                    if (window.location.pathname === '/services') {
+                      e.preventDefault();
+                      scrollToService();
+                    } else {
+                      setTimeout(scrollToService, 500);
+                    }
+                  }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
                     Road Works
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <Link to="/services" onClick={(e) => {
+                    const scrollToService = () => {
+                      const element = document.getElementById('materials-supply');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      } else {
+                        setTimeout(scrollToService, 500);
+                      }
+                    };
+                    
+                    if (window.location.pathname === '/services') {
+                      e.preventDefault();
+                      scrollToService();
+                    } else {
+                      setTimeout(scrollToService, 500);
+                    }
+                  }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
                     Drilling & Blasting
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <Link to="/services" onClick={(e) => {
+                    const scrollToService = () => {
+                      const element = document.getElementById('house-design-construction');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      } else {
+                        setTimeout(scrollToService, 500);
+                      }
+                    };
+                    
+                    if (window.location.pathname === '/services') {
+                      e.preventDefault();
+                      scrollToService();
+                    } else {
+                      setTimeout(scrollToService, 500);
+                    }
+                  }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
                     Concrete Works
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <Link to="/services" onClick={(e) => {
+                    const scrollToService = () => {
+                      const element = document.getElementById('civil-works');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      } else {
+                        setTimeout(scrollToService, 500);
+                      }
+                    };
+                    
+                    if (window.location.pathname === '/services') {
+                      e.preventDefault();
+                      scrollToService();
+                    } else {
+                      setTimeout(scrollToService, 500);
+                    }
+                  }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
                     Earthworks
                   </Link>
                 </li>
                 <li>
-                  <Link to="/services" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <Link to="/services" onClick={(e) => {
+                    const scrollToService = () => {
+                      const element = document.getElementById('civil-works');
+                      if (element) {
+                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      } else {
+                        setTimeout(scrollToService, 500);
+                      }
+                    };
+                    
+                    if (window.location.pathname === '/services') {
+                      e.preventDefault();
+                      scrollToService();
+                    } else {
+                      setTimeout(scrollToService, 500);
+                    }
+                  }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
                     Bridge Construction
                   </Link>
@@ -168,10 +267,10 @@ const Footer = () => {
               © {new Date().getFullYear()} Kakanga Constructions. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <Link to="/policy" className="text-gray-500 hover:text-primary text-sm transition-colors">
+              <Link to="/policy" onClick={() => window.scrollTo(0, 0)} className="text-gray-500 hover:text-primary text-sm transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/policy" className="text-gray-500 hover:text-primary text-sm transition-colors">
+              <Link to="/policy" onClick={() => window.scrollTo(0, 0)} className="text-gray-500 hover:text-primary text-sm transition-colors">
                 Terms of Service
               </Link>
             </div>

@@ -94,6 +94,7 @@ const ServicesPage = () => {
             {services.map((service, index) => (
               <div 
                 key={service.id}
+                id={service.id}
                 className={`grid lg:grid-cols-2 gap-8 items-start ${
                   index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                 }`}
