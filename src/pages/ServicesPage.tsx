@@ -94,7 +94,7 @@ const ServicesPage = () => {
             {services.map((service, index) => (
               <div 
                 key={service.id}
-                className={`grid lg:grid-cols-2 gap-8 items-center ${
+                className={`grid lg:grid-cols-2 gap-8 items-start ${
                   index % 2 === 1 ? 'lg:flex-row-reverse' : ''
                 }`}
               >
@@ -107,8 +107,8 @@ const ServicesPage = () => {
                     />
                   </div>
                 </div>
-                <div className={index % 2 === 1 ? 'lg:order-1' : ''}>
-                  <h3 className="heading-3 mb-4">
+                <div className={`${index % 2 === 1 ? 'lg:order-1' : ''} flex flex-col justify-start`}>
+                  <h3 className="heading-3 mb-4 mt-0">
                     {service.title}
                   </h3>
                   <p className="text-muted-foreground mb-6 leading-relaxed">
@@ -135,8 +135,8 @@ const ServicesPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="relative py-16 bg-primary text-primary-foreground">
-        {/* Background image with overlay; blue bg is fallback */}
+      <section className="relative py-16 bg-[#1a1a2e] text-white">
+        {/* Background image with strong overlay for better text readability */}
         <div className="absolute inset-0">
           <img
             src="/images/services-cta.jpg"
@@ -144,17 +144,17 @@ const ServicesPage = () => {
             className="w-full h-full object-cover"
             onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
           />
-          <div className="absolute inset-0 bg-primary/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#1a1a2e]/85 via-[#1a1a2e]/75 to-[#1a1a2e]/85" />
         </div>
         <div className="container-wide px-4 text-center relative z-10">
-          <h2 className="heading-2 mb-4">
+          <h2 className="heading-2 mb-4 text-white drop-shadow-lg">
             Ready to Start Your Project?
           </h2>
-          <p className="mb-8 max-w-2xl mx-auto opacity-90">
+          <p className="mb-8 max-w-2xl mx-auto text-white/95 text-lg leading-relaxed drop-shadow-md">
             Contact us today to discuss your construction needs and get a free quote
           </p>
           <Link to="/contact">
-            <Button variant="secondary" size="lg" className="gap-2">
+            <Button variant="default" size="lg" className="gap-2 bg-primary text-white hover:bg-primary/90 shadow-lg">
               Contact Us <ArrowRight className="w-4 h-4" />
             </Button>
           </Link>
