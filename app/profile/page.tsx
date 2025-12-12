@@ -19,5 +19,3 @@ export default function ProfilePage() {
     </Layout>
   );
 }
-
-export default Profile;
