@@ -49,7 +49,7 @@ const Header = () => {
       </div>
 
       {/* Main navigation (transparent over hero) */}
-      <nav className={`transition-all duration-300 ${isScrolled ? 'bg-[#1a1a2e]/95 backdrop-blur-md shadow-md' : 'bg-transparent'}`}>
+      <nav className={`transition-all duration-300 ${isScrolled ? 'bg-[#334155]/95 backdrop-blur-md shadow-md' : 'bg-transparent'}`}>
         <div className="container-wide flex justify-between items-center py-4 px-4">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">

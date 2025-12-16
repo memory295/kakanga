@@ -4,7 +4,7 @@ import { Facebook, Twitter, Linkedin, Instagram, MapPin, Phone, Mail, ArrowRight
 
 const Footer = () => {
   return (
-    <footer className="bg-[#1a1a2e] text-white">
+    <footer className="bg-[#334155] text-white">
       {/* Main Footer Content */}
       <div className="py-16">
         <div className="container-wide px-4">
