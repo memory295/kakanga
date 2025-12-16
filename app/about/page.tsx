@@ -55,13 +55,13 @@ export default function AboutPage() {
         <div className="container-wide">
           {/* Header */}
           <div className="text-center mb-12">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
               Who We Are
             </span>
             <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
-              Quality is Our Mission Since <span className="text-primary">2011</span>
+              Quality is Our Mission Since <span className="text-header">2011</span>
             </h2>
-            <div className="w-20 h-1 bg-primary mx-auto mb-8"></div>
+            <div className="w-20 h-1 bg-header mx-auto mb-8"></div>
           </div>
 
           {/* Main Content Grid */}
@@ -78,7 +78,7 @@ export default function AboutPage() {
               </p>
             </div>
             
-            <div className="bg-primary/5 rounded-2xl p-8">
+            <div className="bg-header/10 rounded-2xl p-8">
               <h3 className="text-xl font-bold font-heading mb-4 text-center">Our Commitment</h3>
               <p className="text-muted-foreground leading-relaxed mb-6">
                 From custom‑designed homes and steel warehouses to government infrastructure, we apply the same level of precision, innovation, and professionalism across all our work.
@@ -94,9 +94,9 @@ export default function AboutPage() {
             <h3 className="text-2xl font-bold font-heading text-center mb-8">Our Expertise</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {expertise.map((item, index) => (
-                <div key={index} className="flex items-center gap-3 p-4 bg-gray-50/50 rounded-lg hover:bg-primary/5 transition-colors">
-                  <div className="w-10 h-10 bg-primary/10 rounded-full flex items-center justify-center flex-shrink-0">
-                    <CheckCircle className="w-5 h-5 text-primary" />
+                <div key={index} className="flex items-center gap-3 p-4 bg-gray-50/50 rounded-lg hover:bg-header/10 transition-colors">
+                  <div className="w-10 h-10 bg-header/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <CheckCircle className="w-5 h-5 text-header" />
                   </div>
                   <span className="font-medium text-foreground">{item}</span>
                 </div>
@@ -110,8 +110,8 @@ export default function AboutPage() {
       <section id="why-us" className="section-padding bg-white scroll-mt-24">
         <div className="container-wide">
           <div className="text-center mb-8 md:mb-12">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">Why Us</span>
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#1a1a2e]">Why Choose Us</h2>
+            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">Why Us</span>
+            <h2 className="text-3xl md:text-4xl font-bold font-heading text-foreground">Why Choose Us</h2>
           </div>
 
           {(() => {
@@ -150,14 +150,14 @@ export default function AboutPage() {
             return (
               <div className="grid grid-cols-1 md:grid-cols-[220px_1fr_560px] items-start gap-6">
                 {/* Left nav (fade grey) */}
-                <aside className="rounded-lg p-4 md:p-5 bg-gradient-to-b from-gray-200 to-gray-100 text-[#1a1a2e] mt-4 md:mt-6">
+                <aside className="rounded-lg p-4 md:p-5 bg-gradient-to-b from-gray-200 to-gray-100 text-foreground mt-4 md:mt-6">
                   <nav className="space-y-2">
                     {items.map((it, idx) => (
                       <button
                         key={it.title}
                         onClick={() => setActiveIndex(idx)}
                         className={`w-full flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-                          idx === activeIndex ? "bg-white shadow-sm text-primary" : "hover:bg-white/70"
+                          idx === activeIndex ? "bg-white shadow-sm text-header" : "hover:bg-white/70"
                         }`}
                       >
                         <it.icon className="w-4 h-4" />
@@ -170,11 +170,11 @@ export default function AboutPage() {
                 {/* Middle text */}
                 <div className="flex flex-col items-start justify-center text-left px-4 pr-6 md:pr-10 mt-4 md:mt-6">
                   <div className="flex items-center gap-2 mb-3">
-                    <active.icon className="w-6 h-6 text-primary" />
-                    <h3 className="font-heading font-bold text-xl text-[#1a1a2e]">{active.title}</h3>
+                    <active.icon className="w-6 h-6 text-header" />
+                    <h3 className="font-heading font-bold text-xl text-foreground">{active.title}</h3>
                   </div>
                   <p className="text-gray-700 text-sm leading-relaxed max-w-md ml-2">{active.description}</p>
-                  <a href="#projects" className="mt-4 ml-2 inline-flex items-center text-primary font-medium hover:underline">
+                  <a href="#projects" className="mt-4 ml-2 inline-flex items-center text-header font-medium hover:underline">
                     Learn more
                     <svg className="w-4 h-4 ml-2 animate-bounce" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                   </a>
@@ -196,7 +196,7 @@ export default function AboutPage() {
                       </button>
                       <div className="flex gap-1">
                         {items.map((_, i) => (
-                          <span key={i} className={`h-1 w-6 rounded-full ${i === activeIndex ? "bg-primary" : "bg-white/40"}`} />
+                          <span key={i} className={`h-1 w-6 rounded-full ${i === activeIndex ? "bg-header" : "bg-white/40"}`} />
                         ))}
                       </div>
                       <button aria-label="Next" onClick={onNext} className="rounded-full bg-black/40 hover:bg-black/60 text-white p-2">
@@ -218,8 +218,8 @@ export default function AboutPage() {
             {/* Vision */}
             <div className="bg-card p-8 rounded-lg shadow-md">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center">
-                  <Eye className="w-8 h-8 text-primary" />
+                <div className="w-16 h-16 bg-header/10 rounded-full flex items-center justify-center">
+                  <Eye className="w-8 h-8 text-header" />
                 </div>
                 <h3 className="text-2xl font-bold font-heading">Our Vision</h3>
               </div>
@@ -248,7 +248,7 @@ export default function AboutPage() {
       <section id="our-team" className="section-padding bg-section-alt scroll-mt-24">
         <div className="container-wide">
           <div className="text-center mb-12">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">Our Team</span>
+            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">Our Team</span>
             <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Meet the Leadership</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">Experienced professionals leading projects with integrity and excellence.</p>
           </div>
@@ -262,8 +262,8 @@ export default function AboutPage() {
             ].map((m) => (
               <div key={m.name} className="bg-card rounded-lg shadow-sm overflow-hidden">
                 <div className="p-3">
-                  <div className="rounded-xl border-2 border-primary/20 bg-secondary/60 p-2 shadow-sm relative">
-                    <span className="absolute -top-1 -left-1 w-6 h-6 rounded-tr-xl bg-primary/60" aria-hidden="true" />
+                  <div className="rounded-xl border-2 border-header/20 bg-secondary/60 p-2 shadow-sm relative">
+                    <span className="absolute -top-1 -left-1 w-6 h-6 rounded-tr-xl bg-header/60" aria-hidden="true" />
                     <div className="relative h-40 md:h-48 rounded-md overflow-hidden bg-white shadow">
                       <img
                         src={m.photo}
@@ -272,7 +272,7 @@ export default function AboutPage() {
                         onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
                       />
                       <div className="absolute inset-0 pointer-events-none opacity-0 hover:opacity-100 bg-gradient-to-t from-black/20 to-transparent transition-opacity duration-300" />
-                      <div className="absolute top-2 left-2 bg-primary text-primary-foreground text-[10px] font-semibold px-2 py-1 rounded">
+                      <div className="absolute top-2 left-2 bg-header text-header-foreground text-[10px] font-semibold px-2 py-1 rounded">
                         Team
                       </div>
                     </div>

@@ -78,17 +78,17 @@ const CoreValues = () => {
     <section id="values" className="section-padding bg-white">
       <div className="container-wide">
         <div className="text-center mb-8 md:mb-12">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+          <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
             What We Stand For
           </span>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-[#1a1a2e]">
+          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground">
             Core Values
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-[220px_1fr_560px] items-start gap-6">
           {/* Left: small container with links and fade grey bg */}
-          <aside className="rounded-lg p-4 md:p-5 bg-gradient-to-b from-gray-200 to-gray-100 text-[#1a1a2e]">
+          <aside className="rounded-lg p-4 md:p-5 bg-gradient-to-b from-gray-200 to-gray-100 text-foreground">
             <nav className="space-y-2">
               {leftNavItems.map((item, idx) => (
                 <button
@@ -96,7 +96,7 @@ const CoreValues = () => {
                  
                   className={`w-full flex items-center gap-3 rounded-md px-3 py-2 label transition-colors ${
                     item.active
-                      ? "bg-white shadow-sm text-primary"
+                      ? "bg-white shadow-sm text-header"
                       : "hover:bg-white/70"
                   }`}
                 >
@@ -110,15 +110,15 @@ const CoreValues = () => {
           {/* Middle: text in between the two containers */}
           <div className="flex flex-col items-start justify-center text-left px-4 pr-6 md:pr-10">
             <div className="flex items-center gap-2 mb-3">
-              <active.icon className="w-6 h-6 text-primary" />
-              <h3 className="heading-5 text-[#1a1a2e]">{active.title}</h3>
+              <active.icon className="w-6 h-6 text-header" />
+              <h3 className="heading-5 text-foreground">{active.title}</h3>
             </div>
             <p className="body-small text-gray-700 max-w-md ml-2">
               {active.description}
             </p>
             <a
               href="#"
-              className="mt-4 ml-2 inline-flex items-center text-primary font-medium hover:underline"
+              className="mt-4 ml-2 inline-flex items-center text-header font-medium hover:underline"
             >
               Learn more
               <ArrowRight className="w-4 h-4 ml-2 animate-bounce" />
@@ -144,7 +144,7 @@ const CoreValues = () => {
                   img.style.display = "none";
                 }}
               />
-              <div className="absolute inset-0 hidden [img+&]:hidden bg-gradient-to-br from-primary/40 to-indigo-500/30" />
+              <div className="absolute inset-0 hidden [img+&]:hidden bg-gradient-to-br from-header/40 to-indigo-500/30" />
 
               {/* Controls */}
               <div className="absolute inset-x-0 bottom-3 flex items-center justify-between px-3">
@@ -159,7 +159,7 @@ const CoreValues = () => {
                   {values.map((_, i) => (
                     <span
                       key={i}
-                      className={`h-1 w-6 rounded-full ${i === activeIndex ? "bg-primary" : "bg-white/40"}`}
+                      className={`h-1 w-6 rounded-full ${i === activeIndex ? "bg-header" : "bg-white/40"}`}
                     />
                   ))}
                 </div>

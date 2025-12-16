@@ -70,7 +70,7 @@ export default function ProjectsPage() {
       <section className="section-padding bg-section-alt">
         <div className="container-wide">
           <div className="text-center mb-8">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
               Our Portfolio
             </span>
             <h2 className="heading-3 mb-4">
@@ -90,8 +90,8 @@ export default function ProjectsPage() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   selectedCategory === category
-                    ? "bg-primary text-white shadow-md"
-                    : "bg-white text-muted-foreground hover:bg-primary/10 hover:text-primary"
+                    ? "bg-header text-white shadow-md"
+                    : "bg-white text-muted-foreground hover:bg-header/10 hover:text-header"
                 }`}
               >
                 {category}
@@ -114,7 +114,7 @@ export default function ProjectsPage() {
                     className="w-full h-48 object-cover"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-primary text-white px-3 py-1 rounded-full text-xs font-medium">
+                    <span className="bg-header text-white px-3 py-1 rounded-full text-xs font-medium">
                       {project.category}
                     </span>
                   </div>
@@ -125,11 +125,11 @@ export default function ProjectsPage() {
                   
                   <div className="space-y-2 mb-4">
                     <div className="flex items-center text-sm text-muted-foreground">
-                      <Briefcase className="w-4 h-4 mr-2 text-primary" />
+                      <Briefcase className="w-4 h-4 mr-2 text-header" />
                       {project.client}
                     </div>
                     <div className="flex items-center text-sm text-muted-foreground">
-                      <MapPin className="w-4 h-4 mr-2 text-primary" />
+                      <MapPin className="w-4 h-4 mr-2 text-header" />
                       {project.location}
                     </div>
                   </div>
@@ -153,7 +153,7 @@ export default function ProjectsPage() {
       {/* Call to Action */}
       <section className="section-padding">
         <div className="container-wide">
-          <div className="bg-primary rounded-2xl p-8 md:p-12 text-center text-white">
+          <div className="bg-header rounded-2xl p-8 md:p-12 text-center text-white">
             <h2 className="heading-3 text-white mb-4">
               Ready to Start Your Project?
             </h2>
@@ -163,12 +163,12 @@ export default function ProjectsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <button className="bg-white text-primary hover:bg-gray-100 px-8 py-3 rounded-lg font-medium transition-colors shadow-lg">
+                <button className="bg-white text-header hover:bg-gray-100 px-8 py-3 rounded-lg font-medium transition-colors shadow-lg">
                   Get Free Quote
                 </button>
               </Link>
               <Link href="/projects">
-                <button className="border border-white text-white hover:bg-white hover:text-primary px-8 py-3 rounded-lg font-medium transition-colors">
+                <button className="border border-white text-white hover:bg-white hover:text-header px-8 py-3 rounded-lg font-medium transition-colors">
                   View Our Work
                 </button>
               </Link>

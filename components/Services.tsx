@@ -34,7 +34,7 @@ const Services = () => {
     <section id="services" className="section-padding bg-background">
       <div className="container-wide">
         <div className="text-center mb-16">
-          <span className="caption text-primary mb-2 block">
+          <span className="caption text-header mb-2 block">
             What We Do
           </span>
           <h2 className="heading-2 mb-4">
@@ -61,13 +61,13 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="heading-5 mb-3 group-hover:text-primary transition-colors">
+                <h3 className="heading-5 mb-3 group-hover:text-header transition-colors">
                   {service.title}
                 </h3>
                 <p className="body-small mb-4 flex-1">
                   {service.description}
                 </p>
-                <Link href="/services" className="inline-flex items-center text-primary button-text hover:gap-2 transition-all">
+                <Link href="/services" className="inline-flex items-center text-header button-text hover:gap-2 transition-all">
                   Learn More <ArrowRight className="w-3 h-3 ml-1" />
                 </Link>
               </div>
@@ -77,7 +77,7 @@ const Services = () => {
 
         <div className="text-center mt-12">
           <Link href="/services">
-            <Button size="default" className="gap-2">
+            <Button size="default" className="gap-2 bg-header hover:bg-header/90 text-white">
               View All Services <ArrowRight className="w-3 h-3" />
             </Button>
           </Link>

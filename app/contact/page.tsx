@@ -91,8 +91,8 @@ export default function ContactPage() {
               </p>
               <div className="space-y-6">
                 <div className="flex gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 bg-header/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-header" />
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Our Location</h3>
@@ -101,8 +101,8 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 bg-header/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-6 h-6 text-header" />
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Mobile</h3>
@@ -111,8 +111,8 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 bg-header/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-header" />
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">E-mail</h3>
@@ -121,8 +121,8 @@ export default function ContactPage() {
                   </div>
                 </div>
                 <div className="flex gap-4">
-                  <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Clock className="w-6 h-6 text-primary" />
+                  <div className="w-12 h-12 bg-header/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-6 h-6 text-header" />
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Working Hours</h3>
@@ -148,7 +148,7 @@ export default function ContactPage() {
                         aria-label="Full Name"
                         placeholder="Full Name"
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                        className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 transition-all placeholder:text-muted-foreground"
                       />
                     </div>
                     <div>
@@ -160,7 +160,7 @@ export default function ContactPage() {
                         aria-label="Email Address"
                         placeholder="Email Address"
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                        className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 transition-all placeholder:text-muted-foreground"
                       />
                     </div>
                   </div>
@@ -173,7 +173,7 @@ export default function ContactPage() {
                         onChange={handleChange}
                         aria-label="Phone Number"
                         placeholder="Phone Number"
-                        className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                        className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 transition-all placeholder:text-muted-foreground"
                       />
                     </div>
                     <div>
@@ -185,7 +185,7 @@ export default function ContactPage() {
                         aria-label="Subject"
                         placeholder="Subject"
                         required
-                        className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                        className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 transition-all placeholder:text-muted-foreground"
                       />
                     </div>
                   </div>
@@ -197,10 +197,10 @@ export default function ContactPage() {
                       placeholder="Message"
                       rows={6}
                       required
-                      className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none transition-all placeholder:text-muted-foreground"
+                      className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 resize-none transition-all placeholder:text-muted-foreground"
                     />
                   </div>
-                  <Button type="submit" size="default" className="gap-2 shadow-sm hover:shadow-md" disabled={isSending}>
+                  <Button type="submit" size="default" className="gap-2 shadow-sm hover:shadow-md bg-header hover:bg-header/90 text-white" disabled={isSending}>
                     <Send className="w-3 h-3" />
                     {isSending ? "Sending…" : "Send Message"}
                   </Button>

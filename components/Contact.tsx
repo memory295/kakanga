@@ -79,7 +79,7 @@ const Contact = () => {
     <section id="contact" className="section-padding bg-background">
       <div className="container-wide">
         <div className="text-center mb-16">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+          <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
             Contact Us
           </span>
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
@@ -90,12 +90,12 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
+        <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Contact Info */}
-          <div className="space-y-6">
+          <div className="space-y-6 h-full">
             <div className="flex items-start gap-4 p-4 bg-white/30 rounded-lg border border-gray-100 hover:bg-white/50 transition-colors">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <MapPin className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 bg-header/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <MapPin className="w-6 h-6 text-header" />
               </div>
               <div>
                 <h3 className="font-heading font-semibold text-lg text-foreground mb-1">Our Location</h3>
@@ -103,8 +103,8 @@ const Contact = () => {
               </div>
             </div>
             <div className="flex items-start gap-4 p-4 bg-white/30 rounded-lg border border-gray-100 hover:bg-white/50 transition-colors">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Phone className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 bg-header/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Phone className="w-6 h-6 text-header" />
               </div>
               <div>
                 <h3 className="font-heading font-semibold text-lg text-foreground mb-1">Mobile</h3>
@@ -113,8 +113,8 @@ const Contact = () => {
               </div>
             </div>
             <div className="flex items-start gap-4 p-4 bg-white/30 rounded-lg border border-gray-100 hover:bg-white/50 transition-colors">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Mail className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 bg-header/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Mail className="w-6 h-6 text-header" />
               </div>
               <div>
                 <h3 className="font-heading font-semibold text-lg text-foreground mb-1">E-mail</h3>
@@ -123,8 +123,8 @@ const Contact = () => {
               </div>
             </div>
             <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
-              <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center flex-shrink-0">
-                <Clock className="w-6 h-6 text-primary" />
+              <div className="w-12 h-12 bg-header/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                <Clock className="w-6 h-6 text-header" />
               </div>
               <div>
                 <h3 className="font-heading font-semibold text-lg text-foreground mb-1">Working Hours</h3>
@@ -137,7 +137,7 @@ const Contact = () => {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white/30 p-8 rounded-lg border border-gray-100">
+          <div className="bg-white/30 p-8 rounded-lg border border-gray-100 h-full">
             <h3 className="font-heading font-semibold text-xl mb-6">Send Us a Message</h3>
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid sm:grid-cols-2 gap-4">
@@ -149,7 +149,7 @@ const Contact = () => {
                     value={formData.name}
                     onChange={handleChange}
                     aria-label="Full Name"
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 transition-all placeholder:text-muted-foreground"
                     placeholder="Full Name"
                     required
                   />
@@ -162,7 +162,7 @@ const Contact = () => {
                     value={formData.email}
                     onChange={handleChange}
                     aria-label="Email Address"
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 transition-all placeholder:text-muted-foreground"
                     placeholder="Email Address"
                     required
                   />
@@ -177,7 +177,7 @@ const Contact = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     aria-label="Phone Number"
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 transition-all placeholder:text-muted-foreground"
                     placeholder="Phone Number"
                   />
                 </div>
@@ -189,7 +189,7 @@ const Contact = () => {
                     value={formData.subject}
                     onChange={handleChange}
                     aria-label="Subject"
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all placeholder:text-muted-foreground"
+                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 transition-all placeholder:text-muted-foreground"
                     placeholder="Subject"
                     required
                   />
@@ -203,12 +203,12 @@ const Contact = () => {
                   onChange={handleChange}
                   rows={4}
                   aria-label="Message"
-                  className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 resize-none transition-all placeholder:text-muted-foreground"
+                  className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 resize-none transition-all placeholder:text-muted-foreground"
                   placeholder="Message"
                   required
                 />
               </div>
-              <Button type="submit" size="default" className="w-full gap-2" disabled={isSending}>
+              <Button type="submit" size="default" className="w-full gap-2 bg-header hover:bg-header/90 text-white" disabled={isSending}>
                 <Send className="w-3 h-3" />
                 {isSending ? 'Sending…' : 'Send Message'}
               </Button>

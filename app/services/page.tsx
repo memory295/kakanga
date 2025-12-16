@@ -63,15 +63,14 @@ export default function ServicesPage() {
   return (
     <Layout>
       <PageHeader 
-        title="Our Services" 
-        backgroundImage="/images/project.png"
+        title="Our Services"
       />
       
       {/* Services Grid */}
       <section className="section-padding">
         <div className="container-wide">
           <div className="text-center mb-12">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
               What We Offer
             </span>
             <h2 className="heading-3 mb-4">
@@ -106,14 +105,14 @@ export default function ServicesPage() {
                   <div className="grid grid-cols-2 gap-3 mb-6">
                     {service.features.map((feature, featureIndex) => (
                       <div key={featureIndex} className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-primary rounded-full"></div>
+                        <div className="w-2 h-2 bg-header rounded-full"></div>
                         <span className="body-small text-foreground">{feature}</span>
                       </div>
                     ))}
                   </div>
                   
                   <Link href="/contact">
-                    <Button className="group">
+                    <Button className="group bg-header hover:bg-header/90 text-white">
                       Get Quote
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
@@ -128,7 +127,7 @@ export default function ServicesPage() {
       {/* Call to Action */}
       <section className="section-padding">
         <div className="container-wide">
-          <div className="bg-primary rounded-2xl p-8 md:p-12 text-center text-white">
+          <div className="bg-header rounded-2xl p-8 md:p-12 text-center text-white">
             <h2 className="heading-3 text-white mb-4">
               Ready to Start Your Project?
             </h2>
@@ -138,12 +137,12 @@ export default function ServicesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <Button variant="secondary" size="lg">
+                <Button size="lg" className="bg-white text-header hover:bg-white/90">
                   Get Free Quote
                 </Button>
               </Link>
               <Link href="/projects">
-                <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
+                <Button variant="outline" size="lg" className="bg-transparent border-white text-white hover:bg-white hover:text-header">
                   View Our Work
                 </Button>
               </Link>

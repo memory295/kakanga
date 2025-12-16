@@ -67,7 +67,7 @@ export default function VacanciesPage() {
         <div className="container-wide">
           <div className="text-center mb-12">
             <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
-              Join Our <span className="text-primary">Team</span>
+              Join Our <span className="text-header">Team</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">
               Build your career with Malawi's leading construction company. 
@@ -109,7 +109,7 @@ export default function VacanciesPage() {
                         <ul className="grid md:grid-cols-2 gap-2">
                           {vacancy.requirements.map((req, idx) => (
                             <li key={idx} className="flex items-center gap-2 body-small">
-                              <div className="w-1.5 h-1.5 bg-primary rounded-full" />
+                              <div className="w-1.5 h-1.5 bg-header rounded-full" />
                               {req}
                             </li>
                           ))}
@@ -117,7 +117,7 @@ export default function VacanciesPage() {
                       </div>
                     </div>
                     <div className="lg:flex-shrink-0">
-                      <Button className="gap-2 w-full lg:w-auto">
+                      <Button className="gap-2 w-full lg:w-auto bg-header hover:bg-header/90 text-white">
                         Apply Now <ArrowRight className="w-4 h-4" />
                       </Button>
                     </div>
@@ -136,7 +136,7 @@ export default function VacanciesPage() {
           )}
 
           {/* General Application */}
-          <div className="mt-12 bg-primary/5 rounded-lg p-8 text-center">
+          <div className="mt-12 bg-header/10 rounded-lg p-8 text-center">
             <h3 className="text-xl font-bold font-heading mb-3">
               Don't see a suitable position?
             </h3>
@@ -144,7 +144,7 @@ export default function VacanciesPage() {
               We're always looking for talented individuals. Send us your CV and we'll 
               keep it on file for future opportunities.
             </p>
-            <Button variant="outline" className="gap-2">
+            <Button variant="outline" className="gap-2 border-header text-header hover:bg-header hover:text-white">
               Submit General Application <ArrowRight className="w-4 h-4" />
             </Button>
           </div>

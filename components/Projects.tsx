@@ -51,7 +51,7 @@ const Projects = () => {
     <section id="projects" className="section-padding bg-section-alt">
       <div className="container-wide">
         <div className="text-center mb-12">
-          <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+          <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
             Our Portfolio
           </span>
           <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
@@ -66,8 +66,7 @@ const Projects = () => {
               key={category}
               variant={activeCategory === category ? 'default' : 'outline'}
               size="sm"
-             
-              className="min-w-[100px]"
+              className={`min-w-[100px] ${activeCategory === category ? 'bg-header hover:bg-header/90 text-white' : ''}`}
             >
               {category}
             </Button>
@@ -89,7 +88,7 @@ const Projects = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6">
-                  <span className="inline-block px-3 py-1 bg-primary text-primary-foreground text-xs font-medium rounded-full mb-3">
+                  <span className="inline-block px-3 py-1 bg-header text-header-foreground text-xs font-medium rounded-full mb-3">
                     {project.category}
                   </span>
                   <h3 className="font-heading font-semibold text-lg text-primary-foreground leading-tight">
