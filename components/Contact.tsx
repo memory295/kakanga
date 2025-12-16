@@ -92,7 +92,8 @@ const Contact = () => {
 
         <div className="grid lg:grid-cols-2 gap-12 items-stretch">
           {/* Contact Info */}
-          <div className="space-y-6 h-full">
+          <div className="bg-white/30 p-8 rounded-lg border border-gray-100 h-full">
+            <div className="space-y-6 h-full">
             <div className="flex items-start gap-4 p-4 bg-white/30 rounded-lg border border-gray-100 hover:bg-white/50 transition-colors">
               <div className="w-12 h-12 bg-header/10 rounded-lg flex items-center justify-center flex-shrink-0">
                 <MapPin className="w-6 h-6 text-header" />
@@ -132,15 +133,14 @@ const Contact = () => {
                 <p className="text-muted-foreground">Saturday: 8:00 AM - 12:00 PM</p>
               </div>
             </div>
-
-
+            </div>
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white/30 p-8 rounded-lg border border-gray-100 h-full">
+          <div className="bg-white/30 p-8 rounded-lg border border-gray-100 h-full flex flex-col">
             <h3 className="font-heading font-semibold text-xl mb-6">Send Us a Message</h3>
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid sm:grid-cols-2 gap-4">
+            <form onSubmit={handleSubmit} className="flex flex-col h-full space-y-6">
+              <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <input
                     type="text"
@@ -168,7 +168,7 @@ const Contact = () => {
                   />
                 </div>
               </div>
-              <div className="grid sm:grid-cols-2 gap-4">
+              <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <input
                     type="tel"
@@ -195,20 +195,20 @@ const Contact = () => {
                   />
                 </div>
               </div>
-              <div>
+              <div className="flex-1">
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  rows={4}
+                  rows={8}
                   aria-label="Message"
-                  className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 resize-none transition-all placeholder:text-muted-foreground"
+                  className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 resize-none transition-all placeholder:text-muted-foreground min-h-56 flex-grow"
                   placeholder="Message"
                   required
                 />
               </div>
-              <Button type="submit" size="default" className="w-full gap-2 bg-header hover:bg-header/90 text-white" disabled={isSending}>
+              <Button type="submit" size="default" className="w-full gap-2 bg-header hover:bg-header/90 text-white mt-auto" disabled={isSending}>
                 <Send className="w-3 h-3" />
                 {isSending ? 'Sending…' : 'Send Message'}
               </Button>
