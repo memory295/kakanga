@@ -52,13 +52,13 @@ const policies = [
 export default function PolicyPage() {
   return (
     <Layout>
-      <PageHeader title="Our Policies" backgroundImage="/images/project.png" />
+      <PageHeader title="Our Policies" />
       
       {/* Introduction */}
       <section className="section-padding">
         <div className="container-wide">
           <div className="text-center mb-12">
-            <span className="text-primary font-semibold text-sm uppercase tracking-wider mb-2 block">
+            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
               Our Commitment
             </span>
             <h2 className="heading-3 mb-4">
@@ -80,8 +80,8 @@ export default function PolicyPage() {
               const IconComponent = policy.icon;
               return (
                 <div key={index} className="bg-white rounded-lg p-8 shadow-sm">
-                  <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mb-6">
-                    <IconComponent className="h-8 w-8 text-primary" />
+                  <div className="w-16 h-16 bg-header/10 rounded-full flex items-center justify-center mb-6">
+                    <IconComponent className="h-8 w-8 text-header" />
                   </div>
                   
                   <h3 className="heading-4 mb-4">{policy.title}</h3>
@@ -90,7 +90,7 @@ export default function PolicyPage() {
                   <ul className="space-y-3">
                     {policy.points.map((point, pointIndex) => (
                       <li key={pointIndex} className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                        <div className="w-2 h-2 bg-header rounded-full mt-2 flex-shrink-0"></div>
                         <span className="body-small text-foreground">{point}</span>
                       </li>
                     ))}
@@ -115,19 +115,19 @@ export default function PolicyPage() {
           
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center p-6 bg-white rounded-lg shadow-sm">
-              <Award className="h-12 w-12 text-primary mx-auto mb-4" />
+              <Award className="h-12 w-12 text-header mx-auto mb-4" />
               <h4 className="heading-6 mb-2">ISO Certification</h4>
               <p className="body-small">Quality management system certification</p>
             </div>
             
             <div className="text-center p-6 bg-white rounded-lg shadow-sm">
-              <Shield className="h-12 w-12 text-primary mx-auto mb-4" />
+              <Shield className="h-12 w-12 text-header mx-auto mb-4" />
               <h4 className="heading-6 mb-2">Safety Compliance</h4>
               <p className="body-small">Adherence to national safety standards</p>
             </div>
             
             <div className="text-center p-6 bg-white rounded-lg shadow-sm">
-              <Leaf className="h-12 w-12 text-primary mx-auto mb-4" />
+              <Leaf className="h-12 w-12 text-header mx-auto mb-4" />
               <h4 className="heading-6 mb-2">Environmental Standards</h4>
               <p className="body-small">Environmental management certification</p>
             </div>
@@ -136,7 +136,7 @@ export default function PolicyPage() {
       </section>
 
       {/* Contact for Policy Questions */}
-      <section className="section-padding bg-primary text-white">
+      <section className="section-padding bg-header text-white">
         <div className="container-wide">
           <div className="text-center">
             <h2 className="heading-3 text-white mb-4">
@@ -149,13 +149,13 @@ export default function PolicyPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="/contact" 
-                className="bg-white text-primary hover:bg-white/90 px-6 py-3 rounded-lg font-medium transition-colors"
+                className="bg-white text-header hover:bg-white/90 px-6 py-3 rounded-lg font-medium transition-colors"
               >
                 Contact Us
               </a>
               <a 
                 href="mailto:info@kakangaconstructions.com"
-                className="border border-white text-white hover:bg-white hover:text-primary px-6 py-3 rounded-lg font-medium transition-colors"
+                className="border border-white text-white hover:bg-white hover:text-header px-6 py-3 rounded-lg font-medium transition-colors"
               >
                 Email Us
               </a>
