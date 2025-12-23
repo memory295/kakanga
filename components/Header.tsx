@@ -49,8 +49,15 @@ const Header = () => {
       </div>
 
       {/* Main navigation (transparent over hero) */}
-      <nav className={`transition-all duration-300 ${isScrolled ? 'bg-header/95 backdrop-blur-md shadow-md' : 'bg-transparent'}`}>
-        <div className="container-wide flex justify-between items-center py-4 px-4">
+      <nav
+        className={`transition-all duration-300 ${isScrolled ? 'backdrop-blur-md shadow-md' : 'bg-transparent'}`}
+        style={{
+          background: isScrolled
+            ? 'linear-gradient(135deg, hsl(var(--header-bg)), hsl(var(--primary)))'
+            : 'transparent',
+        }}
+      >
+        <div className={`container-wide flex justify-between items-center px-4 ${isScrolled ? 'py-3' : 'py-4'}`}>
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3">
             <div className="flex items-center">
