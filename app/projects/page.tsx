@@ -90,8 +90,8 @@ export default function ProjectsPage() {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
                   selectedCategory === category
-                    ? "bg-header text-white shadow-md"
-                    : "bg-white text-muted-foreground hover:bg-header/10 hover:text-header"
+                    ? "bg-primary text-primary-foreground shadow-md"
+                    : "bg-white text-muted-foreground hover:bg-primary/10 hover:text-primary"
                 }`}
               >
                 {category}
@@ -163,12 +163,12 @@ export default function ProjectsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <button className="bg-white text-header hover:bg-gray-100 px-8 py-3 rounded-lg font-medium transition-colors shadow-lg">
+                <button className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg font-medium transition-colors shadow-lg">
                   Get Free Quote
                 </button>
               </Link>
               <Link href="/projects">
-                <button className="border border-white text-white hover:bg-white hover:text-header px-8 py-3 rounded-lg font-medium transition-colors">
+                <button className="border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3 rounded-lg font-medium transition-colors">
                   View Our Work
                 </button>
               </Link>

@@ -66,7 +66,7 @@ const Projects = () => {
               key={category}
               variant={activeCategory === category ? 'default' : 'outline'}
               size="sm"
-              className={`min-w-[100px] ${activeCategory === category ? 'bg-header hover:bg-header/90 text-white' : ''}`}
+              className={`min-w-[100px]`}
             >
               {category}
             </Button>

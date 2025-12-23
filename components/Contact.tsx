@@ -208,7 +208,7 @@ const Contact = () => {
                   required
                 />
               </div>
-              <Button type="submit" size="default" className="w-full gap-2 bg-header hover:bg-header/90 text-white mt-auto" disabled={isSending}>
+              <Button type="submit" size="default" className="w-full gap-2 mt-auto" disabled={isSending}>
                 <Send className="w-3 h-3" />
                 {isSending ? 'Sending…' : 'Send Message'}
               </Button>

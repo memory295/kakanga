@@ -77,7 +77,7 @@ const Services = () => {
 
         <div className="text-center mt-12">
           <Link href="/services">
-            <Button size="default" className="gap-2 bg-header hover:bg-header/90 text-white">
+            <Button size="default" className="gap-2">
               View All Services <ArrowRight className="w-3 h-3" />
             </Button>
           </Link>

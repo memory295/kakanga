@@ -46,7 +46,7 @@ const LeftColumn = ({ inView }: { inView: boolean }) => {
             </p>
             <div className={clsx('flex flex-wrap gap-3', inView && 'animate-in fade-in slide-in-from-bottom-2 delay-250 duration-500')}>
               <a href="/kakanga-profile.pdf" download className="inline-flex">
-                <Button asChild variant="default" size="default" className="gap-2 bg-header hover:bg-header/90 text-white">
+                <Button asChild variant="default" size="default" className="gap-2">
                   <span className="inline-flex items-center gap-2">
                     <Download className="w-4 h-4" />
                     Download Company Profile
@@ -54,7 +54,7 @@ const LeftColumn = ({ inView }: { inView: boolean }) => {
                 </Button>
               </a>
               <Link href="/about">
-                <Button variant="outline" size="default" className="gap-2 border-header text-header hover:bg-header hover:text-white">
+                <Button variant="outline" size="default" className="gap-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                   Learn More <ArrowRight className="w-3 h-3" />
                 </Button>
               </Link>

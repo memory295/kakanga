@@ -112,7 +112,7 @@ export default function ServicesPage() {
                   </div>
                   
                   <Link href="/contact">
-                    <Button className="group bg-header hover:bg-header/90 text-white">
+                    <Button className="group">
                       Get Quote
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
@@ -137,12 +137,12 @@ export default function ServicesPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <Button size="lg" className="bg-white text-header hover:bg-white/90">
+                <Button size="lg">
                   Get Free Quote
                 </Button>
               </Link>
               <Link href="/projects">
-                <Button variant="outline" size="lg" className="bg-transparent border-white text-white hover:bg-white hover:text-header">
+                <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
                   View Our Work
                 </Button>
               </Link>

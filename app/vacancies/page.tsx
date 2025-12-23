@@ -117,7 +117,7 @@ export default function VacanciesPage() {
                       </div>
                     </div>
                     <div className="lg:flex-shrink-0">
-                      <Button className="gap-2 w-full lg:w-auto bg-header hover:bg-header/90 text-white">
+                      <Button className="gap-2 w-full lg:w-auto">
                         Apply Now <ArrowRight className="w-4 h-4" />
                       </Button>
                     </div>
@@ -144,7 +144,7 @@ export default function VacanciesPage() {
               We're always looking for talented individuals. Send us your CV and we'll 
               keep it on file for future opportunities.
             </p>
-            <Button variant="outline" className="gap-2 border-header text-header hover:bg-header hover:text-white">
+            <Button variant="outline" className="gap-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground">
               Submit General Application <ArrowRight className="w-4 h-4" />
             </Button>
           </div>

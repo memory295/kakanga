@@ -149,13 +149,13 @@ export default function PolicyPage() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a 
                 href="/contact" 
-                className="bg-white text-header hover:bg-white/90 px-6 py-3 rounded-lg font-medium transition-colors"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg font-medium transition-colors"
               >
                 Contact Us
               </a>
               <a 
                 href="mailto:info@kakangaconstructions.com"
-                className="border border-white text-white hover:bg-white hover:text-header px-6 py-3 rounded-lg font-medium transition-colors"
+                className="border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-lg font-medium transition-colors"
               >
                 Email Us
               </a>

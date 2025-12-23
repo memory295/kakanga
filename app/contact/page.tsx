@@ -200,7 +200,7 @@ export default function ContactPage() {
                       className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-header/50 resize-none transition-all placeholder:text-muted-foreground"
                     />
                   </div>
-                  <Button type="submit" size="default" className="gap-2 shadow-sm hover:shadow-md bg-header hover:bg-header/90 text-white" disabled={isSending}>
+                  <Button type="submit" size="default" className="gap-2 shadow-sm hover:shadow-md" disabled={isSending}>
                     <Send className="w-3 h-3" />
                     {isSending ? "Sending…" : "Send Message"}
                   </Button>
