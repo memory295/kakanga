@@ -75,7 +75,7 @@ const CoreValues = () => {
   );
 
   return (
-    <section id="values" className="section-padding bg-white">
+    <section id="values" className="section-padding bg-white motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2">
       <div className="container-wide">
         <div className="text-center mb-8 md:mb-12">
           <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">

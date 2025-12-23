@@ -76,7 +76,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="section-padding bg-background">
+    <section id="contact" className="section-padding bg-background motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2">
       <div className="container-wide">
         <div className="text-center mb-16">
           <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">

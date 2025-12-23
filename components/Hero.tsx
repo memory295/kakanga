@@ -41,6 +41,13 @@ const Hero = () => {
     });
   };
 
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setMounted(true));
+    return () => cancelAnimationFrame(id);
+  }, []);
+
   return (
     <section id="home" className="relative min-h-[85vh] md:min-h-[110vh] flex items-center justify-center overflow-hidden">
       {/* Background Video */}
@@ -75,21 +82,26 @@ const Hero = () => {
         <div className="max-w-7xl mx-auto">
           <div className="flex items-center gap-8">
             {/* Vertical blue pillar (thicker & shorter, centered) */}
-            <div className="hidden sm:block h-[36vh] w-2 rounded-full bg-primary shadow-lg" />
+            <div
+              className={
+                `hidden sm:block h-[36vh] w-2 rounded-full bg-primary shadow-lg will-change-transform origin-bottom transform transition-transform duration-700 ease-out ` +
+                (mounted ? 'scale-y-100' : 'scale-y-0')
+              }
+            />
             {/* Slogan text aligned to pillar start/end with four lines spanning the pillar */}
             <div className="text-left h-[36vh] flex flex-col justify-center space-y-1">
-              <div className="relative">
+              <div className={`relative transition-all duration-700 ease-out will-change-transform ${mounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'}`}>
                 <h1 className="hero-title">
                   Building with <span className="text-primary font-semibold">quality</span>
                 </h1>
-                <div className="w-16 h-0.5 bg-primary mt-2 opacity-80"></div>
+                <div className={`h-0.5 bg-primary mt-2 opacity-80 transition-all duration-700 ease-out ${mounted ? 'w-16' : 'w-0'} `}></div>
               </div>
               
-              <h1 className="hero-title ml-8">
+              <h1 className={`hero-title ml-8 transition-all duration-700 ease-out will-change-transform ${mounted ? 'opacity-100 translate-y-0 delay-150' : 'opacity-0 translate-y-3'}`}>
                 and <span className="text-primary font-semibold">integrity</span>
               </h1>
               
-              <h1 className="hero-title">
+              <h1 className={`hero-title transition-all duration-700 ease-out will-change-transform ${mounted ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-3'}`}>
                 to move <span className="text-primary font-semibold">Malawi</span> forward.
               </h1>
             </div>
