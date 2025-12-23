@@ -1,6 +1,9 @@
+'use client';
+
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
+import { useInView } from '@/hooks/use-in-view';
 
 const services = [
   {
@@ -30,8 +33,9 @@ const services = [
 ];
 
 const Services = () => {
+  const { ref, inView } = useInView({ threshold: 0.1, once: true });
   return (
-    <section id="services" className="section-padding bg-background motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2">
+    <section ref={ref as any} id="services" className={`section-padding bg-background transition-all duration-700 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       <div className="container-wide">
         <div className="text-center mb-16">
           <span className="caption text-header mb-2 block">
@@ -58,7 +62,7 @@ const Services = () => {
                   alt={service.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="p-6 flex-1 flex flex-col">
                 <h3 className="heading-5 mb-3 group-hover:text-header transition-colors">

@@ -5,9 +5,17 @@ import { Facebook, Twitter, Linkedin, Instagram, MapPin, Phone, Mail, ArrowRight
 const Footer = () => {
   return (
     <footer
-      className="text-white"
+      className="text-white relative overflow-hidden"
       style={{ background: 'linear-gradient(135deg, hsl(var(--header-bg)), hsl(var(--primary)))' }}
     >
+      {/* Decorative diagonal curvy lines */}
+      <div className="absolute inset-0 pointer-events-none select-none" aria-hidden="true">
+        <svg className="w-full h-full" viewBox="0 0 1200 800" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,20 Q200,300 800,800" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="2" />
+          <path d="M150,20 Q350,350 950,800" fill="none" stroke="rgba(0,163,232,0.5)" strokeWidth="2" />
+          <path d="M300,20 Q500,400 1100,800" fill="none" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" />
+        </svg>
+      </div>
       {/* Main Footer Content */}
       <div className="py-8 md:py-10">
         <div className="container-wide px-4">

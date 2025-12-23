@@ -2,6 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { Shield, Heart, Award, Lightbulb, Users, ChevronLeft, ChevronRight, ArrowRight } from "lucide-react";
+import { useInView } from '@/hooks/use-in-view';
 
 type ValueKey = "Integrity" | "Safety" | "Quality" | "Innovation" | "Collaboration";
 
@@ -51,6 +52,7 @@ const values = [
 const CoreValues = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const active = values[activeIndex];
+  const { ref, inView } = useInView({ threshold: 0.1, once: true });
 
   // Auto-slide every 6s
   useEffect(() => {
@@ -75,7 +77,7 @@ const CoreValues = () => {
   );
 
   return (
-    <section id="values" className="section-padding bg-white motion-safe:animate-in motion-safe:fade-in motion-safe:slide-in-from-bottom-2">
+    <section ref={ref as any} id="values" className={`section-padding bg-white transition-all duration-700 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       <div className="container-wide">
         <div className="text-center mb-8 md:mb-12">
           <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
