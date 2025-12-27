@@ -61,7 +61,10 @@ const LeftColumn = ({ inView }: { inView: boolean }) => {
     <div
       className={clsx(
         'transition-all duration-500 ease-out will-change-transform',
-        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-3'
+        // Always show on small screens, animate on larger screens
+        'opacity-100 translate-y-0',
+        'sm:opacity-100 sm:translate-y-0',
+        inView ? 'md:opacity-100 md:translate-y-0' : 'md:opacity-0 md:translate-y-3'
       )}
     >
             <span className="caption text-header mb-2 block">
@@ -71,18 +74,18 @@ const LeftColumn = ({ inView }: { inView: boolean }) => {
               About Kakanga Constructions
             </h2>
             <p className={clsx(
-              'highlight-large text-header mb-6',
-              inView && 'animate-in fade-in slide-in-from-bottom-2 delay-75 duration-500'
+              'highlight-large text-header mb-6 opacity-100',
+              inView && 'md:animate-in md:fade-in md:slide-in-from-bottom-2 md:delay-75 md:duration-500'
             )}>
               "Offering Comprehensive Construction Solutions tailored to your every need"
             </p>
-            <p className={clsx('body-small mb-6', inView && 'animate-in fade-in slide-in-from-bottom-2 delay-125 duration-500')}>
+            <p className={clsx('body-small mb-6 opacity-100', inView && 'md:animate-in md:fade-in md:slide-in-from-bottom-2 md:delay-125 md:duration-500')}>
               Kakanga Constructions is a leading Civil and Building Construction Company based in Malawi. As a company registered in the UNLIMITED CATEGORY with the National Construction Industry Council (NCIC) for both Building and Civil Construction, we have established ourselves as a trusted partner in infrastructure development.
             </p>
-            <p className={clsx('body-small mb-8', inView && 'animate-in fade-in slide-in-from-bottom-2 delay-200 duration-500')}>
+            <p className={clsx('body-small mb-8 opacity-100', inView && 'md:animate-in md:fade-in md:slide-in-from-bottom-2 md:delay-200 md:duration-500')}>
               With years of experience and a dedicated team of professionals, we deliver excellence in every project, from road construction to complex civil engineering works.
             </p>
-            <div className={clsx('flex flex-wrap gap-3', inView && 'animate-in fade-in slide-in-from-bottom-2 delay-250 duration-500')}>
+            <div className={clsx('flex flex-wrap gap-3 opacity-100', inView && 'md:animate-in md:fade-in md:slide-in-from-bottom-2 md:delay-250 md:duration-500')}>
               <a href="/kakanga-profile.pdf" download className="inline-flex">
                 <Button asChild variant="default" size="default" className="gap-2">
                   <span className="inline-flex items-center gap-2">
@@ -144,7 +147,11 @@ const RightStats = ({ inView }: { inView: boolean }) => {
 export default About;
 
 const SectionAnimated = () => {
-  const { ref, inView } = useInView({ threshold: 0.05, rootMargin: '0px 0px -5% 0px', once: false });
+  const { ref, inView } = useInView({ 
+    threshold: 0.1, 
+    rootMargin: '0px 0px -10% 0px', 
+    once: true // Ensure animation only happens once and stays visible
+  });
   return (
     <div ref={ref as any} className="grid lg:grid-cols-2 gap-12 items-center">
       <LeftColumn inView={inView} />
