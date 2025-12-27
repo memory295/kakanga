@@ -10,25 +10,25 @@ const services = [
     title: 'House Design and Construction',
     description:
       'Professional design and construction services. We transform your plans into reality with precision, maintaining all features and dimensions as specified.',
-    image: '/images/project.png',
+    image: '/images/house2.jpg',
   },
   {
     title: 'Civil Works',
     description:
       'Installing culverts for drainage, reshaping surfaces, and building bridges. We improve roads for better access and reduced maintenance.',
-    image: '/images/project.png',
+    image: '/images/rehab.jpg',
   },
   {
     title: 'Prefabricated Structures',
     description:
       'Professional installation of prefab buildings and steel warehouses. Quick assembly with factory-made components for fast, durable construction.',
-    image: '/images/project.png',
+    image: '/images/van.jpg',
   },
   {
     title: 'Supply of Construction Materials',
     description:
       'End-to-end import solutions for prefabricated structures and materials from China. Quality assurance with timely delivery guaranteed.',
-    image: '/images/project.png',
+    image: '/images/IMG_20221019_173829.jpg',
   },
 ];
 

@@ -4,7 +4,7 @@ import PageHeader from "@/components/PageHeader";
 export default function ProfileExtractPage() {
   return (
     <Layout>
-      <PageHeader title="Profile Extract" backgroundImage="/images/project.png" />
+      <PageHeader title="Profile Extract" backgroundImage="/images/house2.jpg" />
       
       <section className="section-padding">
         <div className="container-wide">

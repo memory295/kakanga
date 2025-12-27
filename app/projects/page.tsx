@@ -13,7 +13,7 @@ const AnimatedProjectsGrid = ({ children }: { children: React.ReactNode }) => {
   
   return (
     <div 
-      ref={ref}
+      ref={ref as any}
       className={`transition-all duration-700 ease-out ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
@@ -29,7 +29,7 @@ const AnimatedFilters = ({ children }: { children: React.ReactNode }) => {
   
   return (
     <div 
-      ref={ref}
+      ref={ref as any}
       className={`transition-all duration-500 ease-out delay-100 ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
       }`}
@@ -45,7 +45,7 @@ const AnimatedHeader = ({ children }: { children: React.ReactNode }) => {
   
   return (
     <div 
-      ref={ref}
+      ref={ref as any}
       className={`transition-all duration-600 ease-out ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
       }`}
@@ -64,7 +64,7 @@ const projects = [
     client: "Karonga CDSS",
     referenceNumber: "",
     location: "Karonga Town",
-    image: "/images/project.png",
+    image: "/images/house1.jpg",
   },
   {
     title: "Design and Fabrication of 2×40ft Containers into Warehouse",
@@ -72,7 +72,7 @@ const projects = [
     client: "Banja Lamsogolo, Box 1854, Lilongwe, Malawi",
     referenceNumber: "PO-BLM-00773 & PO-BLM-00994",
     location: "Banja House, Head Office, Along Paul Kagame Road, Lilongwe",
-    image: "/images/project.png",
+    image: "/images/van.jpg",
   },
   {
     title: "Residential House Maintenance/Rehabilitation",
@@ -80,7 +80,7 @@ const projects = [
     client: "CCAP General Assembly, P.O. Box 30398, Capital City, Lilongwe 3",
     referenceNumber: "House Rehabilitation Plot No:47/2/134",
     location: "Area 47 Sector 2, Lilongwe",
-    image: "/images/project.png",
+    image: "/images/rehab.jpg",
   },
   {
     title: "Residential House Maintenance/Rehabilitation (Mzuzu)",
@@ -88,7 +88,7 @@ const projects = [
     client: "Ministry of Lands Private Bag 311, Capital City, Lilongwe 3, Malawi",
     referenceNumber: "130/L/PH/MZ/120",
     location: "Chimalilo Area in Mzuzu City",
-    image: "/images/project.png",
+    image: "/images/house2.jpg",
   },
   {
     title: "Installation of Prefabricated Structure and Security Fence",
@@ -96,7 +96,7 @@ const projects = [
     client: "Department of Disaster Management Affairs (DoDMA)",
     referenceNumber: "090/IPDC/DoDMA/2023-24/009",
     location: "Karonga District Council and Salima District Council",
-    image: "/images/project.png",
+    image: "/images/image2.jpg",
   },
   {
     title: "Container Offices Re-location",
@@ -104,7 +104,7 @@ const projects = [
     client: "Malawi Bureau of Standards P.O Box 946, Blantyre",
     referenceNumber: "MBS-SONGWE-RELOC/09/2024",
     location: "Songwe Border Post, Karonga",
-    image: "/images/project.png",
+    image: "/images/IMG_20221019_173829.jpg",
   },
   {
     title: "Supply Fabrication of Car Van into Office",
@@ -112,7 +112,7 @@ const projects = [
     client: "Katsuka Investments - Blantyre",
     referenceNumber: "",
     location: "Nancholi, Blantyre",
-    image: "/images/project.png",
+    image: "/images/IMG_20221019_173847.jpg",
   },
   {
     title: "Supply and Fabrication of Shipping Container into Office",
@@ -120,7 +120,7 @@ const projects = [
     client: "Malawi Bureau of Standards P.O Box 946, Blantyre",
     referenceNumber: "LPO 027044 and LPO 027258",
     location: "Songwe Border Post, Karonga",
-    image: "/images/project.png",
+    image: "/images/IMG_20240713_203357_822.jpg",
   },
   {
     title: "Construction of Community Library",
@@ -128,7 +128,7 @@ const projects = [
     client: "Change Her World (NGO)",
     referenceNumber: "",
     location: "Uliwa, Chilumba in Karonga",
-    image: "/images/project.png",
+    image: "/images/IMG_20240713_203404_727.jpg",
   },
 ];
 

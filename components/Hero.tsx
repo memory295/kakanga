@@ -61,7 +61,7 @@ const Hero = () => {
           autoPlay
           muted
           playsInline
-          poster="/images/project.png"
+          poster="/images/house1.jpg"
           preload="auto"
           src={videoSrc}
           onError={handleVideoError}

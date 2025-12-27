@@ -13,7 +13,7 @@ const AnimatedSection = ({ children, delay = 0 }: { children: React.ReactNode; d
   
   return (
     <div 
-      ref={ref}
+      ref={ref as any}
       className={`transition-all duration-700 ease-out ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
       }`}
@@ -29,7 +29,7 @@ const AnimatedServiceCard = ({ children, index }: { children: React.ReactNode; i
   
   return (
     <div 
-      ref={ref}
+      ref={ref as any}
       className={`bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 group ${
         inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
       }`}
@@ -46,7 +46,7 @@ const services = [
     title: "House Design and Construction",
     description:
       "We professionally design structures and construct. We also construct all kinds of designs presented to us. Trust us, we will transform your document/plan into that reality as planned without changing any feature or dimensions on the plan.",
-    image: "/images/project.png",
+    image: "/images/house1.jpg",
     features: [
       "Architectural Design",
       "Structural Engineering",
@@ -59,7 +59,7 @@ const services = [
     title: "Civil Works",
     description:
       "Installing culverts for drainage, reshaping surfaces for smooth travel, and building small bridges for safe crossings — improving roads for better access and less maintenance.",
-    image: "/images/project.png",
+    image: "/images/image2.jpg",
     features: [
       "Culvert Installation",
       "Surface Reshaping",
@@ -72,7 +72,7 @@ const services = [
     title: "Land Leveling & Grading",
     description:
       "Professional land leveling and grading services to prepare your construction site. We ensure optimal drainage and foundation preparation for all types of construction projects.",
-    image: "/images/project.png",
+    image: "/images/IMG_20221019_173847.jpg",
     features: [
       "Site Preparation",
       "Drainage Solutions",
@@ -85,7 +85,7 @@ const services = [
     title: "Drilling & Blasting",
     description:
       "Expert drilling and controlled blasting operations for road construction, quarrying, and site preparation. We prioritize safety and precision in all explosive operations.",
-    image: "/images/project.png",
+    image: "/images/IMG_20240713_203404_727.jpg",
     features: [
       "Controlled Blasting",
       "Rock Excavation",
