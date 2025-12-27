@@ -1,11 +1,49 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { Target, Eye, Download, ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { useInView } from '@/hooks/use-in-view';
 import clsx from 'clsx';
+
+// Counter animation hook
+const useCountAnimation = (target: number, inView: boolean, duration: number = 2000) => {
+  const [count, setCount] = useState(0);
+
+  useEffect(() => {
+    if (!inView) {
+      setCount(0);
+      return;
+    }
+
+    let startTime: number;
+    let animationFrame: number;
+
+    const animate = (currentTime: number) => {
+      if (!startTime) startTime = currentTime;
+      const progress = Math.min((currentTime - startTime) / duration, 1);
+      
+      // Easing function for smooth animation
+      const easeOut = 1 - Math.pow(1 - progress, 3);
+      setCount(Math.floor(target * easeOut));
+
+      if (progress < 1) {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    };
+
+    animationFrame = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationFrame) {
+        cancelAnimationFrame(animationFrame);
+      }
+    };
+  }, [target, inView, duration]);
+
+  return count;
+};
 
 const About = () => {
   return (
@@ -64,6 +102,13 @@ const LeftColumn = ({ inView }: { inView: boolean }) => {
 };
 
 const RightStats = ({ inView }: { inView: boolean }) => {
+  const stats = [
+    { value: 15, suffix: '+', label: 'Years Experience', delay: 'delay-100' },
+    { value: 200, suffix: '+', label: 'Projects Completed', delay: 'delay-150' },
+    { value: 150, suffix: '+', label: 'Team Members', delay: 'delay-200' },
+    { value: 50, suffix: '+', label: 'Equipment Fleet', delay: 'delay-250' },
+  ];
+
   return (
     <div
       className={clsx(
@@ -72,24 +117,25 @@ const RightStats = ({ inView }: { inView: boolean }) => {
       )}
     >
       <div className="grid grid-cols-2 gap-6 w-full">
-        {[
-          { value: '15+', label: 'Years Experience', delay: 'delay-100' },
-          { value: '200+', label: 'Projects Completed', delay: 'delay-150' },
-          { value: '150+', label: 'Team Members', delay: 'delay-200' },
-          { value: '50+', label: 'Equipment Fleet', delay: 'delay-250' },
-        ].map((item, idx) => (
-          <div
-            key={idx}
-            className={clsx(
-              'text-center p-6 bg-white/30 rounded-lg border border-gray-100',
-              inView && 'animate-in fade-in slide-in-from-bottom-2 duration-500',
-              inView && item.delay
-            )}
-          >
-            <span className="block text-3xl md:text-4xl font-heading font-bold text-header mb-2">{item.value}</span>
-            <span className="text-sm font-medium text-muted-foreground">{item.label}</span>
-          </div>
-        ))}
+        {stats.map((item, idx) => {
+          const count = useCountAnimation(item.value, inView, 1500);
+          
+          return (
+            <div
+              key={idx}
+              className={clsx(
+                'text-center p-6 bg-white/30 rounded-lg border border-gray-100',
+                inView && 'animate-in fade-in slide-in-from-bottom-2 duration-500',
+                inView && item.delay
+              )}
+            >
+              <span className="block text-3xl md:text-4xl font-heading font-bold text-header mb-2">
+                {count}{item.suffix}
+              </span>
+              <span className="text-sm font-medium text-muted-foreground">{item.label}</span>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

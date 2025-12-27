@@ -5,6 +5,55 @@ import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import { MapPin, Briefcase } from "lucide-react";
 import Link from "next/link";
+import { useInView } from "@/hooks/use-in-view";
+
+// Animation component for projects grid
+const AnimatedProjectsGrid = ({ children }: { children: React.ReactNode }) => {
+  const { ref, inView } = useInView({ threshold: 0.1, once: false });
+  
+  return (
+    <div 
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${
+        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+    >
+      {children}
+    </div>
+  );
+};
+
+// Animation component for filter buttons
+const AnimatedFilters = ({ children }: { children: React.ReactNode }) => {
+  const { ref, inView } = useInView({ threshold: 0.1, once: false });
+  
+  return (
+    <div 
+      ref={ref}
+      className={`transition-all duration-500 ease-out delay-100 ${
+        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+      }`}
+    >
+      {children}
+    </div>
+  );
+};
+
+// Animation component for header section
+const AnimatedHeader = ({ children }: { children: React.ReactNode }) => {
+  const { ref, inView } = useInView({ threshold: 0.1, once: false });
+  
+  return (
+    <div 
+      ref={ref}
+      className={`transition-all duration-600 ease-out ${
+        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+      }`}
+    >
+      {children}
+    </div>
+  );
+};
 
 const categories = ["All", "Construction", "Fabrication", "Rehabilitation", "Installation"];
 
@@ -99,56 +148,65 @@ export default function ProjectsPage() {
       {/* Project Filter */}
       <section className="section-padding bg-section-alt">
         <div className="container-wide">
-          <div className="text-center mb-8">
-            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
-              Our Portfolio
-            </span>
-            <h2 className="heading-3 mb-4">
-              Projects That Showcase Our Excellence
-            </h2>
-            <p className="body-base max-w-3xl mx-auto">
-              Explore our diverse portfolio of completed projects, from residential 
+          <AnimatedHeader>
+            <div className="text-center mb-8">
+              <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
+                Our Portfolio
+              </span>
+              <h2 className="heading-3 mb-4">
+                Projects That Showcase Our Excellence
+              </h2>
+              <p className="body-base max-w-3xl mx-auto">
+                Explore our diverse portfolio of completed projects, from residential 
               constructions to large-scale community developments.
             </p>
           </div>
+          </AnimatedHeader>
 
           {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-2 mb-8">
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
-                  selectedCategory === category
-                    ? "bg-primary text-primary-foreground shadow-md"
-                    : "bg-white text-muted-foreground hover:bg-primary/10 hover:text-primary"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+          <AnimatedFilters>
+            <div className="flex flex-wrap justify-center gap-3 mb-8">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                    selectedCategory === category
+                      ? "bg-primary text-primary-foreground shadow-lg"
+                      : "bg-white text-muted-foreground hover:bg-primary/10 hover:text-primary shadow-sm"
+                  }`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </AnimatedFilters>
         </div>
       </section>
 
       {/* Projects Grid */}
       <section className="section-padding">
         <div className="container-wide">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filteredProjects.map((project, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden card-hover">
-                <div className="relative">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-48 object-cover"
-                  />
-                  <div className="absolute top-4 left-4">
-                    <span className="bg-header text-white px-3 py-1 rounded-full text-xs font-medium">
-                      {project.category}
-                    </span>
+          <AnimatedProjectsGrid>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filteredProjects.map((project, index) => (
+                <div 
+                  key={index} 
+                  className="bg-white rounded-lg shadow-sm hover:shadow-lg overflow-hidden transition-all duration-300 group"
+                >
+                  <div className="relative overflow-hidden">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
+                    />
+                    <div className="absolute top-4 left-4">
+                      <span className="bg-header text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">
+                        {project.category}
+                      </span>
+                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   </div>
-                </div>
                 
                 <div className="p-6">
                   <h3 className="heading-6 mb-3">{project.title}</h3>
@@ -175,13 +233,16 @@ export default function ProjectsPage() {
               </div>
             ))}
           </div>
+          </AnimatedProjectsGrid>
 
           {filteredProjects.length === 0 && (
-            <div className="text-center py-12">
-              <p className="body-base text-muted-foreground">
-                No projects found in the selected category.
-              </p>
-            </div>
+            <AnimatedProjectsGrid>
+              <div className="text-center py-12">
+                <p className="body-base text-muted-foreground">
+                  No projects found in the selected category.
+                </p>
+              </div>
+            </AnimatedProjectsGrid>
           )}
         </div>
       </section>

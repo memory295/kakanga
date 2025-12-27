@@ -1,8 +1,44 @@
+'use client';
+
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { useInView } from "@/hooks/use-in-view";
+
+// Animation components
+const AnimatedSection = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
+  const { ref, inView } = useInView({ threshold: 0.1, once: false });
+  
+  return (
+    <div 
+      ref={ref}
+      className={`transition-all duration-700 ease-out ${
+        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+      }`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
+
+const AnimatedServiceCard = ({ children, index }: { children: React.ReactNode; index: number }) => {
+  const { ref, inView } = useInView({ threshold: 0.1, once: false });
+  
+  return (
+    <div 
+      ref={ref}
+      className={`bg-white rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 group ${
+        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
+      }`}
+      style={{ transitionDelay: `${index * 150}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
 
 const services = [
   {
@@ -69,34 +105,39 @@ export default function ServicesPage() {
       {/* Services Grid */}
       <section className="section-padding">
         <div className="container-wide">
-          <div className="text-center mb-12">
-            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
-              What We Offer
-            </span>
-            <h2 className="heading-3 mb-4">
-              Comprehensive Construction & Engineering Solutions
-            </h2>
-            <p className="body-base max-w-3xl mx-auto">
-              From initial design to project completion, we provide full-service 
-              construction and engineering solutions tailored to meet your specific needs.
-            </p>
-          </div>
+          <AnimatedSection>
+            <div className="text-center mb-12">
+              <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
+                What We Offer
+              </span>
+              <h2 className="heading-3 mb-4">
+                Comprehensive Construction & Engineering Solutions
+              </h2>
+              <p className="body-base max-w-3xl mx-auto">
+                From initial design to project completion, we provide full-service 
+                construction and engineering solutions tailored to meet your specific needs.
+              </p>
+            </div>
+          </AnimatedSection>
 
           <div className="grid gap-8">
             {services.map((service, index) => (
-              <div 
-                key={service.id} 
-                className={`grid lg:grid-cols-2 gap-8 items-center ${
-                  index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-                }`}
-              >
-                <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                  <img
-                    src={service.image}
-                    alt={service.title}
-                    className="w-full h-64 lg:h-80 object-cover rounded-lg shadow-md"
-                  />
-                </div>
+              <AnimatedSection key={service.id} delay={index * 200}>
+                <AnimatedServiceCard index={index}>
+                  <div 
+                    className={`grid lg:grid-cols-2 gap-8 items-center p-6 ${
+                      index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
+                    }`}
+                  >
+                    <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
+                      <div className="overflow-hidden rounded-lg shadow-md">
+                        <img
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-64 lg:h-80 object-cover transition-transform duration-300 group-hover:scale-110"
+                        />
+                      </div>
+                    </div>
                 
                 <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
                   <h3 className="heading-4 mb-4">{service.title}</h3>
@@ -112,13 +153,15 @@ export default function ServicesPage() {
                   </div>
                   
                   <Link href="/contact">
-                    <Button className="group">
+                    <Button className="group bg-header hover:bg-header/90 text-white">
                       Get Quote
                       <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                     </Button>
                   </Link>
                 </div>
               </div>
+            </AnimatedServiceCard>
+          </AnimatedSection>
             ))}
           </div>
         </div>
