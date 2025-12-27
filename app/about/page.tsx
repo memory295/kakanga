@@ -49,7 +49,7 @@ export default function AboutPage() {
         <meta name="keywords" content="about kakanga constructions, malawi construction company, our mission, our vision, construction team, company history, building contractors malawi" />
       </Head>
       <Layout>
-        <PageHeader title="Who We Are" backgroundImage="/images/team/about-team.jpg" />
+        <PageHeader title="Who We Are" />
       
       {/* Company Overview */}
       <section id="who-we-are" className="section-padding scroll-mt-24">
