@@ -96,8 +96,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Our Location</h3>
-                    <p className="text-muted-foreground text-sm">Area 47, Sector 4</p>
-                    <p className="text-muted-foreground text-sm">Lilongwe, Malawi</p>
+                    <p className="text-muted-foreground text-sm">Karonga</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -214,7 +213,7 @@ export default function ContactPage() {
       {/* Map Section */}
       <section className="h-[400px] bg-muted">
         <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d123992.04619774!2d33.74!3d-13.96!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1921d4e7c4c1e4e7%3A0x1234567890abcdef!2sLilongwe%2C%20Malawi!5e0!3m2!1sen!2s!4v1234567890"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3853.7234567890123!2d33.9217963!3d-9.942259!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19018546d89f7e0f%3A0x9ab2c7c4c75222b5!2sKAKANGA%20CONSTRUCTIONS!5e0!3m2!1sen!2smw!4v1703680000000!5m2!1sen!2smw"
           width="100%"
           height="100%"
           style={{ border: 0 }}

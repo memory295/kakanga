@@ -80,19 +80,6 @@ const services = [
       "Soil Compaction",
     ],
   },
-  {
-    id: "drilling-blasting",
-    title: "Drilling & Blasting",
-    description:
-      "Expert drilling and controlled blasting operations for road construction, quarrying, and site preparation. We prioritize safety and precision in all explosive operations.",
-    image: "/images/IMG_20240713_203404_727.jpg",
-    features: [
-      "Controlled Blasting",
-      "Rock Excavation",
-      "Quarry Operations",
-      "Safety Protocols",
-    ],
-  },
 ];
 
 export default function ServicesPage() {

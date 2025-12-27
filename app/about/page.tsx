@@ -10,7 +10,7 @@ import { AspectRatio } from "@/components/ui/aspect-ratio";
 const expertise = [
   "Road Construction & Rehabilitation",
   "Land Leveling & Grading",
-  "Drilling & Blasting Operations",
+
   "Concrete Works & Structures",
   "Earthworks & Excavation",
   "Bridge Construction",

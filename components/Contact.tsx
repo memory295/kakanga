@@ -102,7 +102,7 @@ const Contact = () => {
               </div>
               <div>
                 <h3 className="font-heading font-semibold text-lg text-foreground mb-1">Our Location</h3>
-                <p className="text-muted-foreground">Area 47, Sector 4, Lilongwe, Malawi</p>
+                <p className="text-muted-foreground">Karonga</p>
               </div>
             </div>
             <div className="flex items-start gap-4 p-4 bg-white/30 rounded-lg border border-gray-100 hover:bg-white/50 transition-colors">

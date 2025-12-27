@@ -252,7 +252,7 @@ const Footer = () => {
               <ul className="space-y-3">
                 <li className="flex items-start gap-3">
                   <MapPin className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
-                  <span className="text-gray-400 text-sm">Area 47, Sector 4, Lilongwe, Malawi</span>
+                  <span className="text-gray-400 text-sm">Karonga</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
