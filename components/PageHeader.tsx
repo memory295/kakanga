@@ -11,7 +11,7 @@ const PageHeader = ({ title, backgroundImage }: PageHeaderProps) => {
 
   return (
     <section 
-      className="relative h-[220px] md:h-[260px] flex items-center justify-center"
+      className="relative h-[360px] md:h-[420px] flex items-center justify-center"
       style={{
         backgroundImage: backgroundImage 
           ? `url(${backgroundImage})` 
