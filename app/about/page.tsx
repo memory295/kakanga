@@ -212,10 +212,10 @@ export default function AboutPage() {
         <div className="container-wide">
           <div className="grid md:grid-cols-2 gap-8">
             {/* Vision */}
-            <div className="bg-card/20 p-8 rounded-lg border border-gray-100/50">
+            <div className="bg-card/40 p-8 rounded-lg border border-gray-200/60 shadow-sm">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-header/5 rounded-full flex items-center justify-center">
-                  <Eye className="w-8 h-8 text-header/70" />
+                <div className="w-16 h-16 bg-header/8 rounded-full flex items-center justify-center">
+                  <Eye className="w-8 h-8 text-header/80" />
                 </div>
                 <h3 className="text-2xl font-bold font-heading">Our Vision</h3>
               </div>
@@ -225,10 +225,10 @@ export default function AboutPage() {
             </div>
 
             {/* Mission */}
-            <div className="bg-card/20 p-8 rounded-lg border border-gray-100/50">
+            <div className="bg-card/40 p-8 rounded-lg border border-gray-200/60 shadow-sm">
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-16 h-16 bg-accent/5 rounded-full flex items-center justify-center">
-                  <Target className="w-8 h-8 text-accent/70" />
+                <div className="w-16 h-16 bg-accent/8 rounded-full flex items-center justify-center">
+                  <Target className="w-8 h-8 text-accent/80" />
                 </div>
                 <h3 className="text-2xl font-bold font-heading">Our Mission</h3>
               </div>
