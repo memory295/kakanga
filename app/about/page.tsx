@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
-import { Target, Eye, Users, Award, CheckCircle, ChevronLeft, ChevronRight, Linkedin } from "lucide-react";
+import { Target, Eye, Users, Award, CheckCircle, ChevronLeft, ChevronRight, Linkedin, Play, Pause } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
 const expertise = [
@@ -79,14 +79,9 @@ export default function AboutPage() {
               </p>
             </div>
             
-            <div className="bg-header/10 rounded-2xl p-8">
-              <h3 className="text-xl font-bold font-heading mb-4 text-center">Our Commitment</h3>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                From custom‑designed homes and steel warehouses to government infrastructure, we apply the same level of precision, innovation, and professionalism across all our work.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                Our skilled team of engineers, architects, and builders upholds our standards of excellence through continuous training and strict adherence to safety regulations.
-              </p>
+            {/* Video Section with Overlay */}
+            <div className="relative rounded-2xl overflow-hidden shadow-lg group">
+              <InteractiveVideo />
             </div>
           </div>
 
@@ -301,3 +296,111 @@ export default function AboutPage() {
     </>
   );
 }
+
+// Interactive Video Component
+const InteractiveVideo = () => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [showOverlay, setShowOverlay] = useState(true);
+  const [videoRef, setVideoRef] = useState<HTMLVideoElement | null>(null);
+
+  const togglePlayPause = () => {
+    if (videoRef) {
+      if (isPlaying) {
+        videoRef.pause();
+      } else {
+        videoRef.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
+  const handleVideoClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    // Only toggle overlay visibility, keep video playing
+    setShowOverlay(!showOverlay);
+  };
+
+  return (
+    <div className="relative cursor-pointer" onClick={handleVideoClick}>
+      <video 
+        ref={setVideoRef}
+        className="w-full h-80 object-cover transition-transform duration-500 group-hover:scale-105"
+        autoPlay
+        muted
+        loop
+        playsInline
+        poster="/images/house1.jpg"
+        onPlay={() => setIsPlaying(true)}
+        onPause={() => setIsPlaying(false)}
+      >
+        <source src="/construction.mp4" type="video/mp4" />
+        <source src="/construction-2.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      
+      {/* Video Overlays - Toggle visibility */}
+      <div 
+        className={`absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent transition-opacity duration-500 pointer-events-none ${
+          showOverlay ? 'opacity-100' : 'opacity-0'
+        }`}
+      ></div>
+      <div 
+        className={`absolute inset-0 bg-header/20 mix-blend-multiply transition-opacity duration-500 pointer-events-none ${
+          showOverlay ? 'opacity-100' : 'opacity-0'
+        }`}
+      ></div>
+      
+      {/* Overlay Content - Toggle visibility */}
+      <div 
+        className={`absolute bottom-0 left-0 right-0 p-8 text-white pointer-events-none transition-all duration-500 ${
+          showOverlay ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
+      >
+        <div className="bg-black/40 backdrop-blur-sm rounded-lg p-6 border border-white/20">
+          <h3 className="text-xl font-bold font-heading mb-3 text-white">Our Commitment</h3>
+          <p className="text-white/90 leading-relaxed mb-4 text-sm">
+            From custom‑designed homes and steel warehouses to government infrastructure, we apply the same level of precision, innovation, and professionalism across all our work.
+          </p>
+          <p className="text-white/80 leading-relaxed text-sm">
+            Our skilled team of engineers, architects, and builders upholds our standards of excellence through continuous training and strict adherence to safety regulations.
+          </p>
+        </div>
+      </div>
+
+      {/* Play/Pause Control Overlay */}
+      <div 
+        className="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/10"
+        onClick={(e) => {
+          e.stopPropagation(); // Prevent triggering overlay toggle
+          togglePlayPause();
+        }}
+      >
+        <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/30 shadow-lg transform hover:scale-110 transition-transform duration-200">
+          {isPlaying ? (
+            <Pause className="w-6 h-6 text-white" />
+          ) : (
+            <Play className="w-6 h-6 text-white ml-1" />
+          )}
+        </div>
+      </div>
+
+      {/* Small Play/Pause Indicator with overlay state */}
+      <div className="absolute top-4 right-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="w-8 h-8 bg-black/40 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
+          {isPlaying ? (
+            <Pause className="w-3 h-3 text-white" />
+          ) : (
+            <Play className="w-3 h-3 text-white ml-0.5" />
+          )}
+        </div>
+      </div>
+
+      {/* Overlay Toggle Indicator */}
+      <div className="absolute top-4 left-4 opacity-60 group-hover:opacity-100 transition-opacity duration-300">
+        <div className="w-8 h-8 bg-black/40 backdrop-blur-sm rounded-full flex items-center justify-center border border-white/20">
+          <div className={`w-2 h-2 rounded-full transition-colors duration-300 ${showOverlay ? 'bg-white' : 'bg-white/40'}`}></div>
+        </div>
+      </div>
+    </div>
+  );
+};
