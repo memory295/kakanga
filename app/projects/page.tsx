@@ -191,11 +191,11 @@ export default function ProjectsPage() {
       {/* Call to Action */}
       <section className="section-padding">
         <div className="container-wide">
-          <div className="bg-header rounded-2xl p-8 md:p-12 text-center text-white">
-            <h2 className="heading-3 text-white mb-4">
+          <div className="bg-gray-50 rounded-2xl p-8 md:p-12 text-center">
+            <h2 className="heading-3 text-foreground mb-4">
               Ready to Start Your Project?
             </h2>
-            <p className="body-base text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="body-base text-muted-foreground mb-8 max-w-2xl mx-auto">
               Contact us today for a free consultation and detailed quote. 
               Let's bring your construction vision to life.
             </p>
