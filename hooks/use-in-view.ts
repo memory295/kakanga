@@ -2,9 +2,9 @@ import { useEffect, useRef, useState } from 'react';
 
 type Options = IntersectionObserverInit & { once?: boolean };
 
-export function useInView(options: Options = { threshold: 0.2, once: true }) {
+export function useInView<T extends HTMLElement = HTMLElement>(options: Options = { threshold: 0.2, once: true }) {
   const { once = true, ...observerOptions } = options;
-  const ref = useRef<HTMLElement | null>(null);
+  const ref = useRef<T | null>(null);
   const [inView, setInView] = useState(false);
 
   useEffect(() => {

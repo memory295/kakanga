@@ -63,19 +63,19 @@ const vacancies = [
 ];
 
 export default function VacanciesPage() {
-  const { ref: headerRef, inView: headerInView } = useInView({ 
+  const { ref: headerRef, inView: headerInView } = useInView<HTMLDivElement>({ 
     threshold: 0.2, 
     rootMargin: '0px 0px -10% 0px', 
     once: true 
   });
   
-  const { ref: vacancyRef, inView: vacancyInView } = useInView({ 
+  const { ref: vacancyRef, inView: vacancyInView } = useInView<HTMLDivElement>({ 
     threshold: 0.1, 
     rootMargin: '0px 0px -5% 0px', 
     once: true 
   });
 
-  const { ref: generalRef, inView: generalInView } = useInView({ 
+  const { ref: generalRef, inView: generalInView } = useInView<HTMLDivElement>({ 
     threshold: 0.3, 
     rootMargin: '0px 0px -10% 0px', 
     once: true 
