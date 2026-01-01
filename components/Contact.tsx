@@ -120,9 +120,9 @@ const Contact = () => {
                 <Mail className="w-6 h-6 text-header" />
               </div>
               <div>
-                <h3 className="font-heading font-semibold text-lg text-foreground mb-1">E-mail</h3>
-                <p className="text-muted-foreground">ckakanga@gmail.com</p>
-                <p className="text-muted-foreground">kabaghe63@gmail.com</p>
+                <h3 className="heading-6 text-foreground mb-1">E-mail</h3>
+                <p className="body-small">ckakanga@gmail.com</p>
+                <p className="body-small">kabaghe63@gmail.com</p>
               </div>
             </div>
             <div className="flex items-start gap-4 p-4 bg-muted/50 rounded-lg hover:bg-muted transition-colors">
@@ -130,9 +130,9 @@ const Contact = () => {
                 <Clock className="w-6 h-6 text-header" />
               </div>
               <div>
-                <h3 className="font-heading font-semibold text-lg text-foreground mb-1">Working Hours</h3>
-                <p className="text-muted-foreground">Monday - Friday: 8:00 AM - 5:00 PM</p>
-                <p className="text-muted-foreground">Saturday: 8:00 AM - 12:00 PM</p>
+                <h3 className="heading-6 text-foreground mb-1">Working Hours</h3>
+                <p className="body-small">Monday - Friday: 8:00 AM - 5:00 PM</p>
+                <p className="body-small">Saturday: 8:00 AM - 12:00 PM</p>
               </div>
             </div>
             </div>
@@ -140,7 +140,7 @@ const Contact = () => {
 
           {/* Contact Form */}
           <div className="bg-white/30 p-8 rounded-lg border border-gray-100 h-full flex flex-col">
-            <h3 className="font-heading font-semibold text-xl mb-6">Send Us a Message</h3>
+            <h3 className="heading-5 mb-6">Send Us a Message</h3>
             <form onSubmit={handleSubmit} className="flex flex-col h-full space-y-6">
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>

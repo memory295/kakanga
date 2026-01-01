@@ -1,14 +1,14 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
-  "/about/page": "app/about/page.js",
-  "/contact/page": "app/contact/page.js",
   "/equipment/page": "app/equipment/page.js",
+  "/about/page": "app/about/page.js",
   "/page": "app/page.js",
   "/policy/page": "app/policy/page.js",
+  "/contact/page": "app/contact/page.js",
   "/profile-extract/page": "app/profile-extract/page.js",
   "/profile/page": "app/profile/page.js",
+  "/services/page": "app/services/page.js",
   "/projects/page": "app/projects/page.js",
   "/terms/page": "app/terms/page.js",
-  "/services/page": "app/services/page.js",
   "/vacancies/page": "app/vacancies/page.js"
 }

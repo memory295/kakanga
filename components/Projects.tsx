@@ -96,7 +96,7 @@ const Projects = () => {
           <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
             Our Portfolio
           </span>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+          <h2 className="heading-3 text-foreground mb-4">
             Explore a selection of our remarkable projects
           </h2>
         </div>

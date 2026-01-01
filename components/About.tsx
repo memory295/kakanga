@@ -132,10 +132,10 @@ const RightStats = ({ inView }: { inView: boolean }) => {
                 inView && item.delay
               )}
             >
-              <span className="block text-3xl md:text-4xl font-heading font-bold text-header mb-2">
+              <span className="block stat-number mb-2">
                 {count}{item.suffix}
               </span>
-              <span className="text-sm font-medium text-muted-foreground">{item.label}</span>
+              <span className="stat-label">{item.label}</span>
             </div>
           );
         })}

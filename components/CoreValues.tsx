@@ -83,7 +83,7 @@ const CoreValues = () => {
           <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
             What We Stand For
           </span>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground">
+          <h2 className="heading-3 text-foreground">
             Core Values
           </h2>
         </div>

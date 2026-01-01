@@ -212,13 +212,13 @@ export default function VacanciesPage() {
             )}
           >
             <h3 className={clsx(
-              "text-xl font-bold font-heading mb-3 transition-all duration-500 ease-out",
+              "heading-5 mb-3 transition-all duration-500 ease-out",
               generalInView ? 'opacity-100 translate-y-0 delay-200' : 'opacity-0 translate-y-4'
             )}>
               Don't see a suitable position?
             </h3>
             <p className={clsx(
-              "text-muted-foreground mb-6 max-w-xl mx-auto transition-all duration-500 ease-out",
+              "body-base mb-6 max-w-xl mx-auto transition-all duration-500 ease-out",
               generalInView ? 'opacity-100 translate-y-0 delay-300' : 'opacity-0 translate-y-4'
             )}>
               We're always looking for talented individuals. Send us your CV and we'll 

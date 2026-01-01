@@ -167,9 +167,9 @@ export default function AboutPage() {
                 <div className="flex flex-col items-start justify-center text-left px-4 pr-6 md:pr-10 mt-4 md:mt-6">
                   <div className="flex items-center gap-2 mb-3">
                     <active.icon className="w-6 h-6 text-header" />
-                    <h3 className="font-heading font-bold text-xl text-foreground">{active.title}</h3>
+                    <h3 className="heading-5 text-foreground">{active.title}</h3>
                   </div>
-                  <p className="text-gray-700 text-sm leading-relaxed max-w-md ml-2">{active.description}</p>
+                  <p className="body-base text-gray-700 leading-relaxed max-w-md ml-2">{active.description}</p>
                   <a href="#projects" className="mt-4 ml-2 inline-flex items-center text-header font-medium hover:underline">
                     Learn more
                     <svg className="w-4 h-4 ml-2 animate-bounce" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
@@ -217,9 +217,9 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-header/8 rounded-full flex items-center justify-center">
                   <Eye className="w-8 h-8 text-header/80" />
                 </div>
-                <h3 className="text-2xl font-bold font-heading">Our Vision</h3>
+                <h3 className="heading-4">Our Vision</h3>
               </div>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="body-base leading-relaxed">
                 To grow and become a successful bigger company that can work even International, whereby so doing creating job opportunities for the non working people, helping the Government to develop our country and improve lives of our Employees.
               </p>
             </div>
@@ -230,7 +230,7 @@ export default function AboutPage() {
                 <div className="w-16 h-16 bg-accent/8 rounded-full flex items-center justify-center">
                   <Target className="w-8 h-8 text-accent/80" />
                 </div>
-                <h3 className="text-2xl font-bold font-heading">Our Mission</h3>
+                <h3 className="heading-4">Our Mission</h3>
               </div>
               <p className="text-muted-foreground leading-relaxed">
                 A quality products, satisfactory services, accountability and Safety is our mission.
@@ -246,7 +246,7 @@ export default function AboutPage() {
           <div className="text-center mb-12">
             <span className="caption text-header mb-2 block">Our Team</span>
             <h2 className="heading-3 font-heading mb-4">Meet the Leadership</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">Experienced professionals leading projects with integrity and excellence.</p>
+            <p className="body-base max-w-2xl mx-auto">Experienced professionals leading projects with integrity and excellence.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
@@ -274,8 +274,8 @@ export default function AboutPage() {
                   <div className="p-4">
                     <div className="flex items-start justify-between gap-3">
                       <div>
-                        <h3 className="font-heading font-semibold text-base md:text-lg text-foreground line-clamp-1">{m.name}</h3>
-                        <p className="text-muted-foreground text-sm">{m.role}</p>
+                        <h3 className="heading-6 text-foreground line-clamp-1">{m.name}</h3>
+                        <p className="body-small">{m.role}</p>
                       </div>
                       <a
                         href="#"
