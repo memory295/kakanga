@@ -97,7 +97,7 @@ export default function VacanciesPage() {
             <h2 className="heading-3 font-heading mb-4">
               Join Our <span className="text-header">Team</span>
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
+            <p className="body-base max-w-2xl mx-auto">
               Build your career with Malawi's leading construction company. 
               We offer competitive packages and growth opportunities.
             </p>
@@ -137,7 +137,7 @@ export default function VacanciesPage() {
                           {vacancy.department}
                         </span>
                       </div>
-                      <p className="text-muted-foreground mb-4">
+                      <p className="body-base mb-4">
                         {vacancy.description}
                       </p>
                       <div>
@@ -195,7 +195,7 @@ export default function VacanciesPage() {
                 No Current Openings
               </h3>
               <p className={clsx(
-                "text-muted-foreground transition-all duration-500 ease-out",
+                "body-base transition-all duration-500 ease-out",
                 vacancyInView ? 'opacity-100 translate-y-0 delay-400' : 'opacity-0 translate-y-4'
               )}>
                 We don't have any vacancies at the moment. Please check back later.

@@ -1,0 +1,14 @@
+{
+  "/_not-found/page": "/_not-found",
+  "/about/page": "/about",
+  "/contact/page": "/contact",
+  "/equipment/page": "/equipment",
+  "/page": "/",
+  "/profile-extract/page": "/profile-extract",
+  "/policy/page": "/policy",
+  "/profile/page": "/profile",
+  "/projects/page": "/projects",
+  "/terms/page": "/terms",
+  "/services/page": "/services",
+  "/vacancies/page": "/vacancies"
+}

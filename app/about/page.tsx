@@ -232,7 +232,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="heading-4">Our Mission</h3>
               </div>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="body-base leading-relaxed">
                 A quality products, satisfactory services, accountability and Safety is our mission.
               </p>
             </div>

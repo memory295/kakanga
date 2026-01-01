@@ -105,8 +105,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Mobile</h3>
-                    <p className="text-muted-foreground text-sm">+265 995 650 428</p>
-                    <p className="text-muted-foreground text-sm">+265 882 500 960</p>
+                    <p className="body-small">+265 995 650 428</p>
+                    <p className="body-small">+265 882 500 960</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -115,8 +115,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">E-mail</h3>
-                    <p className="text-muted-foreground text-sm">ckakanga@gmail.com</p>
-                    <p className="text-muted-foreground text-sm">kabaghe63@gmail.com</p>
+                    <p className="body-small">ckakanga@gmail.com</p>
+                    <p className="body-small">kabaghe63@gmail.com</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -125,8 +125,8 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold mb-1">Working Hours</h3>
-                    <p className="text-muted-foreground text-sm">Monday - Friday: 8:00 AM - 5:00 PM</p>
-                    <p className="text-muted-foreground text-sm">Saturday: 8:00 AM - 12:00 PM</p>
+                    <p className="body-small">Monday - Friday: 8:00 AM - 5:00 PM</p>
+                    <p className="body-small">Saturday: 8:00 AM - 12:00 PM</p>
                   </div>
                 </div>
               </div>
