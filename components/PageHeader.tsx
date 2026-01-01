@@ -37,8 +37,8 @@ const PageHeader = ({ title, backgroundImage }: PageHeaderProps) => {
         aria-hidden="true"
       />
       <div className="relative z-10 text-center text-header-foreground">
-        <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4">{title}</h1>
-        <div className="flex items-center justify-center gap-2 text-sm md:text-base">
+        <h1 className="heading-2 font-heading mb-4">{title}</h1>
+        <div className="flex items-center justify-center gap-2 body-small">
           <Link href="/" className="hover:text-primary transition-colors">Home</Link>
           <ChevronRight className="w-4 h-4" />
           <span className="text-primary">{title}</span>

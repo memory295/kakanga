@@ -29,11 +29,11 @@ const Footer = () => {
                   className="w-12 h-12 object-contain"
                 />
                 <div>
-                  <span className="font-heading font-bold text-xl text-white tracking-tight">KAKANGA</span>
+                  <span className="font-heading font-bold text-lg md:text-xl text-white tracking-tight">KAKANGA</span>
                   <span className="block text-xs text-gray-400 uppercase tracking-widest">Constructions</span>
                 </div>
               </Link>
-              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              <p className="text-gray-400 body-small leading-relaxed mb-4">
                 Kakanga Constructions is a leading Civil and Building Construction Company based in Malawi, registered in the UNLIMITED CATEGORY with NCIC.
               </p>
               <div className="flex gap-2">

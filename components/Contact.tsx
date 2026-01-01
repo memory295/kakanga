@@ -81,13 +81,13 @@ const Contact = () => {
     <section ref={ref as any} id="contact" className={`section-padding bg-background transition-all duration-700 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       <div className="container-wide">
         <div className="text-center mb-16">
-          <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
+          <span className="caption text-header mb-2 block">
             Contact Us
           </span>
-          <h2 className="font-heading font-bold text-3xl md:text-4xl text-foreground mb-4">
+          <h2 className="heading-3 text-foreground mb-4">
             Get In Touch
           </h2>
-          <p className="text-muted-foreground max-w-2xl mx-auto">
+          <p className="body-base max-w-2xl mx-auto">
             Ready to start your next construction project? Contact us today for a free consultation and quote.
           </p>
         </div>
@@ -101,8 +101,8 @@ const Contact = () => {
                 <MapPin className="w-6 h-6 text-header" />
               </div>
               <div>
-                <h3 className="font-heading font-semibold text-lg text-foreground mb-1">Our Location</h3>
-                <p className="text-muted-foreground">Karonga</p>
+                <h3 className="heading-6 text-foreground mb-1">Our Location</h3>
+                <p className="body-small">Karonga</p>
               </div>
             </div>
             <div className="flex items-start gap-4 p-4 bg-white/30 rounded-lg border border-gray-100 hover:bg-white/50 transition-colors">
@@ -110,9 +110,9 @@ const Contact = () => {
                 <Phone className="w-6 h-6 text-header" />
               </div>
               <div>
-                <h3 className="font-heading font-semibold text-lg text-foreground mb-1">Mobile</h3>
-                <p className="text-muted-foreground">+265 995 650 428</p>
-                <p className="text-muted-foreground">+265 882 500 960</p>
+                <h3 className="heading-6 text-foreground mb-1">Mobile</h3>
+                <p className="body-small">+265 995 650 428</p>
+                <p className="body-small">+265 882 500 960</p>
               </div>
             </div>
             <div className="flex items-start gap-4 p-4 bg-white/30 rounded-lg border border-gray-100 hover:bg-white/50 transition-colors">

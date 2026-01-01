@@ -85,8 +85,8 @@ export default function ContactPage() {
           <div className="grid lg:grid-cols-3 gap-12">
             {/* Contact Info */}
             <div className="lg:col-span-1">
-              <h2 className="text-2xl font-bold font-heading mb-6">Get In Touch</h2>
-              <p className="text-muted-foreground mb-8">
+              <h2 className="heading-4 mb-6">Get In Touch</h2>
+              <p className="body-base mb-8">
                 Have a project in mind? Contact us today to discuss your construction needs.
               </p>
               <div className="space-y-6">
@@ -95,8 +95,8 @@ export default function ContactPage() {
                     <MapPin className="w-6 h-6 text-header" />
                   </div>
                   <div>
-                    <h3 className="font-semibold mb-1">Our Location</h3>
-                    <p className="text-muted-foreground text-sm">Karonga</p>
+                    <h3 className="heading-6 mb-1">Our Location</h3>
+                    <p className="body-small">Karonga</p>
                   </div>
                 </div>
                 <div className="flex gap-4">

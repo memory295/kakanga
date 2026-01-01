@@ -10,7 +10,7 @@ export default function NotFound() {
       <div className="min-h-[60vh] flex items-center justify-center section-padding">
         <div className="text-center max-w-md mx-auto">
           <div className="mb-8">
-            <h1 className="text-6xl font-bold text-primary mb-4">404</h1>
+            <h1 className="heading-1 text-primary mb-4">404</h1>
             <h2 className="heading-3 mb-4">Page Not Found</h2>
             <p className="body-base text-muted-foreground">
               Sorry, the page you are looking for doesn't exist or has been moved.

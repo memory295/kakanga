@@ -94,7 +94,7 @@ export default function VacanciesPage() {
               headerInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             )}
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">
+            <h2 className="heading-3 font-heading mb-4">
               Join Our <span className="text-header">Team</span>
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">

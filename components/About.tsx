@@ -79,10 +79,10 @@ const LeftColumn = ({ inView }: { inView: boolean }) => {
             )}>
               "Offering Comprehensive Construction Solutions tailored to your every need"
             </p>
-            <p className={clsx('body-small mb-6 opacity-100', inView && 'md:animate-in md:fade-in md:slide-in-from-bottom-2 md:delay-125 md:duration-500')}>
+            <p className={clsx('body-base mb-6 opacity-100', inView && 'md:animate-in md:fade-in md:slide-in-from-bottom-2 md:delay-125 md:duration-500')}>
               Kakanga Constructions is a leading Civil and Building Construction Company based in Malawi. As a company registered in the UNLIMITED CATEGORY with the National Construction Industry Council (NCIC) for both Building and Civil Construction, we have established ourselves as a trusted partner in infrastructure development.
             </p>
-            <p className={clsx('body-small mb-8 opacity-100', inView && 'md:animate-in md:fade-in md:slide-in-from-bottom-2 md:delay-200 md:duration-500')}>
+            <p className={clsx('body-base mb-8 opacity-100', inView && 'md:animate-in md:fade-in md:slide-in-from-bottom-2 md:delay-200 md:duration-500')}>
               With years of experience and a dedicated team of professionals, we deliver excellence in every project, from road construction to complex civil engineering works.
             </p>
             <div className={clsx('flex flex-wrap gap-3 opacity-100', inView && 'md:animate-in md:fade-in md:slide-in-from-bottom-2 md:delay-250 md:duration-500')}>

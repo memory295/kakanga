@@ -67,8 +67,8 @@ const Header = () => {
                 className="w-14 h-14 object-contain"
               />
               <div className="ml-3">
-                <span className="heading-4 text-header-foreground">KAKANGA</span>
-                <span className="block text-[0.7rem] text-header-foreground/70 uppercase tracking-widest">Constructions</span>
+                <span className="heading-6 text-header-foreground">KAKANGA</span>
+                <span className="block text-[0.6rem] md:text-[0.7rem] text-header-foreground/70 uppercase tracking-widest">Constructions</span>
               </div>
             </div>
           </Link>

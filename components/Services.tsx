@@ -41,7 +41,7 @@ const Services = () => {
           <span className="caption text-header mb-2 block">
             What We Do
           </span>
-          <h2 className="heading-2 mb-4">
+          <h2 className="heading-3 mb-4">
             Our Services
           </h2>
           <p className="body-base max-w-2xl mx-auto">
@@ -65,10 +65,10 @@ const Services = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
               <div className="p-6 flex-1 flex flex-col">
-                <h3 className="heading-5 mb-3 group-hover:text-header transition-colors">
+                <h3 className="heading-6 mb-3 group-hover:text-header transition-colors">
                   {service.title}
                 </h3>
-                <p className="body-small mb-4 flex-1">
+                <p className="body-base mb-4 flex-1">
                   {service.description}
                 </p>
                 <Link href="/services" className="inline-flex items-center text-header button-text hover:gap-2 transition-all">

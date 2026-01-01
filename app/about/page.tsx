@@ -56,10 +56,10 @@ export default function AboutPage() {
         <div className="container-wide">
           {/* Header */}
           <div className="text-center mb-12">
-            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
+            <span className="caption text-header mb-2 block">
               Who We Are
             </span>
-            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-6">
+            <h2 className="heading-3 font-heading mb-6">
               Quality is Our Mission Since <span className="text-header">2011</span>
             </h2>
             <div className="w-20 h-1 bg-header mx-auto mb-8"></div>
@@ -68,13 +68,13 @@ export default function AboutPage() {
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
             <div className="space-y-6">
-              <p className="text-lg text-muted-foreground leading-relaxed">
+              <p className="body-large leading-relaxed">
                 Kakanga Construction is a leading Malawian construction company known for excellence in building design, civil engineering, and prefabricated structures. We turn visions into reality through innovative, reliable solutions that meet international standards.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="body-base leading-relaxed">
                 We deliver residential homes, commercial developments, industrial warehouses, and public infrastructure. Our quality craftsmanship and exceptional client service make us a trusted partner in Malawi's fast‑growing construction industry.
               </p>
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="body-base leading-relaxed">
                 What sets us apart is our focus on modern building techniques and sustainable practices. We specialize in prefabricated structures—offering faster, more cost‑effective, and environmentally friendly construction without compromising durability.
               </p>
             </div>
@@ -87,7 +87,7 @@ export default function AboutPage() {
 
           {/* Expertise Section */}
           <div className="bg-white rounded-2xl p-8 border border-gray-100 shadow-sm">
-            <h3 className="text-2xl font-bold font-heading text-center mb-8">Our Expertise</h3>
+            <h3 className="heading-4 text-center mb-8">Our Expertise</h3>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {expertise.map((item, index) => (
                 <div key={index} className="flex items-center gap-3 p-4 bg-gray-50/50 rounded-lg hover:bg-header/10 transition-colors">
@@ -106,8 +106,8 @@ export default function AboutPage() {
       <section id="why-us" className="section-padding bg-white scroll-mt-24">
         <div className="container-wide">
           <div className="text-center mb-8 md:mb-12">
-            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">Why Us</span>
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-foreground">Why Choose Us</h2>
+            <span className="caption text-header mb-2 block">Why Us</span>
+            <h2 className="heading-3 font-heading text-foreground">Why Choose Us</h2>
           </div>
 
           {(() => {
@@ -244,8 +244,8 @@ export default function AboutPage() {
       <section id="our-team" className="section-padding bg-section-alt scroll-mt-24">
         <div className="container-wide">
           <div className="text-center mb-12">
-            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">Our Team</span>
-            <h2 className="text-3xl md:text-4xl font-bold font-heading mb-4">Meet the Leadership</h2>
+            <span className="caption text-header mb-2 block">Our Team</span>
+            <h2 className="heading-3 font-heading mb-4">Meet the Leadership</h2>
             <p className="text-muted-foreground max-w-2xl mx-auto">Experienced professionals leading projects with integrity and excellence.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">

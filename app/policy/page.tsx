@@ -58,10 +58,10 @@ export default function PolicyPage() {
       <section className="section-padding">
         <div className="container-wide">
           <div className="text-center mb-12">
-            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
+            <span className="caption text-header mb-2 block">
               Our Commitment
             </span>
-            <h2 className="heading-3 mb-4">
+            <h2 className="heading-4 mb-4">
               Policies That Guide Our Operations
             </h2>
             <p className="body-base max-w-3xl mx-auto">

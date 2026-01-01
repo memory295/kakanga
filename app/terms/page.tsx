@@ -9,7 +9,7 @@ export default function TermsPage() {
       <section className="section-padding">
         <div className="container-wide">
           <div className="text-center mb-12">
-            <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
+            <span className="caption text-header mb-2 block">
               Legal Terms
             </span>
             <h2 className="heading-3 mb-4">Terms of Service</h2>

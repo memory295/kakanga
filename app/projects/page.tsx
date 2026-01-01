@@ -150,10 +150,10 @@ export default function ProjectsPage() {
         <div className="container-wide">
           <AnimatedHeader>
             <div className="text-center mb-8">
-              <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
+              <span className="caption text-header mb-2 block">
                 Our Portfolio
               </span>
-              <h2 className="heading-3 mb-4">
+              <h2 className="heading-4 mb-4">
                 Projects That Showcase Our Excellence
               </h2>
               <p className="body-base max-w-3xl mx-auto">

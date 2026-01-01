@@ -132,49 +132,49 @@
   
   /* HEADINGS - Use for all headings (h1, h2, h3, h4, h5, h6) */
   .heading-1 {
-    @apply font-heading font-bold text-4xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground;
+    @apply font-heading font-bold text-3xl md:text-5xl lg:text-6xl leading-tight tracking-tight text-foreground;
   }
 
   .heading-2 {
-    @apply font-heading font-bold text-3xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-foreground;
+    @apply font-heading font-bold text-2xl md:text-4xl lg:text-5xl leading-tight tracking-tight text-foreground;
   }
 
   .heading-3 {
-    @apply font-heading font-bold text-2xl md:text-3xl leading-snug tracking-tight text-foreground;
+    @apply font-heading font-bold text-xl md:text-3xl leading-snug tracking-tight text-foreground;
   }
 
   .heading-4 {
-    @apply font-heading font-semibold text-xl md:text-2xl leading-snug text-foreground;
+    @apply font-heading font-semibold text-lg md:text-2xl leading-snug text-foreground;
   }
 
   .heading-5 {
-    @apply font-heading font-semibold text-lg md:text-xl leading-snug text-foreground;
+    @apply font-heading font-semibold text-base md:text-xl leading-snug text-foreground;
   }
 
   .heading-6 {
-    @apply font-heading font-semibold text-base md:text-lg leading-snug text-foreground;
+    @apply font-heading font-semibold text-sm md:text-lg leading-snug text-foreground;
   }
 
   /* HERO/DISPLAY TEXT - For hero sections and large display text */
   .hero-title {
-    @apply font-heading font-bold text-2xl md:text-4xl lg:text-5xl leading-tight tracking-wide text-white;
+    @apply font-heading font-bold text-xl md:text-4xl lg:text-5xl leading-tight tracking-wide text-white;
   }
 
   .hero-subtitle {
-    @apply font-heading font-medium text-lg md:text-xl leading-relaxed text-white/90;
+    @apply font-heading font-medium text-base md:text-xl leading-relaxed text-white/90;
   }
 
   /* BODY TEXT - Use for all paragraph text */
   .body-large {
-    @apply font-sans text-lg md:text-xl leading-relaxed text-muted-foreground;
+    @apply font-sans text-base md:text-xl leading-relaxed text-muted-foreground;
   }
 
   .body-base {
-    @apply font-sans text-base leading-relaxed text-muted-foreground;
+    @apply font-sans text-sm md:text-base leading-relaxed text-muted-foreground;
   }
 
   .body-small {
-    @apply font-sans text-sm leading-relaxed text-muted-foreground;
+    @apply font-sans text-xs md:text-sm leading-relaxed text-muted-foreground;
   }
 
   .body-xs {
@@ -183,15 +183,15 @@
 
   /* HIGHLIGHT TEXT - For quotes, taglines, featured text */
   .highlight-large {
-    @apply text-lg md:text-xl font-medium leading-relaxed text-primary;
+    @apply text-base md:text-xl font-medium leading-relaxed text-primary;
   }
 
   .highlight-base {
-    @apply text-base font-medium leading-relaxed text-primary;
+    @apply text-sm md:text-base font-medium leading-relaxed text-primary;
   }
 
   .highlight-small {
-    @apply text-sm font-medium leading-relaxed text-primary;
+    @apply text-xs md:text-sm font-medium leading-relaxed text-primary;
   }
 
   /* STATISTICS/NUMBERS - For numerical displays */
@@ -205,20 +205,20 @@
 
   /* LABELS & CAPTIONS - For small descriptive text */
   .caption {
-    @apply font-sans text-xs font-medium uppercase tracking-wider text-muted-foreground;
+    @apply font-sans text-xs md:text-xs font-medium uppercase tracking-wider text-muted-foreground;
   }
 
   .label {
-    @apply font-sans text-sm font-medium text-foreground;
+    @apply font-sans text-xs md:text-sm font-medium text-foreground;
   }
 
   /* NAVIGATION & LINKS */
   .nav-text {
-    @apply text-base font-medium;
+    @apply text-sm md:text-base font-medium;
   }
 
   .nav-dropdown {
-    @apply text-sm;
+    @apply text-xs md:text-sm;
   }
 
   /* BUTTON TEXT */
@@ -228,7 +228,7 @@
 
   /* CONTACT INFO */
   .contact-info {
-    @apply text-sm;
+    @apply text-xs md:text-sm;
   }
 
   .button-text {

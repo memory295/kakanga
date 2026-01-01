@@ -94,10 +94,10 @@ export default function ServicesPage() {
         <div className="container-wide">
           <AnimatedSection>
             <div className="text-center mb-12">
-              <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
+              <span className="caption text-header mb-2 block">
                 What We Offer
               </span>
-              <h2 className="heading-3 mb-4">
+              <h2 className="heading-4 mb-4">
                 Comprehensive Construction & Engineering Solutions
               </h2>
               <p className="body-base max-w-3xl mx-auto">
