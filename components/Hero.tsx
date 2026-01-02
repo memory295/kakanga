@@ -68,7 +68,9 @@ const Hero = () => {
           onCanPlay={handleCanPlay}
           onEnded={handleEnded}
         />
-        <div className="hero-overlay absolute inset-0 bg-black/30" />
+        {/* Darkish blue with light red on left, pure darkish blue on right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-900/70 to-slate-800/60" />
+        <div className="absolute inset-0 bg-gradient-to-r from-red-500/16 to-transparent" />
         {/* Bottom grey background band starting at the tagline position */}
         <div
           className="absolute bottom-0 left-0 right-0"
