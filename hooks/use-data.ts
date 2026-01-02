@@ -16,41 +16,34 @@ import {
 import { Project, Service, Staff, Vacancy } from '@/lib/types';
 
 export const useProjects = () => {
-  const [projects, setProjects] = useState<Project[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Seed with defaults immediately to prevent loading state
+  const seededDefaults = defaultProjects.map((project, index) => ({
+    id: `default-${index}`,
+    ...project,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  }));
+
+  const [projects, setProjects] = useState<Project[]>(seededDefaults);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const fetchProjects = async () => {
     try {
-      setLoading(true);
       setError(null);
       const firebaseProjects = await projectsService.getAll();
       
       if (firebaseProjects.length > 0) {
         setProjects(firebaseProjects);
       } else {
-        // Convert default data to include Firebase structure
-        const defaultData = defaultProjects.map((project, index) => ({
-          id: `default-${index}`,
-          ...project,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        }));
-        setProjects(defaultData);
+        // Keep seeded defaults if Firebase is empty
+        setProjects(seededDefaults);
       }
     } catch (err) {
       console.error('Error fetching projects:', err);
       setError('Failed to fetch projects');
-      // Fallback to default data on error
-      const defaultData = defaultProjects.map((project, index) => ({
-        id: `default-${index}`,
-        ...project,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }));
-      setProjects(defaultData);
-    } finally {
-      setLoading(false);
+      // Keep seeded defaults on error
+      setProjects(seededDefaults);
     }
   };
 
@@ -67,41 +60,34 @@ export const useProjects = () => {
 };
 
 export const useServices = () => {
-  const [services, setServices] = useState<Service[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Seed with defaults immediately to prevent loading state
+  const seededDefaults = defaultServices.map((service, index) => ({
+    id: `default-${index}`,
+    ...service,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  }));
+
+  const [services, setServices] = useState<Service[]>(seededDefaults);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const fetchServices = async () => {
     try {
-      setLoading(true);
       setError(null);
       const firebaseServices = await servicesService.getAll();
       
       if (firebaseServices.length > 0) {
         setServices(firebaseServices);
       } else {
-        // Convert default data to include Firebase structure
-        const defaultData = defaultServices.map((service, index) => ({
-          id: `default-${index}`,
-          ...service,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        }));
-        setServices(defaultData);
+        // Keep seeded defaults if Firebase is empty
+        setServices(seededDefaults);
       }
     } catch (err) {
       console.error('Error fetching services:', err);
       setError('Failed to fetch services');
-      // Fallback to default data on error
-      const defaultData = defaultServices.map((service, index) => ({
-        id: `default-${index}`,
-        ...service,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }));
-      setServices(defaultData);
-    } finally {
-      setLoading(false);
+      // Keep seeded defaults on error
+      setServices(seededDefaults);
     }
   };
 
@@ -118,41 +104,34 @@ export const useServices = () => {
 };
 
 export const useStaff = () => {
-  const [staff, setStaff] = useState<Staff[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Seed with defaults immediately to prevent loading state
+  const seededDefaults = defaultStaff.map((member, index) => ({
+    id: `default-${index}`,
+    ...member,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  }));
+
+  const [staff, setStaff] = useState<Staff[]>(seededDefaults);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const fetchStaff = async () => {
     try {
-      setLoading(true);
       setError(null);
       const firebaseStaff = await staffService.getAll();
       
       if (firebaseStaff.length > 0) {
         setStaff(firebaseStaff);
       } else {
-        // Convert default data to include Firebase structure
-        const defaultData = defaultStaff.map((member, index) => ({
-          id: `default-${index}`,
-          ...member,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        }));
-        setStaff(defaultData);
+        // Keep seeded defaults if Firebase is empty
+        setStaff(seededDefaults);
       }
     } catch (err) {
       console.error('Error fetching staff:', err);
       setError('Failed to fetch staff');
-      // Fallback to default data on error
-      const defaultData = defaultStaff.map((member, index) => ({
-        id: `default-${index}`,
-        ...member,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }));
-      setStaff(defaultData);
-    } finally {
-      setLoading(false);
+      // Keep seeded defaults on error
+      setStaff(seededDefaults);
     }
   };
 
