@@ -11,6 +11,7 @@ import { Label } from '@/components/ui/label';
 import { ArrowLeft, Save, Plus, X } from 'lucide-react';
 import Link from 'next/link';
 import { servicesService } from '@/lib/firebase-service';
+import { uploadFile } from '@/lib/storage';
 import { toast } from '@/hooks/use-toast';
 
 export default function NewService() {
@@ -22,6 +23,8 @@ export default function NewService() {
     image: '',
     features: [''],
   });
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
@@ -71,10 +74,15 @@ export default function NewService() {
     setLoading(true);
     
     try {
+      let uploadedUrl: string | undefined;
+      if (imageFile) {
+        uploadedUrl = await uploadFile(imageFile, 'services');
+      }
+
       const serviceData = {
         title: formData.title.trim(),
         description: formData.description.trim(),
-        image: formData.image.trim() || '/images/services/default.jpg',
+        image: (uploadedUrl || formData.image.trim() || '/images/services/default.jpg'),
         features: formData.features.filter(f => f.trim() !== ''),
       };
 
@@ -152,13 +160,29 @@ export default function NewService() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="image">Image URL</Label>
+                <Label htmlFor="image">Upload Image</Label>
                 <Input
                   id="image"
-                  value={formData.image}
-                  onChange={(e) => handleInputChange('image', e.target.value)}
-                  placeholder="Enter image URL (optional)"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0] || null;
+                    setImageFile(file);
+                    if (file) {
+                      const url = URL.createObjectURL(file);
+                      setImagePreview(url);
+                    } else {
+                      setImagePreview(null);
+                    }
+                  }}
                 />
+                {imagePreview && (
+                  <img
+                    src={imagePreview}
+                    alt="Selected preview"
+                    className="mt-2 h-32 w-auto rounded border"
+                  />
+                )}
               </div>
 
               <div className="space-y-4">

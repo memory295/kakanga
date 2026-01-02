@@ -36,9 +36,9 @@ const PageHeader = ({ title, backgroundImage }: PageHeaderProps) => {
         className={`absolute inset-x-0 bottom-0 bg-gradient-to-t ${hasBackgroundImage ? "h-36 from-[#0a1f3f]/55 via-primary/32 to-transparent" : "h-24 from-header/30 via-transparent to-transparent"}`}
         aria-hidden="true"
       />
-      <div className="relative z-10 text-center text-header-foreground">
-        <h1 className="heading-2 font-heading mb-4">{title}</h1>
-        <div className="flex items-center justify-center gap-2 body-small">
+      <div className="relative z-10 text-center">
+        <h1 className="heading-2 font-heading mb-4 text-white">{title}</h1>
+        <div className="flex items-center justify-center gap-2 body-small text-white/90">
           <Link href="/" className="hover:text-primary transition-colors">Home</Link>
           <ChevronRight className="w-4 h-4" />
           <span className="text-primary">{title}</span>

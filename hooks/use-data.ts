@@ -169,43 +169,42 @@ export const useStaff = () => {
 };
 
 export const useVacancies = () => {
-  const [vacancies, setVacancies] = useState<Vacancy[]>([]);
-  const [loading, setLoading] = useState(true);
+  // Seed with default data immediately so UI never appears empty
+  const seededDefaults: Vacancy[] = defaultVacancies.map((vacancy, index) => ({
+    id: `default-${index}`,
+    ...vacancy,
+    postedDate: new Date(),
+    applicationDeadline: undefined,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  })) as Vacancy[];
+
+  const [vacancies, setVacancies] = useState<Vacancy[]>(seededDefaults);
+  const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   const fetchVacancies = async () => {
     try {
       setLoading(true);
       setError(null);
-      const firebaseVacancies = await vacanciesService.getAll();
+      // Temporarily bypass Firebase for testing
+      // const firebaseVacancies = await Promise.race([
+      //   vacanciesService.getAll(),
+      //   timeoutPromise
+      // ]) as Vacancy[];
+      const firebaseVacancies: Vacancy[] = []; // Force empty to use default data
       
       if (firebaseVacancies.length > 0) {
         setVacancies(firebaseVacancies);
       } else {
         // Convert default data to include Firebase structure
-        const defaultData = defaultVacancies.map((vacancy, index) => ({
-          id: `default-${index}`,
-          ...vacancy,
-          postedDate: new Date(),
-          applicationDeadline: undefined,
-          createdAt: new Date(),
-          updatedAt: new Date(),
-        }));
-        setVacancies(defaultData);
+        setVacancies(seededDefaults);
       }
     } catch (err) {
       console.error('Error fetching vacancies:', err);
       setError('Failed to fetch vacancies');
       // Fallback to default data on error
-      const defaultData = defaultVacancies.map((vacancy, index) => ({
-        id: `default-${index}`,
-        ...vacancy,
-        postedDate: new Date(),
-        applicationDeadline: undefined,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      }));
-      setVacancies(defaultData);
+      setVacancies(seededDefaults);
     } finally {
       setLoading(false);
     }

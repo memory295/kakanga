@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { ArrowLeft, Save } from 'lucide-react';
 import Link from 'next/link';
 import { projectsService } from '@/lib/firebase-service';
+import { uploadFile } from '@/lib/storage';
 import { toast } from '@/hooks/use-toast';
 
 export default function NewProject() {
@@ -26,6 +27,8 @@ export default function NewProject() {
     referenceNumber: '',
     image: '',
   });
+  const [imageFile, setImageFile] = useState<File | null>(null);
+  const [imagePreview, setImagePreview] = useState<string | null>(null);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
@@ -49,6 +52,11 @@ export default function NewProject() {
     setLoading(true);
     
     try {
+      let uploadedUrl: string | undefined;
+      if (imageFile) {
+        uploadedUrl = await uploadFile(imageFile, 'projects');
+      }
+
       const projectData = {
         title: formData.title.trim(),
         description: formData.description.trim(),
@@ -56,7 +64,7 @@ export default function NewProject() {
         location: formData.location.trim(),
         client: formData.client.trim(),
         referenceNumber: formData.referenceNumber.trim(),
-        image: formData.image.trim() || '/images/projects/default.jpg',
+        image: (uploadedUrl || formData.image.trim() || '/images/projects/default.jpg'),
       };
 
       const success = await projectsService.create(projectData);
@@ -182,13 +190,29 @@ export default function NewProject() {
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="image">Image URL</Label>
+                  <Label htmlFor="image">Upload Image</Label>
                   <Input
                     id="image"
-                    value={formData.image}
-                    onChange={(e) => handleInputChange('image', e.target.value)}
-                    placeholder="Enter image URL (optional)"
+                    type="file"
+                    accept="image/*"
+                    onChange={(e) => {
+                      const file = e.target.files?.[0] || null;
+                      setImageFile(file);
+                      if (file) {
+                        const url = URL.createObjectURL(file);
+                        setImagePreview(url);
+                      } else {
+                        setImagePreview(null);
+                      }
+                    }}
                   />
+                  {imagePreview && (
+                    <img
+                      src={imagePreview}
+                      alt="Selected preview"
+                      className="mt-2 h-32 w-auto rounded border"
+                    />
+                  )}
                 </div>
               </div>
 

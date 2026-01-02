@@ -69,13 +69,13 @@ export default function AboutPage() {
           {/* Main Content Grid */}
           <div className="grid lg:grid-cols-2 gap-12 items-start mb-16">
             <div className="space-y-6">
-              <p className="body-large leading-relaxed">
+              <p className="text-sm md:text-lg lg:text-lg leading-relaxed text-muted-foreground">
                 Kakanga Construction is a leading Malawian construction company known for excellence in building design, civil engineering, and prefabricated structures. We turn visions into reality through innovative, reliable solutions that meet international standards.
               </p>
-              <p className="body-base leading-relaxed">
+              <p className="text-sm md:text-lg lg:text-lg leading-relaxed text-muted-foreground">
                 We deliver residential homes, commercial developments, industrial warehouses, and public infrastructure. Our quality craftsmanship and exceptional client service make us a trusted partner in Malawi's fast‑growing construction industry.
               </p>
-              <p className="body-base leading-relaxed">
+              <p className="text-sm md:text-lg lg:text-lg leading-relaxed text-muted-foreground">
                 What sets us apart is our focus on modern building techniques and sustainable practices. We specialize in prefabricated structures—offering faster, more cost‑effective, and environmentally friendly construction without compromising durability.
               </p>
             </div>

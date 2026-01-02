@@ -11,6 +11,7 @@ import { Label } from '@/components/ui/label';
 import { ArrowLeft, Save } from 'lucide-react';
 import Link from 'next/link';
 import { staffService } from '@/lib/firebase-service';
+import { uploadFile } from '@/lib/storage';
 import { toast } from '@/hooks/use-toast';
 
 export default function NewStaff() {
@@ -27,6 +28,8 @@ export default function NewStaff() {
     linkedin: '',
     experience: '',
   });
+  const [photoFile, setPhotoFile] = useState<File | null>(null);
+  const [photoPreview, setPhotoPreview] = useState<string | null>(null);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
@@ -50,6 +53,11 @@ export default function NewStaff() {
     setLoading(true);
     
     try {
+      let uploadedUrl: string | undefined;
+      if (photoFile) {
+        uploadedUrl = await uploadFile(photoFile, 'staff');
+      }
+
       const staffData = {
         name: formData.name.trim(),
         role: formData.role.trim(),
@@ -57,7 +65,7 @@ export default function NewStaff() {
         email: formData.email.trim() || undefined,
         phone: formData.phone.trim() || undefined,
         bio: formData.bio.trim(),
-        photo: formData.photo.trim() || '/images/team/default.jpg',
+        photo: (uploadedUrl || formData.photo.trim() || '/images/team/default.jpg'),
       };
 
       const success = await staffService.create(staffData);
@@ -191,13 +199,29 @@ export default function NewStaff() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="photo">Profile Photo URL</Label>
+                <Label htmlFor="photo">Upload Profile Photo</Label>
                 <Input
                   id="photo"
-                  value={formData.photo}
-                  onChange={(e) => handleInputChange('photo', e.target.value)}
-                  placeholder="Enter photo URL (optional)"
+                  type="file"
+                  accept="image/*"
+                  onChange={(e) => {
+                    const file = e.target.files?.[0] || null;
+                    setPhotoFile(file);
+                    if (file) {
+                      const url = URL.createObjectURL(file);
+                      setPhotoPreview(url);
+                    } else {
+                      setPhotoPreview(null);
+                    }
+                  }}
                 />
+                {photoPreview && (
+                  <img
+                    src={photoPreview}
+                    alt="Selected preview"
+                    className="mt-2 h-32 w-auto rounded border"
+                  />
+                )}
               </div>
 
               <div className="flex gap-4 pt-4">
