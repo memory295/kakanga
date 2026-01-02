@@ -74,7 +74,7 @@ const Projects = () => {
             >
               <div className="relative aspect-video overflow-hidden bg-gray-200">
                 <img
-                  src={project.image}
+                  src={Array.isArray(project.image) ? project.image[0] : project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />

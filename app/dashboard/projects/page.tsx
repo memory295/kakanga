@@ -143,7 +143,7 @@ export default function ProjectsDashboard() {
             <Card key={project.id} className="hover:shadow-md transition-shadow">
               <div className="aspect-video overflow-hidden rounded-t-lg">
                 <img
-                  src={project.image}
+                  src={Array.isArray(project.image) ? project.image[0] : project.image}
                   alt={project.title}
                   className="w-full h-full object-cover"
                   onError={(e) => {
