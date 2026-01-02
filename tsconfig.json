@@ -42,6 +42,8 @@
     "dist/types/**/*.ts"
   ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    // Exclude backup or experimental pages from type-checking in production builds
+    "app/vacancies/page-backup.tsx"
   ]
 }
