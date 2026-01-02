@@ -1,14 +1,24 @@
 {
   "/_not-found/page": "app/_not-found/page.js",
+  "/dashboard/page": "app/dashboard/page.js",
+  "/dashboard/projects/new/page": "app/dashboard/projects/new/page.js",
   "/about/page": "app/about/page.js",
+  "/dashboard/projects/page": "app/dashboard/projects/page.js",
   "/contact/page": "app/contact/page.js",
+  "/dashboard/services/page": "app/dashboard/services/page.js",
+  "/dashboard/services/new/page": "app/dashboard/services/new/page.js",
+  "/dashboard/staff/new/page": "app/dashboard/staff/new/page.js",
+  "/dashboard/staff/page": "app/dashboard/staff/page.js",
+  "/dashboard/vacancies/new/page": "app/dashboard/vacancies/new/page.js",
+  "/dashboard/vacancies/page": "app/dashboard/vacancies/page.js",
+  "/login/page": "app/login/page.js",
   "/equipment/page": "app/equipment/page.js",
   "/page": "app/page.js",
-  "/profile-extract/page": "app/profile-extract/page.js",
   "/policy/page": "app/policy/page.js",
-  "/profile/page": "app/profile/page.js",
+  "/profile-extract/page": "app/profile-extract/page.js",
   "/projects/page": "app/projects/page.js",
-  "/terms/page": "app/terms/page.js",
+  "/profile/page": "app/profile/page.js",
   "/services/page": "app/services/page.js",
-  "/vacancies/page": "app/vacancies/page.js"
+  "/vacancies/page": "app/vacancies/page.js",
+  "/terms/page": "app/terms/page.js"
 }

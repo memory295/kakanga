@@ -1,253 +1,144 @@
 'use client';
 
-import { useState } from "react";
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
-import { MapPin, Briefcase } from "lucide-react";
+import { useState } from "react";
+import { Badge } from "@/components/ui/badge";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { useInView } from "@/hooks/use-in-view";
+import { useProjects } from '@/hooks/use-data';
 
-// Animation component for projects grid
-const AnimatedProjectsGrid = ({ children }: { children: React.ReactNode }) => {
-  const { ref, inView } = useInView({ threshold: 0.1, once: false });
-  
-  return (
-    <div 
-      ref={ref as any}
-      className={`transition-all duration-700 ease-out ${
-        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      }`}
-    >
-      {children}
-    </div>
-  );
-};
-
-// Animation component for filter buttons
-const AnimatedFilters = ({ children }: { children: React.ReactNode }) => {
-  const { ref, inView } = useInView({ threshold: 0.1, once: false });
-  
-  return (
-    <div 
-      ref={ref as any}
-      className={`transition-all duration-500 ease-out delay-100 ${
-        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-      }`}
-    >
-      {children}
-    </div>
-  );
-};
-
-// Animation component for header section
-const AnimatedHeader = ({ children }: { children: React.ReactNode }) => {
-  const { ref, inView } = useInView({ threshold: 0.1, once: false });
-  
-  return (
-    <div 
-      ref={ref as any}
-      className={`transition-all duration-600 ease-out ${
-        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-6'
-      }`}
-    >
-      {children}
-    </div>
-  );
-};
-
-const categories = ["All", "Construction", "Fabrication", "Rehabilitation", "Installation"];
-
-const projects = [
-  {
-    title: "Construction of Secondary School Hall",
-    category: "Construction",
-    client: "Karonga CDSS",
-    referenceNumber: "",
-    location: "Karonga Town",
-    image: "/images/house1.jpg",
-  },
-  {
-    title: "Design and Fabrication of 2×40ft Containers into Warehouse",
-    category: "Fabrication",
-    client: "Banja Lamsogolo, Box 1854, Lilongwe, Malawi",
-    referenceNumber: "PO-BLM-00773 & PO-BLM-00994",
-    location: "Banja House, Head Office, Along Paul Kagame Road, Lilongwe",
-    image: "/images/van.jpg",
-  },
-  {
-    title: "Residential House Maintenance/Rehabilitation",
-    category: "Rehabilitation",
-    client: "CCAP General Assembly, P.O. Box 30398, Capital City, Lilongwe 3",
-    referenceNumber: "House Rehabilitation Plot No:47/2/134",
-    location: "Area 47 Sector 2, Lilongwe",
-    image: "/images/rehab.jpg",
-  },
-  {
-    title: "Residential House Maintenance/Rehabilitation (Mzuzu)",
-    category: "Rehabilitation",
-    client: "Ministry of Lands Private Bag 311, Capital City, Lilongwe 3, Malawi",
-    referenceNumber: "130/L/PH/MZ/120",
-    location: "Chimalilo Area in Mzuzu City",
-    image: "/images/house2.jpg",
-  },
-  {
-    title: "Installation of Prefabricated Structure and Security Fence",
-    category: "Installation",
-    client: "Department of Disaster Management Affairs (DoDMA)",
-    referenceNumber: "090/IPDC/DoDMA/2023-24/009",
-    location: "Karonga District Council and Salima District Council",
-    image: "/images/image2.jpg",
-  },
-  {
-    title: "Container Offices Re-location",
-    category: "Installation",
-    client: "Malawi Bureau of Standards P.O Box 946, Blantyre",
-    referenceNumber: "MBS-SONGWE-RELOC/09/2024",
-    location: "Songwe Border Post, Karonga",
-    image: "/images/IMG_20221019_173829.jpg",
-  },
-  {
-    title: "Supply Fabrication of Car Van into Office",
-    category: "Fabrication",
-    client: "Katsuka Investments - Blantyre",
-    referenceNumber: "",
-    location: "Nancholi, Blantyre",
-    image: "/images/IMG_20221019_173847.jpg",
-  },
-  {
-    title: "Supply and Fabrication of Shipping Container into Office",
-    category: "Fabrication",
-    client: "Malawi Bureau of Standards P.O Box 946, Blantyre",
-    referenceNumber: "LPO 027044 and LPO 027258",
-    location: "Songwe Border Post, Karonga",
-    image: "/images/IMG_20240713_203357_822.jpg",
-  },
-  {
-    title: "Construction of Community Library",
-    category: "Construction",
-    client: "Change Her World (NGO)",
-    referenceNumber: "",
-    location: "Uliwa, Chilumba in Karonga",
-    image: "/images/IMG_20240713_203404_727.jpg",
-  },
-];
+const categories = ['All', 'Construction', 'Fabrication', 'Rehabilitation', 'Installation'];
 
 export default function ProjectsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState('All');
+  const { projects, loading, error } = useProjects();
 
-  const filteredProjects = selectedCategory === "All" 
-    ? projects 
-    : projects.filter(project => project.category === selectedCategory);
+  const filteredProjects = activeCategory === 'All'
+    ? projects
+    : projects.filter(project => project.category === activeCategory);
+
+  if (loading) {
+    return (
+      <Layout>
+        <PageHeader
+          title="Our Projects"
+        />
+        <div className="section-padding">
+          <div className="container-wide">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto"></div>
+              <p className="mt-6 text-gray-600">Loading projects...</p>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (error) {
+    console.error('Projects page error:', error);
+    // Component will still render with empty state or cached data
+  }
 
   return (
     <Layout>
-      <PageHeader 
-        title="Our Projects" 
+      <PageHeader
+        title="Our Projects"
       />
-      
-      {/* Project Filter */}
-      <section className="section-padding bg-section-alt">
-        <div className="container-wide">
-          <AnimatedHeader>
-            <div className="text-center mb-8">
-              <span className="caption text-header mb-2 block">
-                Our Portfolio
-              </span>
-              <h2 className="heading-4 mb-4">
-                Projects That Showcase Our Excellence
-              </h2>
-              <p className="body-base max-w-3xl mx-auto">
-                Explore our diverse portfolio of completed projects, from residential 
-              constructions to large-scale community developments.
-            </p>
-          </div>
-          </AnimatedHeader>
 
-          {/* Category Filter */}
-          <AnimatedFilters>
-            <div className="flex flex-wrap justify-center gap-3 mb-8">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setSelectedCategory(category)}
-                  className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                    selectedCategory === category
-                      ? "bg-primary text-primary-foreground shadow-lg"
-                      : "bg-white text-muted-foreground hover:bg-primary/10 hover:text-primary shadow-sm"
-                  }`}
-                >
-                  {category}
-                </button>
-              ))}
-            </div>
-          </AnimatedFilters>
-        </div>
-      </section>
-
-      {/* Projects Grid */}
+      {/* Projects Section */}
       <section className="section-padding">
         <div className="container-wide">
-          <AnimatedProjectsGrid>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {filteredProjects.map((project, index) => (
-                <div 
-                  key={index} 
-                  className="bg-white rounded-lg shadow-sm hover:shadow-lg overflow-hidden transition-all duration-300 group"
-                >
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-48 object-cover transition-transform duration-300 group-hover:scale-105"
-                    />
-                    <div className="absolute top-4 left-4">
-                      <span className="bg-header text-white px-3 py-1 rounded-full text-xs font-medium shadow-lg">
-                        {project.category}
-                      </span>
-                    </div>
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {categories.map((category) => (
+              <button
+                key={category}
+                onClick={() => setActiveCategory(category)}
+                className={`px-6 py-3 text-sm font-medium rounded-full transition-all ${
+                  activeCategory === category
+                    ? 'bg-primary text-primary-foreground shadow-md transform scale-105'
+                    : 'bg-white text-gray-600 hover:bg-primary/5 hover:text-primary border border-gray-200 hover:border-primary/20'
+                }`}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+
+          {/* Projects Grid */}
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredProjects.map((project) => (
+              <Card key={project.id} className="group overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md">
+                <div className="aspect-video overflow-hidden bg-gray-100">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                </div>
+                <CardContent className="p-6">
+                  <div className="flex items-center gap-2 mb-3">
+                    <Badge variant="secondary" className="bg-primary/10 text-primary border-0">
+                      {project.category}
+                    </Badge>
                   </div>
-                
-                <div className="p-6">
-                  <h3 className="heading-6 mb-3">{project.title}</h3>
                   
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-start text-sm text-muted-foreground">
-                      <Briefcase className="w-4 h-4 mr-2 text-header mt-0.5 flex-shrink-0" />
-                      <span>{project.client}</span>
+                  <h3 className="text-xl font-semibold text-foreground mb-4 line-clamp-2 group-hover:text-primary transition-colors">
+                    {project.title}
+                  </h3>
+                  
+                  <div className="space-y-3 text-sm">
+                    <div>
+                      <span className="font-medium text-gray-900">Client:</span>
+                      <p className="text-gray-600 mt-1">{project.client}</p>
+                    </div>
+                    
+                    <div>
+                      <span className="font-medium text-gray-900">Location:</span>
+                      <p className="text-gray-600 mt-1">{project.location}</p>
                     </div>
                     
                     {project.referenceNumber && (
-                      <div className="flex items-start text-sm text-muted-foreground">
-                        <span className="w-4 h-4 mr-2 text-header text-xs font-bold mt-0.5 flex-shrink-0">#</span>
-                        <span>{project.referenceNumber}</span>
+                      <div>
+                        <span className="font-medium text-gray-900">Reference:</span>
+                        <p className="text-gray-600 mt-1 text-xs font-mono bg-gray-50 px-2 py-1 rounded">
+                          {project.referenceNumber}
+                        </p>
                       </div>
                     )}
-                    
-                    <div className="flex items-start text-sm text-muted-foreground">
-                      <MapPin className="w-4 h-4 mr-2 text-header mt-0.5 flex-shrink-0" />
-                      <span>{project.location}</span>
-                    </div>
+
+                    {project.description && (
+                      <div>
+                        <span className="font-medium text-gray-900">Description:</span>
+                        <p className="text-gray-600 mt-1 text-sm line-clamp-3">
+                          {project.description}
+                        </p>
+                      </div>
+                    )}
                   </div>
-                </div>
-              </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
-          </AnimatedProjectsGrid>
 
           {filteredProjects.length === 0 && (
-            <AnimatedProjectsGrid>
-              <div className="text-center py-12">
-                <p className="body-base text-muted-foreground">
-                  No projects found in the selected category.
-                </p>
+            <div className="text-center py-16">
+              <div className="text-gray-400 mb-4">
+                <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                </svg>
               </div>
-            </AnimatedProjectsGrid>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">No projects found</h3>
+              <p className="text-gray-600">
+                No projects match the selected category. Try selecting a different category.
+              </p>
+            </div>
           )}
         </div>
       </section>
-
-
 
       {/* Call to Action */}
       <section className="section-padding">
@@ -262,14 +153,14 @@ export default function ProjectsPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/contact">
-                <button className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-3 rounded-lg font-medium transition-colors shadow-lg">
+                <Button size="lg" className="shadow-lg">
                   Get Free Quote
-                </button>
+                </Button>
               </Link>
-              <Link href="/projects">
-                <button className="border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-8 py-3 rounded-lg font-medium transition-colors">
-                  View Our Work
-                </button>
+              <Link href="/services">
+                <Button variant="outline" size="lg" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
+                  View Our Services
+                </Button>
               </Link>
             </div>
           </div>

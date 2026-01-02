@@ -1,0 +1,224 @@
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import DashboardLayout from '@/components/DashboardLayout';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Textarea } from '@/components/ui/textarea';
+import { Label } from '@/components/ui/label';
+import { ArrowLeft, Save } from 'lucide-react';
+import Link from 'next/link';
+import { staffService } from '@/lib/firebase-service';
+import { toast } from '@/hooks/use-toast';
+
+export default function NewStaff() {
+  const router = useRouter();
+  const [loading, setLoading] = useState(false);
+  const [formData, setFormData] = useState({
+    name: '',
+    role: '',
+    department: '',
+    email: '',
+    phone: '',
+    bio: '',
+    photo: '',
+    linkedin: '',
+    experience: '',
+  });
+
+  const handleInputChange = (field: string, value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      [field]: value
+    }));
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!formData.name.trim() || !formData.role.trim() || !formData.department.trim()) {
+      toast({
+        title: "Error",
+        description: "Please fill in all required fields",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setLoading(true);
+    
+    try {
+      const staffData = {
+        name: formData.name.trim(),
+        role: formData.role.trim(),
+        department: formData.department.trim(),
+        email: formData.email.trim() || undefined,
+        phone: formData.phone.trim() || undefined,
+        bio: formData.bio.trim(),
+        photo: formData.photo.trim() || '/images/team/default.jpg',
+      };
+
+      const success = await staffService.create(staffData);
+      
+      if (success) {
+        toast({
+          title: "Success",
+          description: "Staff member added successfully",
+        });
+        router.push('/dashboard/staff');
+      } else {
+        toast({
+          title: "Error",
+          description: "Failed to add staff member",
+          variant: "destructive",
+        });
+      }
+    } catch (error) {
+      console.error('Create staff error:', error);
+      toast({
+        title: "Error",
+        description: "An error occurred while adding the staff member",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <DashboardLayout>
+      <div className="space-y-6">
+        {/* Header */}
+        <div className="flex items-center gap-4">
+          <Link href="/dashboard/staff">
+            <Button variant="outline" size="sm">
+              <ArrowLeft className="h-4 w-4 mr-2" />
+              Back to Staff
+            </Button>
+          </Link>
+          <h1 className="text-2xl font-bold text-gray-900">
+            Add New Staff Member
+          </h1>
+        </div>
+
+        {/* Form */}
+        <Card className="max-w-2xl">
+          <CardHeader>
+            <CardTitle>Staff Details</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="name">Full Name *</Label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => handleInputChange('name', e.target.value)}
+                    placeholder="Enter full name"
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="role">Role/Position *</Label>
+                  <Input
+                    id="role"
+                    value={formData.role}
+                    onChange={(e) => handleInputChange('role', e.target.value)}
+                    placeholder="Enter role or position"
+                    required
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="department">Department *</Label>
+                <Input
+                  id="department"
+                  value={formData.department}
+                  onChange={(e) => handleInputChange('department', e.target.value)}
+                  placeholder="Enter department"
+                  required
+                />
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="space-y-2">
+                  <Label htmlFor="email">Email</Label>
+                  <Input
+                    id="email"
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => handleInputChange('email', e.target.value)}
+                    placeholder="Enter email address"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="phone">Phone</Label>
+                  <Input
+                    id="phone"
+                    value={formData.phone}
+                    onChange={(e) => handleInputChange('phone', e.target.value)}
+                    placeholder="Enter phone number"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="bio">Bio/Description</Label>
+                <Textarea
+                  id="bio"
+                  value={formData.bio}
+                  onChange={(e) => handleInputChange('bio', e.target.value)}
+                  placeholder="Enter staff member bio or description"
+                  rows={4}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="experience">Experience</Label>
+                <Textarea
+                  id="experience"
+                  value={formData.experience}
+                  onChange={(e) => handleInputChange('experience', e.target.value)}
+                  placeholder="Enter experience or qualifications"
+                  rows={3}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <Label htmlFor="photo">Profile Photo URL</Label>
+                <Input
+                  id="photo"
+                  value={formData.photo}
+                  onChange={(e) => handleInputChange('photo', e.target.value)}
+                  placeholder="Enter photo URL (optional)"
+                />
+              </div>
+
+              <div className="flex gap-4 pt-4">
+                <Button type="submit" disabled={loading}>
+                  {loading ? (
+                    <div className="animate-spin h-4 w-4 border border-white border-t-transparent rounded-full mr-2" />
+                  ) : (
+                    <Save className="h-4 w-4 mr-2" />
+                  )}
+                  Add Staff Member
+                </Button>
+                <Link href="/dashboard/staff">
+                  <Button type="button" variant="outline">
+                    Cancel
+                  </Button>
+                </Link>
+              </div>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    </DashboardLayout>
+  );
+}

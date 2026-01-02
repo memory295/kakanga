@@ -6,85 +6,48 @@ import PageHeader from "@/components/PageHeader";
 import { Button } from "@/components/ui/button";
 import { MapPin, Clock, Briefcase, ArrowRight } from "lucide-react";
 import clsx from 'clsx';
-
-const vacancies = [
-  {
-    title: "Civil Engineer",
-    location: "Lilongwe",
-    type: "Full-time",
-    department: "Engineering",
-    description: "We are looking for an experienced Civil Engineer to join our team and oversee construction projects from conception to completion.",
-    requirements: [
-      "Bachelor's degree in Civil Engineering",
-      "5+ years experience in construction",
-      "Professional registration preferred",
-      "Strong project management skills",
-    ],
-  },
-  {
-    title: "Site Supervisor",
-    location: "Blantyre",
-    type: "Full-time",
-    department: "Operations",
-    description: "Seeking a skilled Site Supervisor to manage daily construction activities and ensure project milestones are met safely and efficiently.",
-    requirements: [
-      "Diploma in Construction or related field",
-      "3+ years supervisory experience",
-      "Knowledge of safety regulations",
-      "Strong leadership abilities",
-    ],
-  },
-  {
-    title: "Heavy Equipment Operator",
-    location: "Various Locations",
-    type: "Full-time",
-    department: "Operations",
-    description: "Experienced heavy equipment operators needed for excavators, graders, and bulldozers across multiple project sites.",
-    requirements: [
-      "Valid heavy equipment license",
-      "3+ years operating experience",
-      "Good safety record",
-      "Willingness to travel",
-    ],
-  },
-  {
-    title: "Quantity Surveyor",
-    location: "Lilongwe",
-    type: "Full-time",
-    department: "Finance",
-    description: "Looking for a detail-oriented Quantity Surveyor to manage project costs and prepare accurate bills of quantities.",
-    requirements: [
-      "Degree in Quantity Surveying",
-      "Professional certification",
-      "Experience with construction software",
-      "Strong analytical skills",
-    ],
-  },
-];
+import { useVacancies } from '@/hooks/use-data';
 
 export default function VacanciesPage() {
-  const { ref: headerRef, inView: headerInView } = useInView<HTMLDivElement>({ 
-    threshold: 0.2, 
-    rootMargin: '0px 0px -10% 0px', 
-    once: true 
-  });
+  const { ref: headerRef, inView: headerInView } = useInView<HTMLDivElement>({ threshold: 0.3, once: true });
+  const { ref: vacancyRef, inView: vacancyInView } = useInView<HTMLDivElement>({ threshold: 0.1, once: true });
+  const { ref: generalRef, inView: generalInView } = useInView<HTMLDivElement>({ threshold: 0.3, once: true });
   
-  const { ref: vacancyRef, inView: vacancyInView } = useInView<HTMLDivElement>({ 
-    threshold: 0.1, 
-    rootMargin: '0px 0px -5% 0px', 
-    once: true 
-  });
+  const { vacancies, loading, error } = useVacancies();
 
-  const { ref: generalRef, inView: generalInView } = useInView<HTMLDivElement>({ 
-    threshold: 0.3, 
-    rootMargin: '0px 0px -10% 0px', 
-    once: true 
-  });
+  if (loading) {
+    return (
+      <Layout>
+        <PageHeader
+          title="Join Our Team"
+        />
+        <div className="section-padding">
+          <div className="container-wide">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto"></div>
+              <p className="mt-6 text-gray-600">Loading vacancies...</p>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (error) {
+    console.error('Vacancies page error:', error);
+    // Component will still render with empty state or cached data
+  }
+
+  // Filter for active vacancies only
+  const activeVacancies = vacancies.filter(vacancy => vacancy.isActive);
 
   return (
     <Layout>
-      <PageHeader title="Vacancies" />
-      
+      <PageHeader
+        title="Join Our Team"
+      />
+
+      {/* Current Openings */}
       <section className="section-padding">
         <div className="container-wide">
           <div 
@@ -103,11 +66,11 @@ export default function VacanciesPage() {
             </p>
           </div>
 
-          {vacancies.length > 0 ? (
+          {activeVacancies.length > 0 ? (
             <div ref={vacancyRef} className="space-y-6">
-              {vacancies.map((vacancy, index) => (
+              {activeVacancies.map((vacancy, index) => (
                 <div 
-                  key={index}
+                  key={vacancy.id}
                   className={clsx(
                     "bg-white/30 hover:bg-white/60 rounded-lg p-6 md:p-8 transition-all duration-500 border border-gray-200 hover:shadow-sm transform",
                     vacancyInView 
@@ -136,43 +99,30 @@ export default function VacanciesPage() {
                           <Briefcase className="w-4 h-4" />
                           {vacancy.department}
                         </span>
+                        {vacancy.applicationDeadline && (
+                          <span className="text-red-600 font-medium">
+                            Apply by: {vacancy.applicationDeadline.toLocaleDateString()}
+                          </span>
+                        )}
                       </div>
                       <p className="body-base mb-4">
                         {vacancy.description}
                       </p>
                       <div>
                         <h4 className="font-semibold mb-2">Requirements:</h4>
-                        <ul className="grid md:grid-cols-2 gap-2">
+                        <ul className="space-y-1">
                           {vacancy.requirements.map((req, idx) => (
-                            <li key={idx} className={clsx(
-                              "flex items-center gap-2 body-small transition-all duration-300 ease-out",
-                              vacancyInView 
-                                ? `opacity-100 translate-x-0 delay-[${(index * 150) + (idx * 50) + 200}ms]` 
-                                : 'opacity-0 translate-x-4'
-                            )}
-                            style={{
-                              transitionDelay: vacancyInView ? `${(index * 150) + (idx * 50) + 400}ms` : '0ms'
-                            }}>
-                              <div className="w-1.5 h-1.5 bg-header rounded-full" />
+                            <li key={idx} className="flex items-start gap-2 body-small">
+                              <span className="w-1.5 h-1.5 bg-primary rounded-full mt-2 shrink-0"></span>
                               {req}
                             </li>
                           ))}
                         </ul>
                       </div>
                     </div>
-                    <div className="lg:flex-shrink-0">
-                      <Button 
-                        className={clsx(
-                          "gap-2 w-full lg:w-auto transition-all duration-500 ease-out transform hover:scale-105",
-                          vacancyInView 
-                            ? `opacity-100 translate-y-0 delay-[${(index * 150) + 300}ms]` 
-                            : 'opacity-0 translate-y-4'
-                        )}
-                        style={{
-                          transitionDelay: vacancyInView ? `${(index * 150) + 500}ms` : '0ms'
-                        }}
-                      >
-                        Apply Now <ArrowRight className="w-4 h-4" />
+                    <div className="lg:shrink-0">
+                      <Button className="w-full lg:w-auto">
+                        Apply Now
                       </Button>
                     </div>
                   </div>
@@ -180,7 +130,7 @@ export default function VacanciesPage() {
               ))}
             </div>
           ) : (
-            <div className={clsx(
+            <div ref={vacancyRef} className={clsx(
               "text-center py-16 bg-muted/50 rounded-lg transition-all duration-700 ease-out",
               vacancyInView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             )}>

@@ -4,36 +4,30 @@ import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { useInView } from '@/hooks/use-in-view';
-
-const services = [
-  {
-    title: 'House Design and Construction',
-    description:
-      'Professional design and construction services. We transform your plans into reality with precision, maintaining all features and dimensions as specified.',
-    image: '/images/house2.jpg',
-  },
-  {
-    title: 'Civil Works',
-    description:
-      'Installing culverts for drainage, reshaping surfaces, and building bridges. We improve roads for better access and reduced maintenance.',
-    image: '/images/rehab.jpg',
-  },
-  {
-    title: 'Prefabricated Structures',
-    description:
-      'Professional installation of prefab buildings and steel warehouses. Quick assembly with factory-made components for fast, durable construction.',
-    image: '/images/van.jpg',
-  },
-  {
-    title: 'Supply of Construction Materials',
-    description:
-      'End-to-end import solutions for prefabricated structures and materials from China. Quality assurance with timely delivery guaranteed.',
-    image: '/images/IMG_20221019_173829.jpg',
-  },
-];
+import { useServices } from '@/hooks/use-data';
 
 const Services = () => {
   const { ref, inView } = useInView({ threshold: 0.1, once: true });
+  const { services, loading, error } = useServices();
+
+  if (loading) {
+    return (
+      <section id="services" className="section-padding bg-background">
+        <div className="container-wide">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading services...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    console.error('Services error:', error);
+    // Component will still render with empty state or cached data
+  }
+
   return (
     <section ref={ref as any} id="services" className={`section-padding bg-background transition-all duration-700 ease-out ${inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
       <div className="container-wide">
@@ -50,39 +44,43 @@ const Services = () => {
         </div>
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {services.map((service, index) => (
-            <div
-              key={service.title}
-              className="group bg-white/30 rounded-lg border border-gray-100 h-full flex flex-col"
-              style={{ animationDelay: `${index * 0.1}s` }}
+          {services.slice(0, 4).map((service, index) => (
+            <div 
+              key={service.id}
+              className="group bg-white rounded-lg p-6 shadow-sm hover:shadow-lg transition-all duration-300 border border-gray-100"
             >
-              <div className="relative h-48 overflow-hidden rounded-lg">
-                <img
-                  src={service.image}
+              <div className="aspect-video mb-4 overflow-hidden rounded-lg bg-gray-100">
+                <img 
+                  src={service.image} 
                   alt={service.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
               </div>
-              <div className="p-6 flex-1 flex flex-col">
-                <h3 className="heading-6 mb-3 group-hover:text-header transition-colors">
-                  {service.title}
-                </h3>
-                <p className="body-base mb-4 flex-1">
-                  {service.description}
-                </p>
-                <Link href="/services" className="inline-flex items-center text-header button-text hover:gap-2 transition-all">
-                  Learn More <ArrowRight className="w-3 h-3 ml-1" />
-                </Link>
-              </div>
+              <h3 className="text-lg font-semibold mb-3 group-hover:text-primary transition-colors">
+                {service.title}
+              </h3>
+              <p className="text-gray-600 text-sm mb-4 line-clamp-3">
+                {service.description}
+              </p>
+              {service.features && service.features.length > 0 && (
+                <div className="space-y-1">
+                  {service.features.slice(0, 3).map((feature, idx) => (
+                    <div key={idx} className="flex items-center text-xs text-gray-500">
+                      <div className="w-1 h-1 bg-primary rounded-full mr-2"></div>
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
           ))}
         </div>
 
         <div className="text-center mt-12">
           <Link href="/services">
-            <Button size="default" className="gap-2">
-              View All Services <ArrowRight className="w-3 h-3" />
+            <Button className="gap-2 group">
+              View All Services
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
           </Link>
         </div>

@@ -1,31 +1,14 @@
 'use client';
 
+import { useInView } from '@/hooks/use-in-view';
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
-import { useInView } from "@/hooks/use-in-view";
+import { useServices } from '@/hooks/use-data';
 
-// Animation components
-const AnimatedSection = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => {
-  const { ref, inView } = useInView({ threshold: 0.1, once: false });
-  
-  return (
-    <div 
-      ref={ref as any}
-      className={`transition-all duration-700 ease-out ${
-        inView ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-      }`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {children}
-    </div>
-  );
-};
-
-const AnimatedServiceCard = ({ children, index }: { children: React.ReactNode; index: number }) => {
-  const { ref, inView } = useInView({ threshold: 0.1, once: false });
+const AnimatedSection = ({ children, index = 0 }: { children: React.ReactNode; index?: number }) => {
+  const { ref, inView } = useInView({ threshold: 0.1, once: true });
   
   return (
     <div 
@@ -40,117 +23,103 @@ const AnimatedServiceCard = ({ children, index }: { children: React.ReactNode; i
   );
 };
 
-const services = [
-  {
-    id: "house-design-construction",
-    title: "House Design and Construction",
-    description:
-      "We professionally design structures and construct. We also construct all kinds of designs presented to us. Trust us, we will transform your document/plan into that reality as planned without changing any feature or dimensions on the plan.",
-    image: "/images/house1.jpg",
-    features: [
-      "Architectural Design",
-      "Structural Engineering",
-      "Plan-to-Reality Execution",
-      "Quality Finishes",
-    ],
-  },
-  {
-    id: "civil-works",
-    title: "Civil Works",
-    description:
-      "Installing culverts for drainage, reshaping surfaces for smooth travel, and building small bridges for safe crossings — improving roads for better access and less maintenance.",
-    image: "/images/image2.jpg",
-    features: [
-      "Culvert Installation",
-      "Surface Reshaping",
-      "Bridge Construction",
-      "Drainage Systems",
-    ],
-  },
-  {
-    id: "land-leveling",
-    title: "Land Leveling & Grading",
-    description:
-      "Professional land leveling and grading services to prepare your construction site. We ensure optimal drainage and foundation preparation for all types of construction projects.",
-    image: "/images/IMG_20221019_173847.jpg",
-    features: [
-      "Site Preparation",
-      "Drainage Solutions",
-      "Foundation Grading",
-      "Soil Compaction",
-    ],
-  },
-];
-
 export default function ServicesPage() {
+  const { services, loading, error } = useServices();
+
+  if (loading) {
+    return (
+      <Layout>
+        <PageHeader
+          title="Our Services"
+        />
+        <div className="section-padding">
+          <div className="container-wide">
+            <div className="text-center">
+              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto"></div>
+              <p className="mt-6 text-gray-600">Loading services...</p>
+            </div>
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
+  if (error) {
+    console.error('Services page error:', error);
+    // Component will still render with empty state or cached data
+  }
+
   return (
     <Layout>
-      <PageHeader 
+      <PageHeader
         title="Our Services"
       />
-      
+
       {/* Services Grid */}
       <section className="section-padding">
         <div className="container-wide">
-          <AnimatedSection>
-            <div className="text-center mb-12">
-              <span className="caption text-header mb-2 block">
-                What We Offer
-              </span>
-              <h2 className="heading-4 mb-4">
-                Comprehensive Construction & Engineering Solutions
-              </h2>
-              <p className="body-base max-w-3xl mx-auto">
-                From initial design to project completion, we provide full-service 
-                construction and engineering solutions tailored to meet your specific needs.
-              </p>
-            </div>
-          </AnimatedSection>
+          <div className="text-center mb-12">
+            <span className="caption text-header mb-2 block">
+              What We Offer
+            </span>
+            <h2 className="heading-4 mb-4">
+              Comprehensive Construction Solutions
+            </h2>
+            <p className="body-base max-w-3xl mx-auto text-muted-foreground">
+              From initial design to final construction, we provide end-to-end solutions 
+              that ensure your project is completed on time, within budget, and to the highest standards.
+            </p>
+          </div>
 
-          <div className="grid gap-8">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-2">
             {services.map((service, index) => (
-              <AnimatedSection key={service.id} delay={index * 200}>
-                <AnimatedServiceCard index={index}>
-                  <div 
-                    className={`grid lg:grid-cols-2 gap-8 items-center p-6 ${
-                      index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
-                    }`}
-                  >
-                    <div className={index % 2 === 1 ? 'lg:col-start-2' : ''}>
-                      <div className="overflow-hidden rounded-lg shadow-md">
-                        <img
-                          src={service.image}
-                          alt={service.title}
-                          className="w-full h-64 lg:h-80 object-cover transition-transform duration-300 group-hover:scale-110"
-                        />
-                      </div>
-                    </div>
-                
-                <div className={index % 2 === 1 ? 'lg:col-start-1' : ''}>
-                  <h3 className="heading-4 mb-4">{service.title}</h3>
-                  <p className="body-base mb-6">{service.description}</p>
-                  
-                  <div className="grid grid-cols-2 gap-3 mb-6">
-                    {service.features.map((feature, featureIndex) => (
-                      <div key={featureIndex} className="flex items-center space-x-2">
-                        <div className="w-2 h-2 bg-header rounded-full"></div>
-                        <span className="body-small text-foreground">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-                  
-                  <Link href="/contact">
-                    <Button className="group">
-                      Get Quote
-                      <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
-                    </Button>
-                  </Link>
+              <AnimatedSection key={service.id} index={index}>
+                <div className="overflow-hidden rounded-t-lg">
+                  <img
+                    src={service.image}
+                    alt={service.title}
+                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
-              </div>
-            </AnimatedServiceCard>
-          </AnimatedSection>
+                <div className="p-8">
+                  <h3 className="heading-5 mb-4 group-hover:text-primary transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="body-base text-muted-foreground mb-6 leading-relaxed">
+                    {service.description}
+                  </p>
+                  
+                  {service.features && service.features.length > 0 && (
+                    <div>
+                      <h4 className="font-semibold text-foreground mb-3">Key Features:</h4>
+                      <ul className="grid grid-cols-2 gap-2">
+                        {service.features.map((feature, idx) => (
+                          <li key={idx} className="flex items-center text-sm text-muted-foreground">
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full mr-3 shrink-0"></div>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </AnimatedSection>
             ))}
           </div>
+
+          {services.length === 0 && (
+            <div className="text-center py-16">
+              <div className="text-gray-400 mb-4">
+                <svg className="w-16 h-16 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                </svg>
+              </div>
+              <h3 className="text-lg font-semibold text-gray-900 mb-2">No services available</h3>
+              <p className="text-gray-600">
+                Our services information is currently being updated. Please check back soon.
+              </p>
+            </div>
+          )}
         </div>
       </section>
 

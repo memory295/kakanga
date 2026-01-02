@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
+import TeamSection from "@/components/TeamSection";
 import { Target, Eye, Users, Award, CheckCircle, ChevronLeft, ChevronRight, Linkedin, Play, Pause } from "lucide-react";
 import { AspectRatio } from "@/components/ui/aspect-ratio";
 
@@ -241,57 +242,7 @@ export default function AboutPage() {
       </section>
 
       {/* Our Team */}
-      <section id="our-team" className="section-padding bg-section-alt scroll-mt-24">
-        <div className="container-wide">
-          <div className="text-center mb-12">
-            <span className="caption text-header mb-2 block">Our Team</span>
-            <h2 className="heading-3 font-heading mb-4">Meet the Leadership</h2>
-            <p className="body-base max-w-2xl mx-auto">Experienced professionals leading projects with integrity and excellence.</p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { name: 'STEVEN KABAGHE', role: 'Managing Director', photo: '/images/team/steven.jpg' },
-              { name: 'KONDWANI MWAFULIWA', role: 'Marketing Manager', photo: '/images/team/kondwani.jpg' },
-              { name: 'ARTHUR MWAMBILA', role: 'Architecture', photo: '/images/team/arthur.jpg' },
-              { name: 'CAROLINE MITHI', role: 'Land Surveyor', photo: '/images/team/caroline.jpg' },
-              { name: 'INNOCENT MAPSYERE', role: 'Site Agent', photo: '/images/team/innocent.jpg' },
-            ].map((m) => {
-              return (
-                <div key={m.name} className="group rounded-2xl overflow-hidden border border-gray-100 bg-card shadow-sm hover:shadow-md transition-shadow">
-                  <div className="relative">
-                    <AspectRatio ratio={4/3}>
-                      <img
-                        src={m.photo}
-                        alt={m.name}
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
-                        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = 'none'; }}
-                      />
-                    </AspectRatio>
-                    <div className="absolute top-3 left-3 inline-flex items-center gap-1 rounded-full bg-white/80 backdrop-blur px-2 py-0.5 text-[10px] font-semibold text-header border border-white/70">
-                      Team
-                    </div>
-                  </div>
-                  <div className="p-4">
-                    <div className="flex items-start justify-between gap-3">
-                      <div>
-                        <h3 className="heading-6 text-foreground line-clamp-1">{m.name}</h3>
-                        <p className="body-small">{m.role}</p>
-                      </div>
-                      <a
-                        href="#"
-                        aria-label="LinkedIn"
-                        className="inline-flex items-center justify-center w-8 h-8 rounded-full border border-gray-200 text-muted-foreground hover:text-header hover:border-header transition-colors flex-shrink-0"
-                      >
-                        <Linkedin className="w-4 h-4" />
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </section>
+      <TeamSection />
     </Layout>
     </>
   );

@@ -58,10 +58,70 @@
       "namedRegex": "^/contact(?:/)?$"
     },
     {
+      "page": "/dashboard",
+      "regex": "^/dashboard(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard(?:/)?$"
+    },
+    {
+      "page": "/dashboard/projects",
+      "regex": "^/dashboard/projects(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/projects(?:/)?$"
+    },
+    {
+      "page": "/dashboard/projects/new",
+      "regex": "^/dashboard/projects/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/projects/new(?:/)?$"
+    },
+    {
+      "page": "/dashboard/services",
+      "regex": "^/dashboard/services(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/services(?:/)?$"
+    },
+    {
+      "page": "/dashboard/services/new",
+      "regex": "^/dashboard/services/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/services/new(?:/)?$"
+    },
+    {
+      "page": "/dashboard/staff",
+      "regex": "^/dashboard/staff(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/staff(?:/)?$"
+    },
+    {
+      "page": "/dashboard/staff/new",
+      "regex": "^/dashboard/staff/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/staff/new(?:/)?$"
+    },
+    {
+      "page": "/dashboard/vacancies",
+      "regex": "^/dashboard/vacancies(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/vacancies(?:/)?$"
+    },
+    {
+      "page": "/dashboard/vacancies/new",
+      "regex": "^/dashboard/vacancies/new(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/dashboard/vacancies/new(?:/)?$"
+    },
+    {
       "page": "/equipment",
       "regex": "^/equipment(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/equipment(?:/)?$"
+    },
+    {
+      "page": "/login",
+      "regex": "^/login(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/login(?:/)?$"
     },
     {
       "page": "/policy",

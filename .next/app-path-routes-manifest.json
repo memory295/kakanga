@@ -1,14 +1,24 @@
 {
   "/_not-found/page": "/_not-found",
+  "/dashboard/page": "/dashboard",
+  "/dashboard/projects/new/page": "/dashboard/projects/new",
   "/about/page": "/about",
+  "/dashboard/projects/page": "/dashboard/projects",
   "/contact/page": "/contact",
+  "/dashboard/services/page": "/dashboard/services",
+  "/dashboard/services/new/page": "/dashboard/services/new",
+  "/dashboard/staff/new/page": "/dashboard/staff/new",
+  "/dashboard/staff/page": "/dashboard/staff",
+  "/dashboard/vacancies/new/page": "/dashboard/vacancies/new",
+  "/dashboard/vacancies/page": "/dashboard/vacancies",
+  "/login/page": "/login",
   "/equipment/page": "/equipment",
   "/page": "/",
-  "/profile-extract/page": "/profile-extract",
   "/policy/page": "/policy",
-  "/profile/page": "/profile",
+  "/profile-extract/page": "/profile-extract",
   "/projects/page": "/projects",
-  "/terms/page": "/terms",
+  "/profile/page": "/profile",
   "/services/page": "/services",
-  "/vacancies/page": "/vacancies"
+  "/vacancies/page": "/vacancies",
+  "/terms/page": "/terms"
 }

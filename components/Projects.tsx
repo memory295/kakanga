@@ -4,90 +4,35 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Button } from './ui/button';
 import { ArrowRight } from 'lucide-react';
+import { useProjects } from '@/hooks/use-data';
 
 const categories = ['All', 'Construction', 'Fabrication', 'Rehabilitation', 'Installation'];
 
-const projects = [
-  {
-    title: 'Construction of Secondary School Hall',
-    category: 'Construction',
-    client: 'Karonga CDSS',
-    referenceNumber: '',
-    location: 'Karonga Town',
-    image: "/images/house1.jpg",
-  },
-  {
-    title: 'Design and Fabrication of 2×40ft Containers into Warehouse',
-    category: 'Fabrication',
-    client: 'Banja Lamsogolo, Box 1854, Lilongwe, Malawi',
-    referenceNumber: 'PO-BLM-00773 & PO-BLM-00994',
-    location: 'Banja House, Head Office, Along Paul Kagame Road, Lilongwe',
-    image: "/images/van.jpg",
-  },
-  {
-    title: 'Residential House Maintenance/Rehabilitation',
-    category: 'Rehabilitation',
-    client: 'CCAP General Assembly, P.O. Box 30398, Capital City, Lilongwe 3',
-    referenceNumber: 'House Rehabilitation Plot No:47/2/134',
-    location: 'Area 47 Sector 2, Lilongwe',
-    image: "/images/rehab.jpg",
-  },
-  {
-    title: 'Residential House Maintenance/Rehabilitation (Mzuzu)',
-    category: 'Rehabilitation',
-    client: 'Ministry of Lands Private Bag 311, Capital City, Lilongwe 3, Malawi',
-    referenceNumber: '130/L/PH/MZ/120',
-    location: 'Chimalilo Area in Mzuzu City',
-    image: "/images/house2.jpg",
-  },
-  {
-    title: 'Installation of Prefabricated Structure and Security Fence',
-    category: 'Installation',
-    client: 'Department of Disaster Management Affairs (DoDMA)',
-    referenceNumber: '090/IPDC/DoDMA/2023-24/009',
-    location: 'Karonga District Council and Salima District Council',
-    image: "/images/image2.jpg",
-  },
-  {
-    title: 'Container Offices Re-location',
-    category: 'Installation',
-    client: 'Malawi Bureau of Standards P.O Box 946, Blantyre',
-    referenceNumber: 'MBS-SONGWE-RELOC/09/2024',
-    location: 'Songwe Border Post, Karonga',
-    image: "/images/IMG_20221019_173829.jpg",
-  },
-  {
-    title: 'Supply Fabrication of Car Van into Office',
-    category: 'Fabrication',
-    client: 'Katsuka Investments - Blantyre',
-    referenceNumber: '',
-    location: 'Nancholi, Blantyre',
-    image: '/images/IMG_20221019_173847.jpg',
-  },
-  {
-    title: 'Supply and Fabrication of Shipping Container into Office',
-    category: 'Fabrication',
-    client: 'Malawi Bureau of Standards P.O Box 946, Blantyre',
-    referenceNumber: 'LPO 027044 and LPO 027258',
-    location: 'Songwe Border Post, Karonga',
-    image: '/images/IMG_20240713_203357_822.jpg',
-  },
-  {
-    title: 'Construction of Community Library',
-    category: 'Construction',
-    client: 'Change Her World (NGO)',
-    referenceNumber: '',
-    location: 'Uliwa, Chilumba in Karonga',
-    image: '/images/IMG_20240713_203404_727.jpg',
-  },
-];
-
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState('All');
+  const { projects, loading, error } = useProjects();
 
   const filteredProjects = activeCategory === 'All'
     ? projects
     : projects.filter(project => project.category === activeCategory);
+
+  if (loading) {
+    return (
+      <section id="projects" className="section-padding bg-section-alt">
+        <div className="container-wide">
+          <div className="text-center">
+            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+            <p className="mt-4 text-gray-600">Loading projects...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  if (error) {
+    console.error('Projects error:', error);
+    // Component will still render with empty state or cached data
+  }
 
   return (
     <section id="projects" className="section-padding bg-section-alt">
@@ -96,57 +41,60 @@ const Projects = () => {
           <span className="text-header font-semibold text-sm uppercase tracking-wider mb-2 block">
             Our Portfolio
           </span>
-          <h2 className="heading-3 text-foreground mb-4">
-            Explore a selection of our remarkable projects
-          </h2>
+          <h2 className="heading-3 font-heading mb-4">Recent Projects</h2>
+          <p className="body-base max-w-2xl mx-auto">
+            Explore our diverse portfolio of successful construction projects across Malawi, 
+            showcasing our expertise and commitment to excellence.
+          </p>
         </div>
 
         {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-2 mb-8">
           {categories.map((category) => (
-            <Button
+            <button
               key={category}
-              variant={activeCategory === category ? 'default' : 'outline'}
-              size="sm"
-              className={`min-w-[100px]`}
               onClick={() => setActiveCategory(category)}
+              className={`px-6 py-2 text-sm font-medium rounded-full transition-all ${
+                activeCategory === category
+                  ? 'bg-primary text-primary-foreground shadow-md'
+                  : 'bg-white text-gray-600 hover:bg-primary/5 hover:text-primary border border-gray-200'
+              }`}
             >
               {category}
-            </Button>
+            </button>
           ))}
         </div>
 
         {/* Projects Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredProjects.map((project) => (
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+          {filteredProjects.slice(0, 6).map((project) => (
             <div
-              key={project.title}
-              className="group relative overflow-hidden rounded-lg border border-gray-100 bg-white"
+              key={project.id}
+              className="bg-white rounded-lg shadow-sm hover:shadow-lg transition-shadow overflow-hidden group"
             >
-              <div className="relative h-48">
+              <div className="relative aspect-video overflow-hidden bg-gray-200">
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-foreground/80 via-foreground/20 to-transparent" />
-                <div className="absolute bottom-0 left-0 right-0 p-4">
-                  <span className="inline-block px-2 py-1 bg-header text-header-foreground text-xs font-medium rounded-full mb-2">
+                <div className="absolute top-4 left-4">
+                  <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-primary text-primary-foreground">
                     {project.category}
                   </span>
-                  <h3 className="font-heading font-semibold text-sm text-primary-foreground leading-tight">
-                    {project.title}
-                  </h3>
                 </div>
               </div>
               
-              {/* Project Details */}
-              <div className="p-4 space-y-3">
+              <div className="p-6">
+                <h3 className="text-lg font-semibold text-foreground mb-4 leading-tight">
+                  {project.title}
+                </h3>
+                
                 <div>
                   <h4 className="font-semibold text-sm text-foreground mb-1">Client</h4>
-                  <p className="text-xs text-muted-foreground leading-relaxed">{project.client}</p>
+                  <p className="text-xs text-muted-foreground mb-3">{project.client}</p>
                 </div>
-                
+
                 {project.referenceNumber && (
                   <div>
                     <h4 className="font-semibold text-sm text-foreground mb-1">Reference</h4>
