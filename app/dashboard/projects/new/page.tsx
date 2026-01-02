@@ -25,16 +25,37 @@ export default function NewProject() {
     location: '',
     client: '',
     referenceNumber: '',
-    image: '',
   });
-  const [imageFile, setImageFile] = useState<File | null>(null);
-  const [imagePreview, setImagePreview] = useState<string | null>(null);
+  const [imageFiles, setImageFiles] = useState<File[]>([]);
+  const [imagePreviews, setImagePreviews] = useState<string[]>([]);
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({
       ...prev,
       [field]: value
     }));
+  };
+
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = Array.from(e.target.files || []);
+    if (files.length === 0) return;
+
+    setImageFiles(files);
+    
+    // Create preview URLs
+    const previews = files.map(file => URL.createObjectURL(file));
+    setImagePreviews(previews);
+  };
+
+  const removeImage = (index: number) => {
+    const newFiles = imageFiles.filter((_, i) => i !== index);
+    const newPreviews = imagePreviews.filter((_, i) => i !== index);
+    
+    // Revoke the URL to free memory
+    URL.revokeObjectURL(imagePreviews[index]);
+    
+    setImageFiles(newFiles);
+    setImagePreviews(newPreviews);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -52,10 +73,18 @@ export default function NewProject() {
     setLoading(true);
     
     try {
-      let uploadedUrl: string | undefined;
-      if (imageFile) {
-        uploadedUrl = await uploadFile(imageFile, 'projects');
+      let uploadedUrls: string[] = [];
+      
+      // Upload all selected images
+      if (imageFiles.length > 0) {
+        for (const file of imageFiles) {
+          const url = await uploadFile(file, 'projects');
+          if (url) uploadedUrls.push(url);
+        }
       }
+
+      // Use uploaded URLs or default image
+      const projectImages = uploadedUrls.length > 0 ? uploadedUrls : ['/images/projects/default.jpg'];
 
       const projectData = {
         title: formData.title.trim(),
@@ -64,7 +93,7 @@ export default function NewProject() {
         location: formData.location.trim(),
         client: formData.client.trim(),
         referenceNumber: formData.referenceNumber.trim(),
-        image: (uploadedUrl || formData.image.trim() || '/images/projects/default.jpg'),
+        image: projectImages.length === 1 ? projectImages[0] : projectImages,
       };
 
       const success = await projectsService.create(projectData);
@@ -74,6 +103,10 @@ export default function NewProject() {
           title: "Success",
           description: "Project created successfully",
         });
+        
+        // Clean up preview URLs
+        imagePreviews.forEach(url => URL.revokeObjectURL(url));
+        
         router.push('/dashboard/projects');
       } else {
         toast({
@@ -189,31 +222,52 @@ export default function NewProject() {
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <Label htmlFor="image">Upload Image</Label>
-                  <Input
-                    id="image"
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => {
-                      const file = e.target.files?.[0] || null;
-                      setImageFile(file);
-                      if (file) {
-                        const url = URL.createObjectURL(file);
-                        setImagePreview(url);
-                      } else {
-                        setImagePreview(null);
-                      }
-                    }}
-                  />
-                  {imagePreview && (
-                    <img
-                      src={imagePreview}
-                      alt="Selected preview"
-                      className="mt-2 h-32 w-auto rounded border"
-                    />
-                  )}
-                </div>
+              <div className="space-y-2 col-span-2">
+                <Label htmlFor="images">Project Images</Label>
+                <Input
+                  id="images"
+                  type="file"
+                  accept="image/*"
+                  multiple
+                  onChange={handleImageUpload}
+                  className="file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:bg-primary file:text-white hover:file:bg-primary/90"
+                />
+                <p className="text-sm text-gray-500">
+                  Select multiple images for this project. First image will be used as the main image.
+                </p>
+                
+                {/* Image Previews */}
+                {imagePreviews.length > 0 && (
+                  <div className="mt-4">
+                    <Label className="text-sm font-medium">Preview ({imagePreviews.length} images)</Label>
+                    <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-2">
+                      {imagePreviews.map((preview, index) => (
+                        <div key={index} className="relative group">
+                          <div className="aspect-video overflow-hidden rounded-lg border-2 border-gray-200">
+                            <img
+                              src={preview}
+                              alt={`Preview ${index + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() => removeImage(index)}
+                            className="absolute -top-2 -right-2 bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs hover:bg-red-600 transition-colors"
+                          >
+                            ×
+                          </button>
+                          {index === 0 && (
+                            <div className="absolute top-2 left-2 bg-primary text-white px-2 py-1 rounded text-xs">
+                              Main
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
               </div>
 
               <div className="flex gap-4 pt-4">

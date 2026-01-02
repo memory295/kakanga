@@ -6,8 +6,11 @@ export interface Project {
   client: string;
   referenceNumber: string;
   location: string;
-  image: string;
+  image: string | string[];
   description?: string;
+  completionDate?: Date;
+  projectValue?: string;
+  keyFeatures?: string[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -66,8 +69,11 @@ export interface ProjectFormData {
   client: string;
   referenceNumber: string;
   location: string;
-  image: string;
+  image: string | string[];
   description?: string;
+  completionDate?: Date;
+  projectValue?: string;
+  keyFeatures?: string[];
 }
 
 export interface ServiceFormData {

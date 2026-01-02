@@ -71,33 +71,34 @@ export default function ProjectsPage() {
           {/* Projects Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project) => (
-              <Card key={project.id} className="group overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md">
-                <div className="aspect-video overflow-hidden bg-gray-100">
-                  <img
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
-                </div>
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-2 mb-3">
-                    <Badge variant="secondary" className="bg-primary/10 text-primary border-0">
-                      {project.category}
-                    </Badge>
+              <Link key={project.id} href={`/projects/${project.id}`}>
+                <Card className="group overflow-hidden hover:shadow-xl transition-all duration-300 border-0 shadow-md cursor-pointer">
+                  <div className="aspect-video overflow-hidden bg-gray-100">
+                    <img
+                      src={Array.isArray(project.image) ? project.image[0] : project.image}
+                      alt={project.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                    />
                   </div>
-                  
-                  <h3 className="text-xl font-semibold text-foreground mb-4 line-clamp-2 group-hover:text-primary transition-colors">
-                    {project.title}
-                  </h3>
-                  
-                  <div className="space-y-3 text-sm">
-                    <div>
-                      <span className="font-medium text-gray-900">Client:</span>
-                      <p className="text-gray-600 mt-1">{project.client}</p>
+                  <CardContent className="p-6">
+                    <div className="flex items-center gap-2 mb-3">
+                      <Badge variant="secondary" className="bg-primary/10 text-primary border-0">
+                        {project.category}
+                      </Badge>
                     </div>
                     
-                    <div>
-                      <span className="font-medium text-gray-900">Location:</span>
+                    <h3 className="text-xl font-semibold text-foreground mb-4 line-clamp-2 group-hover:text-primary transition-colors">
+                      {project.title}
+                    </h3>
+                    
+                    <div className="space-y-3 text-sm">
+                      <div>
+                        <span className="font-medium text-gray-900">Client:</span>
+                        <p className="text-gray-600 mt-1">{project.client}</p>
+                      </div>
+                      
+                      <div>
+                        <span className="font-medium text-gray-900">Location:</span>
                       <p className="text-gray-600 mt-1">{project.location}</p>
                     </div>
                     
@@ -121,6 +122,7 @@ export default function ProjectsPage() {
                   </div>
                 </CardContent>
               </Card>
+              </Link>
             ))}
           </div>
 
