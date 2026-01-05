@@ -17,13 +17,14 @@ export async function generateStaticParams() {
 }
 
 interface ProjectDetailPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;
 }
 
-export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  const projectIndex = parseInt(params.id.replace('default-', ''));
+export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+  const { id } = await params;
+  const projectIndex = parseInt(id.replace('default-', ''));
   const project = defaultProjects[projectIndex];
 
   if (!project) {
@@ -32,7 +33,7 @@ export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
 
   // Convert default project to match Project interface
   const projectWithId = {
-    id: params.id,
+    id: id,
     ...project,
     createdAt: new Date(),
     updatedAt: new Date(),
