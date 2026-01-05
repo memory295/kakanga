@@ -10,6 +10,14 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ChevronLeft, Calendar, MapPin, User, Building2 } from "lucide-react";
 import Link from "next/link";
 import { useProjects } from '@/hooks/use-data';
+import { defaultProjects } from '@/lib/default-data';
+
+// Generate static params for all default projects
+export async function generateStaticParams() {
+  return defaultProjects.map((_, index) => ({
+    id: `default-${index}`,
+  }));
+}
 
 export default function ProjectDetailPage() {
   const params = useParams();
