@@ -57,9 +57,9 @@ const Header = () => {
             : 'transparent',
         }}
       >
-        <div className={`container-wide flex justify-between items-center px-4 ${isScrolled ? 'py-2' : 'py-3'}`}>
+        <div className={`container-wide flex justify-between items-center pl-0 pr-4 ${isScrolled ? 'py-2' : 'py-3'}`}>
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3">
+          <Link href="/" className="flex items-center gap-3 pl-4">
             <div className="flex items-center">
               <img 
                 src="/images/kakangalogo.png" 
