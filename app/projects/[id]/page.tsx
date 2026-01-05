@@ -1,7 +1,3 @@
-'use client';
-
-import { useParams } from 'next/navigation';
-import { useEffect, useState } from 'react';
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import { Badge } from "@/components/ui/badge";
@@ -9,8 +5,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronLeft, Calendar, MapPin, User, Building2 } from "lucide-react";
 import Link from "next/link";
-import { useProjects } from '@/hooks/use-data';
 import { defaultProjects } from '@/lib/default-data';
+import { notFound } from 'next/navigation';
+import ProjectImageGallery from './ProjectImageGallery';
 
 // Generate static params for all default projects
 export async function generateStaticParams() {
@@ -19,60 +16,34 @@ export async function generateStaticParams() {
   }));
 }
 
-export default function ProjectDetailPage() {
-  const params = useParams();
-  const projectId = params?.id as string;
-  const { projects, loading } = useProjects();
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
-  const project = projects.find(p => p.id === projectId);
+interface ProjectDetailPageProps {
+  params: {
+    id: string;
+  };
+}
 
-  useEffect(() => {
-    setCurrentImageIndex(0);
-  }, [project]);
-
-  if (loading) {
-    return (
-      <Layout>
-        <div className="section-padding">
-          <div className="container-wide">
-            <div className="text-center">
-              <div className="animate-spin rounded-full h-16 w-16 border-b-2 border-primary mx-auto"></div>
-              <p className="mt-6 text-gray-600">Loading project details...</p>
-            </div>
-          </div>
-        </div>
-      </Layout>
-    );
-  }
+export default function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+  const projectIndex = parseInt(params.id.replace('default-', ''));
+  const project = defaultProjects[projectIndex];
 
   if (!project) {
-    return (
-      <Layout>
-        <div className="section-padding">
-          <div className="container-wide">
-            <div className="text-center py-16">
-              <h1 className="text-2xl font-bold text-gray-900 mb-4">Project Not Found</h1>
-              <p className="text-gray-600 mb-8">The project you're looking for doesn't exist or has been removed.</p>
-              <Link href="/projects">
-                <Button>
-                  <ChevronLeft className="w-4 h-4 mr-2" />
-                  Back to Projects
-                </Button>
-              </Link>
-            </div>
-          </div>
-        </div>
-      </Layout>
-    );
+    notFound();
   }
 
+  // Convert default project to match Project interface
+  const projectWithId = {
+    id: params.id,
+    ...project,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  };
+
   // Handle both single image (string) and multiple images (array)
-  const images = Array.isArray(project.image) ? project.image : [project.image];
+  const images = Array.isArray(projectWithId.image) ? projectWithId.image : [projectWithId.image];
 
   return (
     <Layout>
-      <PageHeader title={project.title} />
+      <PageHeader title={projectWithId.title} />
 
       {/* Back Navigation */}
       <section className="py-4 border-b">
@@ -91,47 +62,16 @@ export default function ProjectDetailPage() {
         <div className="container-wide">
           <div className="grid lg:grid-cols-2 gap-12">
             {/* Main Image */}
-            <div className="space-y-4">
-              <div className="aspect-video overflow-hidden rounded-lg bg-gray-100 shadow-lg">
-                <img
-                  src={images[currentImageIndex]}
-                  alt={`${project.title} - Image ${currentImageIndex + 1}`}
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              
-              {/* Image Thumbnails */}
-              {images.length > 1 && (
-                <div className="grid grid-cols-4 gap-2">
-                  {images.map((image, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setCurrentImageIndex(index)}
-                      className={`aspect-video overflow-hidden rounded-md border-2 transition-all ${
-                        index === currentImageIndex 
-                          ? 'border-primary' 
-                          : 'border-gray-200 hover:border-gray-300'
-                      }`}
-                    >
-                      <img
-                        src={image}
-                        alt={`Thumbnail ${index + 1}`}
-                        className="w-full h-full object-cover"
-                      />
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+            <ProjectImageGallery images={images} title={projectWithId.title} />
 
             {/* Project Details */}
             <div className="space-y-8">
               {/* Category Badge */}
               <div>
                 <Badge variant="secondary" className="bg-primary/10 text-primary border-0 mb-4">
-                  {project.category}
+                  {projectWithId.category}
                 </Badge>
-                <h1 className="text-3xl font-bold text-gray-900 mb-6">{project.title}</h1>
+                <h1 className="text-3xl font-bold text-gray-900 mb-6">{projectWithId.title}</h1>
               </div>
 
               {/* Project Info Cards */}
@@ -142,7 +82,7 @@ export default function ProjectDetailPage() {
                       <User className="w-5 h-5 text-primary" />
                       <div>
                         <div className="text-sm font-medium text-gray-900">Client</div>
-                        <div className="text-gray-600">{project.client}</div>
+                        <div className="text-gray-600">{projectWithId.client}</div>
                       </div>
                     </div>
                   </CardContent>
@@ -154,13 +94,13 @@ export default function ProjectDetailPage() {
                       <MapPin className="w-5 h-5 text-primary" />
                       <div>
                         <div className="text-sm font-medium text-gray-900">Location</div>
-                        <div className="text-gray-600">{project.location}</div>
+                        <div className="text-gray-600">{projectWithId.location}</div>
                       </div>
                     </div>
                   </CardContent>
                 </Card>
 
-                {project.completionDate && (
+                {projectWithId.completionDate && (
                   <Card className="border border-gray-200">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-3">
@@ -168,7 +108,7 @@ export default function ProjectDetailPage() {
                         <div>
                           <div className="text-sm font-medium text-gray-900">Completed</div>
                           <div className="text-gray-600">
-                            {new Date(project.completionDate).toLocaleDateString('en-US', {
+                            {new Date(projectWithId.completionDate).toLocaleDateString('en-US', {
                               year: 'numeric',
                               month: 'long'
                             })}
@@ -179,14 +119,14 @@ export default function ProjectDetailPage() {
                   </Card>
                 )}
 
-                {project.projectValue && (
+                {projectWithId.projectValue && (
                   <Card className="border border-gray-200">
                     <CardContent className="p-4">
                       <div className="flex items-center gap-3">
                         <Building2 className="w-5 h-5 text-primary" />
                         <div>
                           <div className="text-sm font-medium text-gray-900">Project Value</div>
-                          <div className="text-gray-600">{project.projectValue}</div>
+                          <div className="text-gray-600">{projectWithId.projectValue}</div>
                         </div>
                       </div>
                     </CardContent>
@@ -195,29 +135,29 @@ export default function ProjectDetailPage() {
               </div>
 
               {/* Reference Number */}
-              {project.referenceNumber && (
+              {projectWithId.referenceNumber && (
                 <div>
                   <h3 className="text-lg font-semibold mb-2">Reference Number</h3>
                   <p className="text-sm font-mono bg-gray-50 px-3 py-2 rounded border">
-                    {project.referenceNumber}
+                    {projectWithId.referenceNumber}
                   </p>
                 </div>
               )}
 
               {/* Description */}
-              {project.description && (
+              {projectWithId.description && (
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Project Overview</h3>
-                  <p className="text-gray-600 leading-relaxed">{project.description}</p>
+                  <p className="text-gray-600 leading-relaxed">{projectWithId.description}</p>
                 </div>
               )}
 
               {/* Key Features */}
-              {project.keyFeatures && project.keyFeatures.length > 0 && (
+              {projectWithId.keyFeatures && projectWithId.keyFeatures.length > 0 && (
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Key Features</h3>
                   <ul className="space-y-2">
-                    {project.keyFeatures.map((feature, index) => (
+                    {projectWithId.keyFeatures.map((feature, index) => (
                       <li key={index} className="flex items-start gap-3">
                         <div className="w-2 h-2 bg-primary rounded-full mt-2 shrink-0"></div>
                         <span className="text-gray-600">{feature}</span>
