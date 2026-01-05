@@ -34,7 +34,7 @@ const Footer = () => {
                 </div>
               </Link>
               <p className="text-gray-400 body-small leading-relaxed mb-4">
-                Kakanga Constructions is a leading Civil and Building Construction Company based in Malawi, registered in the UNLIMITED CATEGORY with NCIC.
+                KAKANGA CONSTRUCTIONS is a leading construction company, based in Malawi and fully registered with all legal regulatory statutory bodies like NCIC (now known as CIRA), PPDA, MRA and others.
               </p>
               <div className="flex gap-2">
                 <a href="#" className="w-9 h-9 bg-white/10 rounded-full flex items-center justify-center text-gray-400 hover:bg-primary hover:text-white transition-all">
@@ -52,48 +52,30 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Quick Links */}
+            {/* Other Links */}
             <div>
               <h4 className="font-heading font-semibold text-white text-lg mb-4 relative pb-2">
-                Quick Links
+                Other links
                 <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary"></span>
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <Link href="/" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <a href="https://cira.mw" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
-                    Home
-                  </Link>
+                    NCIC (now CIRA)
+                  </a>
                 </li>
                 <li>
-                  <Link href="/about" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <a href="https://www.mra.mw" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
-                    About Us
-                  </Link>
+                    MRA
+                  </a>
                 </li>
                 <li>
-                  <Link href="/services" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                  <a href="https://www.malawi.gov.mw" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
-                    Services
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/projects" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                    Projects
-                  </Link>
-                </li>
-                {/* <li>
-                  <Link href="/equipment" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                    Equipment
-                  </Link>
-                </li> */}
-                <li>
-                  <Link href="/vacancies" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                    Vacancies
-                  </Link>
+                    PPDA
+                  </a>
                 </li>
               </ul>
             </div>
@@ -127,13 +109,13 @@ const Footer = () => {
                     }
                   }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
-                    Land Leveling
+                    Steel works/Lubrication
                   </Link>
                 </li>
                 <li>
                   <Link href="/services" onClick={(e) => {
                     const scrollToService = () => {
-                      const element = document.getElementById('civil-works');
+                      const element = document.getElementById('prefabricated-structures');
                       if (element) {
                         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                       } else {
@@ -149,13 +131,13 @@ const Footer = () => {
                     }
                   }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
-                    Road Works
+                    Prefabricated structures Installation
                   </Link>
                 </li>
                 <li>
                   <Link href="/services" onClick={(e) => {
                     const scrollToService = () => {
-                      const element = document.getElementById('materials-supply');
+                      const element = document.getElementById('structural-construction');
                       if (element) {
                         element.scrollIntoView({ behavior: 'smooth', block: 'start' });
                       } else {
@@ -171,73 +153,7 @@ const Footer = () => {
                     }
                   }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
-                    Drilling & Blasting
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" onClick={(e) => {
-                    const scrollToService = () => {
-                      const element = document.getElementById('house-design-construction');
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      } else {
-                        setTimeout(scrollToService, 500);
-                      }
-                    };
-                    
-                    if (window.location.pathname === '/services') {
-                      e.preventDefault();
-                      scrollToService();
-                    } else {
-                      setTimeout(scrollToService, 500);
-                    }
-                  }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                    Concrete Works
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" onClick={(e) => {
-                    const scrollToService = () => {
-                      const element = document.getElementById('civil-works');
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      } else {
-                        setTimeout(scrollToService, 500);
-                      }
-                    };
-                    
-                    if (window.location.pathname === '/services') {
-                      e.preventDefault();
-                      scrollToService();
-                    } else {
-                      setTimeout(scrollToService, 500);
-                    }
-                  }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                    Earthworks
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/services" onClick={(e) => {
-                    const scrollToService = () => {
-                      const element = document.getElementById('civil-works');
-                      if (element) {
-                        element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                      } else {
-                        setTimeout(scrollToService, 500);
-                      }
-                    };
-                    
-                    if (window.location.pathname === '/services') {
-                      e.preventDefault();
-                      scrollToService();
-                    } else {
-                      setTimeout(scrollToService, 500);
-                    }
-                  }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                    Bridge Construction
+                    Structural construction
                   </Link>
                 </li>
               </ul>

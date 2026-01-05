@@ -12,7 +12,7 @@ export const metadata: Metadata = {
     default: "Kakanga Constructions - Building Malawi's Future",
     template: "%s | Kakanga Constructions"
   },
-  description: "Kakanga Constructions is a leading Civil and Building Construction Company in Malawi. We specialize in road construction, land leveling, drilling, concrete works, and civil engineering. Building with quality and integrity to move Malawi forward.",
+  description: "KAKANGA CONSTRUCTIONS is a leading construction company, based in Malawi and fully registered with all legal regulatory statutory bodies like NCIC (now known as CIRA), PPDA, MRA and others. We specialize in steel works/lubrication, prefabricated structures installation, and structural construction. Building with quality and integrity to move Malawi forward.",
   keywords: [
     "construction",
     "Malawi",
