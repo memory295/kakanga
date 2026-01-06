@@ -166,12 +166,7 @@ export const useVacancies = () => {
     try {
       setLoading(true);
       setError(null);
-      // Temporarily bypass Firebase for testing
-      // const firebaseVacancies = await Promise.race([
-      //   vacanciesService.getAll(),
-      //   timeoutPromise
-      // ]) as Vacancy[];
-      const firebaseVacancies: Vacancy[] = []; // Force empty to use default data
+      const firebaseVacancies = await vacanciesService.getAll();
       
       if (firebaseVacancies.length > 0) {
         setVacancies(firebaseVacancies);

@@ -34,6 +34,8 @@ export interface Staff {
   department?: string;
   email?: string;
   phone?: string;
+  linkedin?: string;
+  experience?: string;
   createdAt: Date;
   updatedAt: Date;
 }
@@ -46,6 +48,7 @@ export interface Vacancy {
   department: string;
   description: string;
   requirements: string[];
+  responsibilities?: string[];
   isActive: boolean;
   postedDate: Date;
   applicationDeadline?: Date;
@@ -91,6 +94,8 @@ export interface StaffFormData {
   department?: string;
   email?: string;
   phone?: string;
+  linkedin?: string;
+  experience?: string;
 }
 
 export interface VacancyFormData {
@@ -100,6 +105,7 @@ export interface VacancyFormData {
   department: string;
   description: string;
   requirements: string[];
+  responsibilities?: string[];
   isActive: boolean;
   applicationDeadline?: Date;
 }
