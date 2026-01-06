@@ -23,7 +23,7 @@ import { useAuth } from '@/contexts/auth-context';
 import { toast } from '@/hooks/use-toast';
 
 export default function ServicesDashboard() {
-  const { services, loading, error, refetch } = useServices();
+  const { services, loading, error, refetch } = useServices(true);
   const { user } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [deleting, setDeleting] = useState<string | null>(null);

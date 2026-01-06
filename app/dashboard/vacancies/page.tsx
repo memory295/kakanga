@@ -27,7 +27,7 @@ import { useAuth } from '@/contexts/auth-context';
 import { toast } from '@/hooks/use-toast';
 
 export default function VacanciesDashboard() {
-  const { vacancies, loading, error, refetch } = useVacancies();
+  const { vacancies, loading, error, refetch } = useVacancies(true);
   const { user } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedStatus, setSelectedStatus] = useState('All');

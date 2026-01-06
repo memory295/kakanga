@@ -24,7 +24,7 @@ import { useAuth } from '@/contexts/auth-context';
 import { toast } from '@/hooks/use-toast';
 
 export default function StaffDashboard() {
-  const { staff, loading, error, refetch } = useStaff();
+  const { staff, loading, error, refetch } = useStaff(true);
   const { user } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedDepartment, setSelectedDepartment] = useState('All');

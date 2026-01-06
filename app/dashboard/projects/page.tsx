@@ -24,7 +24,7 @@ import { useAuth } from '@/contexts/auth-context';
 import { toast } from '@/hooks/use-toast';
 
 export default function ProjectsDashboard() {
-  const { projects, loading, error, refetch } = useProjects();
+  const { projects, loading, error, refetch } = useProjects(true);
   const { user } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
