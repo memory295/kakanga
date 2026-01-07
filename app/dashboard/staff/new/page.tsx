@@ -54,8 +54,19 @@ export default function NewStaff() {
     
     try {
       let uploadedUrl: string | undefined;
+      
+      // Upload photo if provided
       if (photoFile) {
-        uploadedUrl = await uploadFile(photoFile, 'staff');
+        try {
+          uploadedUrl = await uploadFile(photoFile, 'staff');
+        } catch (uploadError) {
+          console.error('Photo upload error:', uploadError);
+          toast({
+            title: "Warning",
+            description: "Failed to upload photo. Continuing without photo.",
+            variant: "destructive",
+          });
+        }
       }
 
       const staffData = {
@@ -66,11 +77,13 @@ export default function NewStaff() {
         phone: formData.phone.trim() || undefined,
         bio: formData.bio.trim(),
         photo: (uploadedUrl || formData.photo.trim() || '/images/team/default.jpg'),
+        linkedin: formData.linkedin.trim() || undefined,
+        experience: formData.experience.trim() || undefined,
       };
 
-      const success = await staffService.create(staffData);
+      const docId = await staffService.create(staffData);
       
-      if (success) {
+      if (docId) {
         toast({
           title: "Success",
           description: "Staff member added successfully",
@@ -87,7 +100,7 @@ export default function NewStaff() {
       console.error('Create staff error:', error);
       toast({
         title: "Error",
-        description: "An error occurred while adding the staff member",
+        description: `An error occurred while adding the staff member: ${error instanceof Error ? error.message : 'Unknown error'}`,
         variant: "destructive",
       });
     } finally {

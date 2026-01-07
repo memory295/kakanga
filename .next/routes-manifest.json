@@ -31,7 +31,48 @@
     "afterFiles": [],
     "fallback": []
   },
-  "dynamicRoutes": [],
+  "dynamicRoutes": [
+    {
+      "page": "/dashboard/projects/[id]/edit",
+      "regex": "^/dashboard/projects/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/dashboard/projects/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/dashboard/services/[id]/edit",
+      "regex": "^/dashboard/services/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/dashboard/services/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/dashboard/staff/[id]/edit",
+      "regex": "^/dashboard/staff/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/dashboard/staff/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/dashboard/vacancies/[id]/edit",
+      "regex": "^/dashboard/vacancies/([^/]+?)/edit(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/dashboard/vacancies/(?<nxtPid>[^/]+?)/edit(?:/)?$"
+    },
+    {
+      "page": "/projects/[id]",
+      "regex": "^/projects/([^/]+?)(?:/)?$",
+      "routeKeys": {
+        "nxtPid": "nxtPid"
+      },
+      "namedRegex": "^/projects/(?<nxtPid>[^/]+?)(?:/)?$"
+    }
+  ],
   "staticRoutes": [
     {
       "page": "/",
@@ -164,6 +205,12 @@
       "regex": "^/vacancies(?:/)?$",
       "routeKeys": {},
       "namedRegex": "^/vacancies(?:/)?$"
+    },
+    {
+      "page": "/vacancies-test",
+      "regex": "^/vacancies\\-test(?:/)?$",
+      "routeKeys": {},
+      "namedRegex": "^/vacancies\\-test(?:/)?$"
     }
   ],
   "dataRoutes": [],
