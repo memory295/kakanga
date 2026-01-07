@@ -118,11 +118,25 @@ export default function EditProject() {
     try {
       let uploadedUrls: string[] = [];
       
-      // Upload new images if any were selected
+      // Upload new images if any were selected with error handling
       if (imageFiles.length > 0) {
-        for (const file of imageFiles) {
-          const url = await uploadFile(file, 'projects');
-          if (url) uploadedUrls.push(url);
+        try {
+          for (const file of imageFiles) {
+            try {
+              const url = await uploadFile(file, 'projects');
+              if (url) uploadedUrls.push(url);
+            } catch (uploadError) {
+              console.error('Individual image upload error:', uploadError);
+              // Continue with other images even if one fails
+            }
+          }
+        } catch (uploadError) {
+          console.error('Image upload error:', uploadError);
+          toast({
+            title: "Warning",
+            description: "Some images failed to upload. Continuing with update.",
+            variant: "destructive",
+          });
         }
       }
 
@@ -161,7 +175,7 @@ export default function EditProject() {
       console.error('Update project error:', error);
       toast({
         title: "Error",
-        description: "An error occurred while updating the project",
+        description: `An error occurred while updating the project: ${error instanceof Error ? error.message : 'Unknown error'}`,
         variant: "destructive",
       });
     } finally {

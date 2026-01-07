@@ -61,7 +61,7 @@ export default function NewProject() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    if (!formData.title.trim() || !formData.description.trim() || !formData.location.trim() || !formData.category.trim() || !formData.client.trim() || !formData.referenceNumber.trim()) {
+    if (!formData.title.trim() || !formData.description.trim() || !formData.location.trim() || !formData.category.trim() || !formData.client.trim()) {
       toast({
         title: "Error",
         description: "Please fill in all required fields",
@@ -75,16 +75,39 @@ export default function NewProject() {
     try {
       let uploadedUrls: string[] = [];
       
-      // Upload all selected images
+      // Upload all selected images with error handling
       if (imageFiles.length > 0) {
-        for (const file of imageFiles) {
-          const url = await uploadFile(file, 'projects');
-          if (url) uploadedUrls.push(url);
+        console.log('Starting image upload for', imageFiles.length, 'files');
+        try {
+          for (const file of imageFiles) {
+            try {
+              console.log('Uploading file:', file.name, 'Size:', file.size);
+              const url = await uploadFile(file, 'projects');
+              console.log('Upload successful:', url);
+              if (url) uploadedUrls.push(url);
+            } catch (uploadError) {
+              console.error('Individual image upload error:', uploadError);
+              toast({
+                title: "Upload Error",
+                description: `Failed to upload ${file.name}: ${uploadError instanceof Error ? uploadError.message : 'Unknown error'}`,
+                variant: "destructive",
+              });
+              // Continue with other images even if one fails
+            }
+          }
+        } catch (uploadError) {
+          console.error('Image upload error:', uploadError);
+          toast({
+            title: "Warning",
+            description: "Some images failed to upload. Continuing without them.",
+            variant: "destructive",
+          });
         }
       }
 
       // Use uploaded URLs or default image
       const projectImages = uploadedUrls.length > 0 ? uploadedUrls : ['/images/projects/default.jpg'];
+      console.log('Final project images:', projectImages);
 
       const projectData = {
         title: formData.title.trim(),
@@ -96,9 +119,11 @@ export default function NewProject() {
         image: projectImages.length === 1 ? projectImages[0] : projectImages,
       };
 
-      const success = await projectsService.create(projectData);
+      console.log('Creating project with data:', projectData);
+      const docId = await projectsService.create(projectData);
+      console.log('Project creation result:', docId);
       
-      if (success) {
+      if (docId) {
         toast({
           title: "Success",
           description: "Project created successfully",
@@ -119,7 +144,7 @@ export default function NewProject() {
       console.error('Create project error:', error);
       toast({
         title: "Error",
-        description: "An error occurred while creating the project",
+        description: `An error occurred while creating the project: ${error instanceof Error ? error.message : 'Unknown error'}`,
         variant: "destructive",
       });
     } finally {

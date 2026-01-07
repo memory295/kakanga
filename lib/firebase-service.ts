@@ -72,11 +72,13 @@ export const projectsService = {
 
   async create(data: ProjectFormData): Promise<string | null> {
     try {
+      console.log('ProjectService.create called with:', data);
       const docRef = await addDoc(collection(db, 'projects'), {
         ...data,
         createdAt: Timestamp.now(),
         updatedAt: Timestamp.now(),
       });
+      console.log('Project created successfully with ID:', docRef.id);
       return docRef.id;
     } catch (error) {
       console.error('Error creating project:', error);
@@ -150,11 +152,13 @@ export const servicesService = {
 
   async create(data: ServiceFormData): Promise<string | null> {
     try {
+      console.log('ServiceService.create called with:', data);
       const docRef = await addDoc(collection(db, 'services'), {
         ...data,
         createdAt: Timestamp.now(),
         updatedAt: Timestamp.now(),
       });
+      console.log('Service created successfully with ID:', docRef.id);
       return docRef.id;
     } catch (error) {
       console.error('Error creating service:', error);
@@ -228,11 +232,13 @@ export const staffService = {
 
   async create(data: StaffFormData): Promise<string | null> {
     try {
+      console.log('StaffService.create called with:', data);
       const docRef = await addDoc(collection(db, 'staff'), {
         ...data,
         createdAt: Timestamp.now(),
         updatedAt: Timestamp.now(),
       });
+      console.log('Staff created successfully with ID:', docRef.id);
       return docRef.id;
     } catch (error) {
       console.error('Error creating staff member:', error);

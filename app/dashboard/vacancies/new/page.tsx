@@ -91,9 +91,9 @@ export default function NewVacancy() {
         postedDate: new Date(),
       };
 
-      const success = await vacanciesService.create(vacancyData);
+      const docId = await vacanciesService.create(vacancyData);
       
-      if (success) {
+      if (docId) {
         toast({
           title: "Success",
           description: "Vacancy posted successfully",
@@ -110,7 +110,7 @@ export default function NewVacancy() {
       console.error('Create vacancy error:', error);
       toast({
         title: "Error",
-        description: "An error occurred while posting the vacancy",
+        description: `An error occurred while posting the vacancy: ${error instanceof Error ? error.message : 'Unknown error'}`,
         variant: "destructive",
       });
     } finally {

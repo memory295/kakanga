@@ -75,8 +75,21 @@ export default function NewService() {
     
     try {
       let uploadedUrl: string | undefined;
+      
+      // Upload image with error handling
       if (imageFile) {
-        uploadedUrl = await uploadFile(imageFile, 'services');
+        try {
+          console.log('Starting service image upload:', imageFile.name, 'Size:', imageFile.size);
+          uploadedUrl = await uploadFile(imageFile, 'services');
+          console.log('Service image upload successful:', uploadedUrl);
+        } catch (uploadError) {
+          console.error('Image upload error:', uploadError);
+          toast({
+            title: "Upload Error",
+            description: `Failed to upload image: ${uploadError instanceof Error ? uploadError.message : 'Unknown error'}`,
+            variant: "destructive",
+          });
+        }
       }
 
       const serviceData = {
@@ -86,9 +99,11 @@ export default function NewService() {
         features: formData.features.filter(f => f.trim() !== ''),
       };
 
-      const success = await servicesService.create(serviceData);
+      console.log('Creating service with data:', serviceData);
+      const docId = await servicesService.create(serviceData);
+      console.log('Service creation result:', docId);
       
-      if (success) {
+      if (docId) {
         toast({
           title: "Success",
           description: "Service created successfully",
@@ -105,7 +120,7 @@ export default function NewService() {
       console.error('Create service error:', error);
       toast({
         title: "Error",
-        description: "An error occurred while creating the service",
+        description: `An error occurred while creating the service: ${error instanceof Error ? error.message : 'Unknown error'}`,
         variant: "destructive",
       });
     } finally {

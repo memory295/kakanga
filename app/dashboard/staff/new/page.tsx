@@ -58,12 +58,14 @@ export default function NewStaff() {
       // Upload photo if provided
       if (photoFile) {
         try {
+          console.log('Starting staff photo upload:', photoFile.name, 'Size:', photoFile.size);
           uploadedUrl = await uploadFile(photoFile, 'staff');
+          console.log('Staff photo upload successful:', uploadedUrl);
         } catch (uploadError) {
           console.error('Photo upload error:', uploadError);
           toast({
-            title: "Warning",
-            description: "Failed to upload photo. Continuing without photo.",
+            title: "Upload Error",
+            description: `Failed to upload photo: ${uploadError instanceof Error ? uploadError.message : 'Unknown error'}`,
             variant: "destructive",
           });
         }
@@ -81,7 +83,9 @@ export default function NewStaff() {
         experience: formData.experience.trim() || undefined,
       };
 
+      console.log('Creating staff with data:', staffData);
       const docId = await staffService.create(staffData);
+      console.log('Staff creation result:', docId);
       
       if (docId) {
         toast({
