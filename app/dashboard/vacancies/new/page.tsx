@@ -12,7 +12,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { ArrowLeft, Save, Plus, X } from 'lucide-react';
 import Link from 'next/link';
-import { vacanciesService } from '@/lib/firebase-service';
+import { vacanciesService } from '@/lib/supabase-service';
 import { toast } from '@/hooks/use-toast';
 
 export default function NewVacancy() {

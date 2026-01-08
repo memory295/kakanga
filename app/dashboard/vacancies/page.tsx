@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { useVacancies } from '@/hooks/use-data';
-import { vacanciesService } from '@/lib/firebase-service';
+import { vacanciesService } from '@/lib/supabase-service';
 import { useAuth } from '@/contexts/auth-context';
 import { toast } from '@/hooks/use-toast';
 

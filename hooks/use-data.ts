@@ -6,7 +6,7 @@ import {
   servicesService,
   staffService,
   vacanciesService,
-} from '@/lib/firebase-service';
+} from '@/lib/supabase-service';
 import {
   defaultProjects,
   defaultServices,

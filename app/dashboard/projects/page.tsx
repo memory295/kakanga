@@ -19,7 +19,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { useProjects } from '@/hooks/use-data';
-import { projectsService } from '@/lib/firebase-service';
+import { projectsService } from '@/lib/supabase-service';
 import { useAuth } from '@/contexts/auth-context';
 import { toast } from '@/hooks/use-toast';
 

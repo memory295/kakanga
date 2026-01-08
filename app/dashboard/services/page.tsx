@@ -18,7 +18,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { useServices } from '@/hooks/use-data';
-import { servicesService } from '@/lib/firebase-service';
+import { servicesService } from '@/lib/supabase-service';
 import { useAuth } from '@/contexts/auth-context';
 import { toast } from '@/hooks/use-toast';
 

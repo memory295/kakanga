@@ -10,8 +10,8 @@ import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { ArrowLeft, Save, Plus, X } from 'lucide-react';
 import Link from 'next/link';
-import { servicesService } from '@/lib/firebase-service';
-import { uploadFile } from '@/lib/storage';
+import { servicesService } from '@/lib/supabase-service';
+import { uploadFile } from '@/lib/supabase-storage';
 import { toast } from '@/hooks/use-toast';
 
 export default function NewService() {
