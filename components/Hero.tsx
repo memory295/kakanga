@@ -5,6 +5,7 @@ import { Button } from './ui/button';
 import { useEffect, useRef, useState } from 'react';
 import { useInView } from '@/hooks/use-in-view';
 
+// Hero section with background video and slogan
 const Hero = () => {
   const intended = ['/construction.mp4', '/construction-2.mp4'];
   const fallbacks = [
