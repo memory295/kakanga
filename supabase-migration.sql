@@ -139,68 +139,125 @@ ALTER TABLE public.services ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.staff ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.vacancies ENABLE ROW LEVEL SECURITY;
 
--- Drop existing policies if they exist
-DROP POLICY IF EXISTS "Users can view their own profile" ON public.users;
-DROP POLICY IF EXISTS "Users can update their own profile" ON public.users;
-DROP POLICY IF EXISTS "Public read access for projects" ON public.projects;
-DROP POLICY IF EXISTS "Public read access for services" ON public.services;
-DROP POLICY IF EXISTS "Public read access for staff" ON public.staff;
-DROP POLICY IF EXISTS "Public read access for vacancies" ON public.vacancies;
-DROP POLICY IF EXISTS "Authenticated write access for projects" ON public.projects;
-DROP POLICY IF EXISTS "Authenticated write access for services" ON public.services;
-DROP POLICY IF EXISTS "Authenticated write access for staff" ON public.staff;
-DROP POLICY IF EXISTS "Authenticated write access for vacancies" ON public.vacancies;
-DROP POLICY IF EXISTS "Public read access for uploads" ON storage.objects;
-DROP POLICY IF EXISTS "Authenticated upload access" ON storage.objects;
-DROP POLICY IF EXISTS "Authenticated update access" ON storage.objects;
-DROP POLICY IF EXISTS "Authenticated delete access" ON storage.objects;
+-- Drop ALL existing policies for each table to avoid conflicts
+DO $$ 
+DECLARE
+    r RECORD;
+BEGIN
+    -- Drop all policies on users table
+    FOR r IN (SELECT policyname FROM pg_policies WHERE tablename = 'users' AND schemaname = 'public')
+    LOOP
+        EXECUTE 'DROP POLICY IF EXISTS "' || r.policyname || '" ON public.users';
+    END LOOP;
+    
+    -- Drop all policies on projects table
+    FOR r IN (SELECT policyname FROM pg_policies WHERE tablename = 'projects' AND schemaname = 'public')
+    LOOP
+        EXECUTE 'DROP POLICY IF EXISTS "' || r.policyname || '" ON public.projects';
+    END LOOP;
+    
+    -- Drop all policies on services table
+    FOR r IN (SELECT policyname FROM pg_policies WHERE tablename = 'services' AND schemaname = 'public')
+    LOOP
+        EXECUTE 'DROP POLICY IF EXISTS "' || r.policyname || '" ON public.services';
+    END LOOP;
+    
+    -- Drop all policies on staff table
+    FOR r IN (SELECT policyname FROM pg_policies WHERE tablename = 'staff' AND schemaname = 'public')
+    LOOP
+        EXECUTE 'DROP POLICY IF EXISTS "' || r.policyname || '" ON public.staff';
+    END LOOP;
+    
+    -- Drop all policies on vacancies table
+    FOR r IN (SELECT policyname FROM pg_policies WHERE tablename = 'vacancies' AND schemaname = 'public')
+    LOOP
+        EXECUTE 'DROP POLICY IF EXISTS "' || r.policyname || '" ON public.vacancies';
+    END LOOP;
+END $$;
 
--- Create policies for public read access
+-- Create user policies for authenticated users only
 CREATE POLICY "Users can view their own profile" ON public.users
     FOR SELECT USING (auth.uid() = id);
 
 CREATE POLICY "Users can update their own profile" ON public.users
     FOR UPDATE USING (auth.uid() = id);
 
-CREATE POLICY "Public read access for projects" ON public.projects
+-- Create policies for public read access (allow anyone to read data)
+CREATE POLICY "Allow public read access for projects" ON public.projects
     FOR SELECT USING (true);
 
-CREATE POLICY "Public read access for services" ON public.services
+CREATE POLICY "Allow public read access for services" ON public.services
     FOR SELECT USING (true);
 
-CREATE POLICY "Public read access for staff" ON public.staff
+CREATE POLICY "Allow public read access for staff" ON public.staff
     FOR SELECT USING (true);
 
-CREATE POLICY "Public read access for vacancies" ON public.vacancies
+CREATE POLICY "Allow public read access for vacancies" ON public.vacancies
     FOR SELECT USING (true);
 
--- Create policies for authenticated write access (you may want to modify these based on your auth setup)
-CREATE POLICY "Authenticated write access for projects" ON public.projects
-    FOR ALL USING (auth.role() = 'authenticated');
+-- Create policies for authenticated write access (only logged in users can edit/delete)
+CREATE POLICY "Authenticated users can insert projects" ON public.projects
+    FOR INSERT WITH CHECK (auth.uid() IS NOT NULL);
 
-CREATE POLICY "Authenticated write access for services" ON public.services
-    FOR ALL USING (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated users can update projects" ON public.projects
+    FOR UPDATE USING (auth.uid() IS NOT NULL);
 
-CREATE POLICY "Authenticated write access for staff" ON public.staff
-    FOR ALL USING (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated users can delete projects" ON public.projects
+    FOR DELETE USING (auth.uid() IS NOT NULL);
 
-CREATE POLICY "Authenticated write access for vacancies" ON public.vacancies
-    FOR ALL USING (auth.role() = 'authenticated');
+CREATE POLICY "Authenticated users can insert services" ON public.services
+    FOR INSERT WITH CHECK (auth.uid() IS NOT NULL);
+
+CREATE POLICY "Authenticated users can update services" ON public.services
+    FOR UPDATE USING (auth.uid() IS NOT NULL);
+
+CREATE POLICY "Authenticated users can delete services" ON public.services
+    FOR DELETE USING (auth.uid() IS NOT NULL);
+
+CREATE POLICY "Authenticated users can insert staff" ON public.staff
+    FOR INSERT WITH CHECK (auth.uid() IS NOT NULL);
+
+CREATE POLICY "Authenticated users can update staff" ON public.staff
+    FOR UPDATE USING (auth.uid() IS NOT NULL);
+
+CREATE POLICY "Authenticated users can delete staff" ON public.staff
+    FOR DELETE USING (auth.uid() IS NOT NULL);
+
+CREATE POLICY "Authenticated users can insert vacancies" ON public.vacancies
+    FOR INSERT WITH CHECK (auth.uid() IS NOT NULL);
+
+CREATE POLICY "Authenticated users can update vacancies" ON public.vacancies
+    FOR UPDATE USING (auth.uid() IS NOT NULL);
+
+CREATE POLICY "Authenticated users can delete vacancies" ON public.vacancies
+    FOR DELETE USING (auth.uid() IS NOT NULL);
+
+-- Drop ALL existing storage policies to avoid conflicts
+DO $$
+DECLARE
+    r RECORD;
+BEGIN
+    -- Drop all policies on storage.objects
+    FOR r IN (SELECT policyname FROM pg_policies WHERE tablename = 'objects' AND schemaname = 'storage')
+    LOOP
+        EXECUTE 'DROP POLICY IF EXISTS "' || r.policyname || '" ON storage.objects';
+    END LOOP;
+END $$;
 
 -- Create storage bucket for file uploads
 INSERT INTO storage.buckets (id, name, public) 
 VALUES ('uploads', 'uploads', true)
 ON CONFLICT (id) DO NOTHING;
 
--- Create storage policies for uploads bucket
-CREATE POLICY "Public read access for uploads" ON storage.objects
+-- Create storage policies for uploads bucket (public read, authenticated write)
+CREATE POLICY "Anyone can view uploads" ON storage.objects
     FOR SELECT USING (bucket_id = 'uploads');
 
-CREATE POLICY "Authenticated upload access" ON storage.objects
-    FOR INSERT WITH CHECK (bucket_id = 'uploads' AND auth.role() = 'authenticated');
+CREATE POLICY "Authenticated users can upload" ON storage.objects
+    FOR INSERT WITH CHECK (bucket_id = 'uploads' AND auth.uid() IS NOT NULL);
 
-CREATE POLICY "Authenticated update access" ON storage.objects
-    FOR UPDATE USING (bucket_id = 'uploads' AND auth.role() = 'authenticated');
+CREATE POLICY "Authenticated users can update uploads" ON storage.objects
+    FOR UPDATE USING (bucket_id = 'uploads' AND auth.uid() IS NOT NULL);
 
-CREATE POLICY "Authenticated delete access" ON storage.objects
-    FOR DELETE USING (bucket_id = 'uploads' AND auth.role() = 'authenticated');
+CREATE POLICY "Authenticated users can delete uploads" ON storage.objects
+    FOR DELETE USING (bucket_id = 'uploads' AND auth.uid() IS NOT NULL);

@@ -1,10 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',
-  trailingSlash: true,
-  distDir: 'dist',
+  // Only use static export for production builds when explicitly requested
+  // Dashboard pages need dynamic rendering for authentication and real-time data
+  ...(process.env.NODE_ENV === 'production' && process.env.STATIC_EXPORT === 'true' && {
+    output: 'export',
+    trailingSlash: true,
+    distDir: 'dist',
+  }),
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'mdmrdtzjwygevqxdzsmf.supabase.co'],
     unoptimized: true
   },
   eslint: {

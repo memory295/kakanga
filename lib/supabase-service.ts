@@ -76,11 +76,20 @@ export const projectsService = {
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error fetching projects:', error);
+        throw error;
+      }
+
+      if (!data) {
+        console.warn('No data returned from projects query');
+        return [];
+      }
 
       return data.map(item => convertDatabaseFields(item) as Project);
     } catch (error) {
       console.error('Error fetching projects:', error);
+      // Return empty array instead of throwing to prevent app crashes
       return [];
     }
   },
@@ -175,7 +184,15 @@ export const servicesService = {
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error fetching services:', error);
+        throw error;
+      }
+
+      if (!data) {
+        console.warn('No data returned from services query');
+        return [];
+      }
 
       return data.map(item => convertDatabaseFields(item) as Service);
     } catch (error) {
@@ -274,7 +291,15 @@ export const staffService = {
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error fetching staff:', error);
+        throw error;
+      }
+
+      if (!data) {
+        console.warn('No data returned from staff query');
+        return [];
+      }
 
       return data.map(item => convertDatabaseFields(item) as Staff);
     } catch (error) {
@@ -373,7 +398,15 @@ export const vacanciesService = {
         .select('*')
         .order('created_at', { ascending: false });
 
-      if (error) throw error;
+      if (error) {
+        console.error('Supabase error fetching vacancies:', error);
+        throw error;
+      }
+
+      if (!data) {
+        console.warn('No data returned from vacancies query');
+        return [];
+      }
 
       return data.map(item => convertDatabaseFields(item) as Vacancy);
     } catch (error) {

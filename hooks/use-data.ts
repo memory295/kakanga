@@ -32,15 +32,15 @@ export const useProjects = (dashboardMode = false) => {
     try {
       setLoading(true);
       setError(null);
-      const firebaseProjects = await projectsService.getAll();
+      const supabaseProjects = await projectsService.getAll();
       
-      if (firebaseProjects.length > 0) {
-        setProjects(firebaseProjects);
+      if (supabaseProjects.length > 0) {
+        setProjects(supabaseProjects);
       } else if (!dashboardMode) {
-        // Keep seeded defaults if Firebase is empty (only for public site)
+        // Keep seeded defaults if Supabase is empty (only for public site)
         setProjects(seededDefaults);
       } else {
-        // Dashboard mode: show empty if no Firestore data
+        // Dashboard mode: show empty if no Supabase data
         setProjects([]);
       }
     } catch (err) {
@@ -87,15 +87,15 @@ export const useServices = (dashboardMode = false) => {
     try {
       setLoading(true);
       setError(null);
-      const firebaseServices = await servicesService.getAll();
+      const supabaseServices = await servicesService.getAll();
       
-      if (firebaseServices.length > 0) {
-        setServices(firebaseServices);
+      if (supabaseServices.length > 0) {
+        setServices(supabaseServices);
       } else if (!dashboardMode) {
-        // Keep seeded defaults if Firebase is empty (only for public site)
+        // Keep seeded defaults if Supabase is empty (only for public site)
         setServices(seededDefaults);
       } else {
-        // Dashboard mode: show empty if no Firestore data
+        // Dashboard mode: show empty if no Supabase data
         setServices([]);
       }
     } catch (err) {
@@ -142,15 +142,15 @@ export const useStaff = (dashboardMode = false) => {
     try {
       setLoading(true);
       setError(null);
-      const firebaseStaff = await staffService.getAll();
+      const supabaseStaff = await staffService.getAll();
       
-      if (firebaseStaff.length > 0) {
-        setStaff(firebaseStaff);
+      if (supabaseStaff.length > 0) {
+        setStaff(supabaseStaff);
       } else if (!dashboardMode) {
-        // Keep seeded defaults if Firebase is empty (only for public site)
+        // Keep seeded defaults if Supabase is empty (only for public site)
         setStaff(seededDefaults);
       } else {
-        // Dashboard mode: show empty if no Firestore data
+        // Dashboard mode: show empty if no Supabase data
         setStaff([]);
       }
     } catch (err) {
@@ -199,15 +199,15 @@ export const useVacancies = (dashboardMode = false) => {
     try {
       setLoading(true);
       setError(null);
-      const firebaseVacancies = await vacanciesService.getAll();
+      const supabaseVacancies = await vacanciesService.getAll();
       
-      if (firebaseVacancies.length > 0) {
-        setVacancies(firebaseVacancies);
+      if (supabaseVacancies.length > 0) {
+        setVacancies(supabaseVacancies);
       } else if (!dashboardMode) {
-        // Convert default data to include Firebase structure (only for public site)
+        // Convert default data to include Supabase structure (only for public site)
         setVacancies(seededDefaults);
       } else {
-        // Dashboard mode: show empty if no Firestore data
+        // Dashboard mode: show empty if no Supabase data
         setVacancies([]);
       }
     } catch (err) {
@@ -229,10 +229,10 @@ export const useVacancies = (dashboardMode = false) => {
     try {
       setLoading(true);
       setError(null);
-      const firebaseVacancies = await vacanciesService.getActive();
+      const supabaseVacancies = await vacanciesService.getActive();
       
-      if (firebaseVacancies.length > 0) {
-        setVacancies(firebaseVacancies);
+      if (supabaseVacancies.length > 0) {
+        setVacancies(supabaseVacancies);
       } else {
         // Filter default data for active vacancies only
         const defaultData = defaultVacancies

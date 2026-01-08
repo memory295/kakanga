@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { FolderOpen, Users, Briefcase, Settings, BarChart3, TrendingUp } from 'lucide-react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/auth-context';
+import SupabaseTest from '@/components/SupabaseTest';
 
 const stats = [
   {
@@ -74,6 +75,9 @@ export default function DashboardPage() {
   return (
     <DashboardLayout>
       <div className="space-y-6">
+        {/* Supabase Connection Test */}
+        <SupabaseTest />
+
         {/* Welcome Section */}
         <div>
           <h1 className="text-2xl font-bold text-gray-900">

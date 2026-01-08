@@ -25,7 +25,7 @@ import { toast } from '@/hooks/use-toast';
 
 export default function ProjectsDashboard() {
   const { projects, loading, error, refetch } = useProjects(true);
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('All');
   const [deleting, setDeleting] = useState<string | null>(null);

@@ -141,7 +141,7 @@ export class AuthService {
   static onAuthStateChange(callback: (user: User | null) => void): () => void {
     const { data: { subscription } } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        if (event === 'SIGNED_IN' && session?.user) {
+        if (session?.user) {
           // Get additional user data
           const { data: userData } = await supabase
             .from('users')
@@ -158,11 +158,35 @@ export class AuthService {
             lastLogin: (userData as any)?.last_login ? new Date((userData as any).last_login) : undefined,
           };
           callback(user);
-        } else if (event === 'SIGNED_OUT') {
+        } else {
           callback(null);
         }
       }
     );
+
+    // Also check initial session immediately
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        supabase
+          .from('users')
+          .select('*')
+          .eq('id', session.user.id)
+          .single()
+          .then(({ data: userData }) => {
+            const user: User = {
+              id: session.user.id,
+              email: session.user.email!,
+              displayName: session.user.user_metadata?.displayName || (userData as any)?.display_name || null,
+              role: (userData as any)?.role || 'admin',
+              createdAt: (userData as any)?.created_at ? new Date((userData as any).created_at) : new Date(),
+              lastLogin: (userData as any)?.last_login ? new Date((userData as any).last_login) : undefined,
+            };
+            callback(user);
+          });
+      } else {
+        callback(null);
+      }
+    });
 
     return () => subscription.unsubscribe();
   }
