@@ -17,7 +17,7 @@ export class AuthService {
         .from('users')
         .select('*')
         .eq('id', authData.user.id)
-        .single();
+        .maybeSingle();
 
       if (userError && userError.code !== 'PGRST116') { // PGRST116 = no rows returned
         console.warn('Could not fetch user data:', userError);
@@ -118,7 +118,7 @@ export class AuthService {
         .from('users')
         .select('*')
         .eq('id', user.id)
-        .single();
+        .maybeSingle();
 
       if (userError && userError.code !== 'PGRST116') {
         console.warn('Could not fetch user data:', userError);
@@ -147,7 +147,7 @@ export class AuthService {
             .from('users')
             .select('*')
             .eq('id', session.user.id)
-            .single();
+            .maybeSingle();
 
           const user: User = {
             id: session.user.id,
@@ -171,7 +171,7 @@ export class AuthService {
           .from('users')
           .select('*')
           .eq('id', session.user.id)
-          .single()
+          .maybeSingle()
           .then(({ data: userData }) => {
             const user: User = {
               id: session.user.id,

@@ -95,12 +95,14 @@ export default function ProjectsDashboard() {
               Manage your construction project portfolio
             </p>
           </div>
-          <Link href="/dashboard/projects/new">
-            <Button className="flex items-center gap-2">
-              <Plus className="h-4 w-4" />
-              Add New Project
-            </Button>
-          </Link>
+          {user && (
+            <Link href="/dashboard/projects/new">
+              <Button className="flex items-center gap-2">
+                <Plus className="h-4 w-4" />
+                Add New Project
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Filters */}
@@ -156,26 +158,28 @@ export default function ProjectsDashboard() {
                   <Badge variant="secondary" className="text-xs">
                     {project.category}
                   </Badge>
-                  <div className="flex gap-1">
-                    <Link href={`/dashboard/projects/${project.id}/edit`}>
-                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
-                        <Edit className="h-3 w-3" />
+                  {user && (
+                    <div className="flex gap-1">
+                      <Link href={`/dashboard/projects/${project.id}/edit`}>
+                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                          <Edit className="h-3 w-3" />
+                        </Button>
+                      </Link>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
+                        onClick={() => handleDelete(project.id)}
+                        disabled={deleting === project.id}
+                      >
+                        {deleting === project.id ? (
+                          <div className="animate-spin h-3 w-3 border border-red-600 border-t-transparent rounded-full" />
+                        ) : (
+                          <Trash2 className="h-3 w-3" />
+                        )}
                       </Button>
-                    </Link>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
-                      onClick={() => handleDelete(project.id)}
-                      disabled={deleting === project.id}
-                    >
-                      {deleting === project.id ? (
-                        <div className="animate-spin h-3 w-3 border border-red-600 border-t-transparent rounded-full" />
-                      ) : (
-                        <Trash2 className="h-3 w-3" />
-                      )}
-                    </Button>
-                  </div>
+                    </div>
+                  )}
                 </div>
 
                 <h3 className="font-semibold text-sm mb-2 line-clamp-2">

@@ -14,6 +14,17 @@ import {
 const convertDatabaseFields = (data: any) => {
   const converted = { ...data };
   
+  // Normalize image field: parse JSON string arrays stored in text column
+  if (typeof data.image === 'string') {
+    const trimmed = data.image.trim();
+    if (trimmed.startsWith('[') && trimmed.endsWith(']')) {
+      try {
+        const parsed = JSON.parse(trimmed);
+        if (Array.isArray(parsed)) converted.image = parsed;
+      } catch {}
+    }
+  }
+
   // Convert snake_case to camelCase for common fields
   if (data.reference_number) converted.referenceNumber = data.reference_number;
   if (data.completion_date) converted.completionDate = new Date(data.completion_date);
@@ -34,6 +45,11 @@ const convertDatabaseFields = (data: any) => {
 const convertToDatabase = (data: any) => {
   const converted = { ...data };
   
+  // Ensure image fits text column: stringify arrays
+  if (Array.isArray(data.image)) {
+    converted.image = JSON.stringify(data.image);
+  }
+
   // Convert camelCase to snake_case for database
   if (data.referenceNumber) {
     converted.reference_number = data.referenceNumber;
