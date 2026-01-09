@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
+import { isSupabaseConfigured } from '@/lib/supabase';
 import { AuthService } from '@/lib/supabase-auth';
 import { User } from '@/lib/types';
 
@@ -33,12 +34,29 @@ export const AuthProvider: React.FC<AuthProviderProps> = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // If Supabase env is missing, avoid hanging and render publicly
+    if (!isSupabaseConfigured) {
+      setUser(null);
+      setLoading(false);
+      return;
+    }
+
+    let timeout: ReturnType<typeof setTimeout> | undefined;
     const unsubscribe = AuthService.onAuthStateChange((user) => {
       setUser(user);
       setLoading(false);
+      if (timeout) clearTimeout(timeout);
     });
 
-    return () => unsubscribe();
+    // Fallback: if auth check stalls, stop loading so pages render
+    timeout = setTimeout(() => {
+      setLoading(false);
+    }, 4000);
+
+    return () => {
+      if (timeout) clearTimeout(timeout);
+      unsubscribe();
+    };
   }, []);
 
   const signIn = async (email: string, password: string): Promise<User | null> => {
