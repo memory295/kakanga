@@ -88,12 +88,14 @@ export default function ServicesDashboard() {
               Manage your service offerings and descriptions
             </p>
           </div>
-          <Link href="/dashboard/services/new">
-            <Button className="flex items-center gap-2">
-              <Plus className="h-4 w-4" />
-              Add New Service
-            </Button>
-          </Link>
+          {user && (
+            <Link href="/dashboard/services/new">
+              <Button className="flex items-center gap-2">
+                <Plus className="h-4 w-4" />
+                Add New Service
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Search */}
@@ -133,26 +135,28 @@ export default function ServicesDashboard() {
                   <h3 className="font-semibold text-sm line-clamp-2 flex-1">
                     {service.title}
                   </h3>
-                  <div className="flex gap-1">
-                    <Link href={`/dashboard/services/${service.id}/edit`}>
-                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
-                        <Edit className="h-3 w-3" />
+                  {user && (
+                    <div className="flex gap-1">
+                      <Link href={`/dashboard/services/${service.id}/edit`}>
+                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                          <Edit className="h-3 w-3" />
+                        </Button>
+                      </Link>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
+                        onClick={() => handleDelete(service.id)}
+                        disabled={deleting === service.id}
+                      >
+                        {deleting === service.id ? (
+                          <div className="animate-spin h-3 w-3 border border-red-600 border-t-transparent rounded-full" />
+                        ) : (
+                          <Trash2 className="h-3 w-3" />
+                        )}
                       </Button>
-                    </Link>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
-                      onClick={() => handleDelete(service.id)}
-                      disabled={deleting === service.id}
-                    >
-                      {deleting === service.id ? (
-                        <div className="animate-spin h-3 w-3 border border-red-600 border-t-transparent rounded-full" />
-                      ) : (
-                        <Trash2 className="h-3 w-3" />
-                      )}
-                    </Button>
-                  </div>
+                    </div>
+                  )}
                 </div>
 
                 <p className="text-xs text-gray-600 mb-3 line-clamp-3">
@@ -201,12 +205,14 @@ export default function ServicesDashboard() {
                   ? 'No services match your search criteria.'
                   : 'Get started by creating your first service.'}
               </p>
-              <Link href="/dashboard/services/new">
-                <Button>
-                  <Plus className="h-4 w-4 mr-2" />
-                  Add First Service
-                </Button>
-              </Link>
+              {user && (
+                <Link href="/dashboard/services/new">
+                  <Button>
+                    <Plus className="h-4 w-4 mr-2" />
+                    Add First Service
+                  </Button>
+                </Link>
+              )}
             </CardContent>
           </Card>
         )}

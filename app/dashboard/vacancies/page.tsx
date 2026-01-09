@@ -130,12 +130,14 @@ export default function VacanciesDashboard() {
               Manage job postings and recruitment
             </p>
           </div>
-          <Link href="/dashboard/vacancies/new">
-            <Button className="flex items-center gap-2">
-              <Plus className="h-4 w-4" />
-              Post New Vacancy
-            </Button>
-          </Link>
+          {user && (
+            <Link href="/dashboard/vacancies/new">
+              <Button className="flex items-center gap-2">
+                <Plus className="h-4 w-4" />
+                Post New Vacancy
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Filters */}
@@ -274,35 +276,37 @@ export default function VacanciesDashboard() {
                     </div>
                   </div>
 
-                  <div className="flex flex-col gap-2 lg:shrink-0">
-                    <Button
-                      variant={vacancy.isActive ? "outline" : "default"}
-                      size="sm"
-                      onClick={() => handleToggleStatus(vacancy.id, vacancy.isActive)}
-                    >
-                      {vacancy.isActive ? 'Deactivate' : 'Activate'}
-                    </Button>
-                    <Link href={`/dashboard/vacancies/${vacancy.id}/edit`}>
-                      <Button variant="outline" size="sm" className="w-full">
-                        <Edit className="h-3 w-3 mr-1" />
-                        Edit
+                  {user && (
+                    <div className="flex flex-col gap-2 lg:shrink-0">
+                      <Button
+                        variant={vacancy.isActive ? "outline" : "default"}
+                        size="sm"
+                        onClick={() => handleToggleStatus(vacancy.id, vacancy.isActive)}
+                      >
+                        {vacancy.isActive ? 'Deactivate' : 'Activate'}
                       </Button>
-                    </Link>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="text-red-600 hover:text-red-700"
-                      onClick={() => handleDelete(vacancy.id)}
-                      disabled={deleting === vacancy.id}
-                    >
-                      {deleting === vacancy.id ? (
-                        <div className="animate-spin h-3 w-3 border border-red-600 border-t-transparent rounded-full mr-1" />
-                      ) : (
-                        <Trash2 className="h-3 w-3 mr-1" />
-                      )}
-                      Delete
-                    </Button>
-                  </div>
+                      <Link href={`/dashboard/vacancies/${vacancy.id}/edit`}>
+                        <Button variant="outline" size="sm" className="w-full">
+                          <Edit className="h-3 w-3 mr-1" />
+                          Edit
+                        </Button>
+                      </Link>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        className="text-red-600 hover:text-red-700"
+                        onClick={() => handleDelete(vacancy.id)}
+                        disabled={deleting === vacancy.id}
+                      >
+                        {deleting === vacancy.id ? (
+                          <div className="animate-spin h-3 w-3 border border-red-600 border-t-transparent rounded-full mr-1" />
+                        ) : (
+                          <Trash2 className="h-3 w-3 mr-1" />
+                        )}
+                        Delete
+                      </Button>
+                    </div>
+                  )}
                 </div>
               </CardContent>
             </Card>
@@ -321,12 +325,14 @@ export default function VacanciesDashboard() {
                   ? 'No vacancies match your current filters.'
                   : 'Get started by posting your first job vacancy.'}
               </p>
-              <Link href="/dashboard/vacancies/new">
-                <Button>
-                  <Plus className="h-4 w-4 mr-2" />
-                  Post First Vacancy
-                </Button>
-              </Link>
+              {user && (
+                <Link href="/dashboard/vacancies/new">
+                  <Button>
+                    <Plus className="h-4 w-4 mr-2" />
+                    Post First Vacancy
+                  </Button>
+                </Link>
+              )}
             </CardContent>
           </Card>
         )}

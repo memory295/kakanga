@@ -96,12 +96,14 @@ export default function StaffDashboard() {
               Manage your team members and their information
             </p>
           </div>
-          <Link href="/dashboard/staff/new">
-            <Button className="flex items-center gap-2">
-              <Plus className="h-4 w-4" />
-              Add New Staff Member
-            </Button>
-          </Link>
+          {user && (
+            <Link href="/dashboard/staff/new">
+              <Button className="flex items-center gap-2">
+                <Plus className="h-4 w-4" />
+                Add New Staff Member
+              </Button>
+            </Link>
+          )}
         </div>
 
         {/* Filters */}
@@ -162,26 +164,28 @@ export default function StaffDashboard() {
                       {member.role}
                     </p>
                   </div>
-                  <div className="flex gap-1">
-                    <Link href={`/dashboard/staff/${member.id}/edit`}>
-                      <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
-                        <Edit className="h-3 w-3" />
+                  {user && (
+                    <div className="flex gap-1">
+                      <Link href={`/dashboard/staff/${member.id}/edit`}>
+                        <Button size="sm" variant="ghost" className="h-8 w-8 p-0">
+                          <Edit className="h-3 w-3" />
+                        </Button>
+                      </Link>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
+                        onClick={() => handleDelete(member.id)}
+                        disabled={deleting === member.id}
+                      >
+                        {deleting === member.id ? (
+                          <div className="animate-spin h-3 w-3 border border-red-600 border-t-transparent rounded-full" />
+                        ) : (
+                          <Trash2 className="h-3 w-3" />
+                        )}
                       </Button>
-                    </Link>
-                    <Button
-                      size="sm"
-                      variant="ghost"
-                      className="h-8 w-8 p-0 text-red-600 hover:text-red-700"
-                      onClick={() => handleDelete(member.id)}
-                      disabled={deleting === member.id}
-                    >
-                      {deleting === member.id ? (
-                        <div className="animate-spin h-3 w-3 border border-red-600 border-t-transparent rounded-full" />
-                      ) : (
-                        <Trash2 className="h-3 w-3" />
-                      )}
-                    </Button>
-                  </div>
+                    </div>
+                  )}
                 </div>
 
                 <div className="space-y-2 text-xs text-gray-600">
@@ -234,12 +238,14 @@ export default function StaffDashboard() {
                   ? 'No staff members match your current filters.'
                   : 'Get started by adding your first team member.'}
               </p>
-              <Link href="/dashboard/staff/new">
-                <Button>
-                  <Plus className="h-4 w-4 mr-2" />
-                  Add First Team Member
-                </Button>
-              </Link>
+              {user && (
+                <Link href="/dashboard/staff/new">
+                  <Button>
+                    <Plus className="h-4 w-4 mr-2" />
+                    Add First Team Member
+                  </Button>
+                </Link>
+              )}
             </CardContent>
           </Card>
         )}

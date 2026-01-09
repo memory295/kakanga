@@ -38,11 +38,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
 
   useEffect(() => {
     console.log('DashboardLayout - Auth state:', { user, loading });
-    if (!loading && !user) {
-      console.log('DashboardLayout - Redirecting to login');
-      router.push('/login');
-    }
-  }, [user, loading, router]);
+  }, [user, loading]);
 
   const handleSignOut = async () => {
     try {
@@ -53,17 +49,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     }
   };
 
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-blue-600"></div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return null;
-  }
+  // Always render layout so content pages remain publicly viewable.
+  // Action links and buttons will be gated per-page based on `user`.
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -144,21 +131,29 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
                 <Home className="h-4 w-4 mr-1" />
                 View Site
               </Link>
-              <div className="flex items-center space-x-2 text-sm text-gray-700">
-                <span>Welcome, {user.displayName || user.email}</span>
-                <span className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">
-                  {user.role}
-                </span>
-              </div>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleSignOut}
-                className="flex items-center"
-              >
-                <LogOut className="h-4 w-4 mr-1" />
-                Sign Out
-              </Button>
+              {user ? (
+                <>
+                  <div className="flex items-center space-x-2 text-sm text-gray-700">
+                    <span>Welcome, {user.displayName || user.email}</span>
+                    <span className="px-2 py-1 text-xs bg-blue-100 text-blue-800 rounded-full">
+                      {user.role}
+                    </span>
+                  </div>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={handleSignOut}
+                    className="flex items-center"
+                  >
+                    <LogOut className="h-4 w-4 mr-1" />
+                    Sign Out
+                  </Button>
+                </>
+              ) : (
+                <Link href="/login" className="text-sm text-blue-600 hover:underline">
+                  Sign In
+                </Link>
+              )}
             </div>
           </div>
         </div>
