@@ -182,17 +182,18 @@ CREATE POLICY "Users can view their own profile" ON public.users
 CREATE POLICY "Users can update their own profile" ON public.users
     FOR UPDATE USING (auth.uid() = id);
 
--- Create policies for public read access (allow anyone to read data)
-CREATE POLICY "Allow public read access for projects" ON public.projects
+-- Create policies for public read access (allow everyone to read data)
+-- These policies allow BOTH anonymous AND authenticated users to read
+CREATE POLICY "Allow everyone to read projects" ON public.projects
     FOR SELECT USING (true);
 
-CREATE POLICY "Allow public read access for services" ON public.services
+CREATE POLICY "Allow everyone to read services" ON public.services
     FOR SELECT USING (true);
 
-CREATE POLICY "Allow public read access for staff" ON public.staff
+CREATE POLICY "Allow everyone to read staff" ON public.staff
     FOR SELECT USING (true);
 
-CREATE POLICY "Allow public read access for vacancies" ON public.vacancies
+CREATE POLICY "Allow everyone to read vacancies" ON public.vacancies
     FOR SELECT USING (true);
 
 -- Create policies for authenticated write access (only logged in users can edit/delete)

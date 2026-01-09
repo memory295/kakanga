@@ -37,7 +37,9 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
+    console.log('DashboardLayout - Auth state:', { user, loading });
     if (!loading && !user) {
+      console.log('DashboardLayout - Redirecting to login');
       router.push('/login');
     }
   }, [user, loading, router]);
