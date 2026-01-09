@@ -140,17 +140,20 @@ export default function EditProject() {
         }
       }
 
-      const projectData = {
+      const projectData: any = {
         title: formData.title.trim(),
         description: formData.description.trim(),
         category: formData.category.trim(),
         location: formData.location.trim(),
         client: formData.client.trim(),
-        referenceNumber: formData.referenceNumber.trim(),
         ...(uploadedUrls.length > 0 && {
           image: uploadedUrls.length === 1 ? uploadedUrls[0] : uploadedUrls
         })
       };
+      const refTrim = formData.referenceNumber.trim();
+      if (refTrim) {
+        projectData.referenceNumber = refTrim;
+      }
 
       const success = await projectsService.update(projectId, projectData);
       

@@ -157,9 +157,18 @@ export const projectsService = {
 
   async update(id: string, data: Partial<ProjectFormData>): Promise<boolean> {
     try {
-      const dbData = convertToDatabase({
+      const dbDataRaw = convertToDatabase({
         ...data,
         updated_at: new Date().toISOString(),
+      });
+
+      // Remove undefined/null/empty-string fields to avoid accidental overwrites
+      const dbData: Record<string, any> = { ...dbDataRaw };
+      Object.keys(dbData).forEach((k) => {
+        const v = (dbData as any)[k];
+        if (v === undefined || v === null || v === '') {
+          delete (dbData as any)[k];
+        }
       });
 
       const { error } = await supabase
