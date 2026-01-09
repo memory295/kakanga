@@ -40,9 +40,9 @@ const Header = () => {
               <Mail className="w-4 h-4 text-primary" />
               <span className="hidden sm:inline">info@kakangaconstructions.com</span>
             </a>
-            <a href="tel:+265999951283" className="flex items-center gap-2 contact-info text-foreground/80 hover:text-primary transition-colors">
+            <a href="tel:+265995650428" className="flex items-center gap-2 contact-info text-foreground/80 hover:text-primary transition-colors">
               <Phone className="w-4 h-4 text-primary" />
-              <span className="hidden sm:inline">+265 999 951 283</span>
+              <span className="hidden sm:inline">+265 995 65 04 28</span>
             </a>
           </div>
         </div>

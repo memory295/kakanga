@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { ChevronLeft, Calendar, MapPin, User, Building2 } from "lucide-react";
 import Link from "next/link";
 import { defaultProjects } from '@/lib/default-data';
+import { projectsService } from '@/lib/supabase-service';
 import { notFound } from 'next/navigation';
 import ProjectImageGallery from './ProjectImageGallery';
 
@@ -17,27 +18,34 @@ export async function generateStaticParams() {
 }
 
 interface ProjectDetailPageProps {
-  params: Promise<{
+  params: {
     id: string;
-  }>;
+  };
 }
 
 export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  const { id } = await params;
-  const projectIndex = parseInt(id.replace('default-', ''));
-  const project = defaultProjects[projectIndex];
+  const { id } = params;
+  let projectWithId: any = null;
 
-  if (!project) {
-    notFound();
+  if (id.startsWith('default-')) {
+    const projectIndex = parseInt(id.replace('default-', ''));
+    const defaultProject = defaultProjects[projectIndex];
+    if (!defaultProject) {
+      notFound();
+    }
+    projectWithId = {
+      id,
+      ...defaultProject,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    };
+  } else {
+    const project = await projectsService.getById(id);
+    if (!project) {
+      notFound();
+    }
+    projectWithId = project as any;
   }
-
-  // Convert default project to match Project interface
-  const projectWithId = {
-    id: id,
-    ...project,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  };
 
   // Handle both single image (string) and multiple images (array)
   const images = Array.isArray(projectWithId.image) ? projectWithId.image : [projectWithId.image];

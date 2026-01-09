@@ -21,6 +21,14 @@ export default function LoginPage() {
   const { signIn } = useAuth();
   const router = useRouter();
 
+  const now = new Date();
+  const formattedDate = now.toLocaleDateString(undefined, {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
@@ -56,13 +64,14 @@ export default function LoginPage() {
           <p className="text-gray-600 mt-2">
             Sign in to manage your content
           </p>
+          <p className="text-xs text-gray-500 mt-1">{formattedDate}</p>
         </div>
 
         <Card className="shadow-lg">
           <CardHeader>
             <CardTitle>Sign In</CardTitle>
             <CardDescription>
-              Enter your credentials to access the dashboard
+              Enter your credentials to access the dashboard. Your session is protected with industry-standard security.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -110,13 +119,16 @@ export default function LoginPage() {
                 </div>
               </div>
 
-              <Button
-                type="submit"
-                className="w-full"
-                disabled={isLoading}
-              >
-                {isLoading ? 'Signing in...' : 'Sign In'}
-              </Button>
+              <div className="space-y-3">
+                <Button
+                  type="submit"
+                  className="w-full"
+                  disabled={isLoading}
+                >
+                  {isLoading ? 'Signing in...' : 'Sign In'}
+                </Button>
+                <p className="text-xs text-gray-500 text-center">Use your Kakanga admin account to sign in.</p>
+              </div>
             </form>
 
             <div className="mt-6 text-center">
@@ -128,7 +140,7 @@ export default function LoginPage() {
         </Card>
 
         <div className="mt-8 text-center text-sm text-gray-600">
-          <p>© 2024 Kakanga Constructions. All rights reserved.</p>
+          <p>© {now.getFullYear()} Kakanga Constructions. All rights reserved.</p>
         </div>
       </div>
     </div>

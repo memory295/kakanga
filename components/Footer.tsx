@@ -195,10 +195,10 @@ const Footer = () => {
               © {new Date().getFullYear()} Kakanga Constructions. All rights reserved.
             </p>
             <div className="flex gap-6">
-              <Link href="/policy" className="text-gray-500 hover:text-primary text-sm transition-colors">
+              <Link href="/policy" className="text-white/90 hover:text-white text-sm font-medium transition-colors underline-offset-2 hover:underline">
                 Privacy Policy
               </Link>
-              <Link href="/policy" className="text-gray-500 hover:text-primary text-sm transition-colors">
+              <Link href="/policy" className="text-white/90 hover:text-white text-sm font-medium transition-colors underline-offset-2 hover:underline">
                 Terms of Service
               </Link>
             </div>
