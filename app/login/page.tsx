@@ -22,12 +22,7 @@ export default function LoginPage() {
   const router = useRouter();
 
   const now = new Date();
-  const formattedDate = now.toLocaleDateString(undefined, {
-    weekday: 'long',
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
-  });
+  const currentYear = now.getFullYear();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -45,33 +40,24 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex items-center justify-center p-4">
-      <div className="w-full max-w-md">
-        {/* Logo */}
-        <div className="text-center mb-8">
-          <Link href="/" className="inline-block">
-            <Image
-              src="/images/kakangalogo.png"
-              alt="Kakanga Constructions"
-              width={120}
-              height={60}
-              className="mx-auto"
-            />
-          </Link>
-          <h1 className="text-2xl font-bold text-gray-900 mt-4">
-            Admin Portal
-          </h1>
-          <p className="text-gray-600 mt-2">
-            Sign in to manage your content
-          </p>
-          <p className="text-xs text-gray-500 mt-1">{formattedDate}</p>
-        </div>
-
-        <Card className="shadow-lg">
-          <CardHeader>
-            <CardTitle>Sign In</CardTitle>
-            <CardDescription>
-              Enter your credentials to access the dashboard. Your session is protected with industry-standard security.
+    <div className="fixed inset-0 flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-100 via-indigo-50 to-slate-200">
+      <div className="w-full max-w-lg px-4">
+        <Card className="shadow-xl border bg-white/90 backdrop-blur">
+          <CardHeader className="space-y-2 text-center">
+            <div className="flex justify-center">
+              <Link href="/" className="inline-flex items-center" aria-label="Kakanga Constructions home">
+                <Image
+                  src="/images/kakangalogo.png"
+                  alt="Kakanga Constructions"
+                  width={120}
+                  height={60}
+                  className="h-10 w-auto"
+                />
+              </Link>
+            </div>
+            <CardTitle className="text-2xl">Admin Portal</CardTitle>
+            <CardDescription className="text-sm text-muted-foreground">
+              Sign in to manage your content securely
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -101,7 +87,7 @@ export default function LoginPage() {
                 <div className="relative">
                   <Input
                     id="password"
-                    type={showPassword ? "text" : "password"}
+                    type={showPassword ? 'text' : 'password'}
                     placeholder="Enter your password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
@@ -111,24 +97,18 @@ export default function LoginPage() {
                   <button
                     type="button"
                     onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
                     disabled={isLoading}
+                    aria-label={showPassword ? 'Hide password' : 'Show password'}
                   >
                     {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                   </button>
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <Button
-                  type="submit"
-                  className="w-full"
-                  disabled={isLoading}
-                >
-                  {isLoading ? 'Signing in...' : 'Sign In'}
-                </Button>
-                <p className="text-xs text-gray-500 text-center">Use your Kakanga admin account to sign in.</p>
-              </div>
+              <Button type="submit" className="w-full" disabled={isLoading}>
+                {isLoading ? 'Signing in…' : 'Sign In'}
+              </Button>
             </form>
 
             <div className="mt-6 text-center">
@@ -136,12 +116,12 @@ export default function LoginPage() {
                 ← Back to Website
               </Link>
             </div>
+
+            <div className="mt-6 text-center text-xs text-muted-foreground">
+              © {currentYear} Kakanga Constructions. All rights reserved.
+            </div>
           </CardContent>
         </Card>
-
-        <div className="mt-8 text-center text-sm text-gray-600">
-          <p>© {now.getFullYear()} Kakanga Constructions. All rights reserved.</p>
-        </div>
       </div>
     </div>
   );
