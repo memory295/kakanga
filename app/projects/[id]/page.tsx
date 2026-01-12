@@ -18,13 +18,11 @@ export async function generateStaticParams() {
 }
 
 interface ProjectDetailPageProps {
-  params: {
-    id: string;
-  };
+  params: Promise<{ id: string }>
 }
 
 export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  const { id } = params;
+  const { id } = await params;
   let projectWithId: any = null;
 
   if (id.startsWith('default-')) {
