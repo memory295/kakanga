@@ -136,13 +136,13 @@ export default function PolicyPage() {
       </section>
 
       {/* Contact for Policy Questions */}
-      <section className="section-padding bg-header text-white">
+      <section className="section-padding bg-gray-50">
         <div className="container-wide">
           <div className="text-center">
-            <h2 className="heading-3 text-white mb-4">
+            <h2 className="heading-3 mb-4">
               Questions About Our Policies?
             </h2>
-            <p className="body-base text-white/90 mb-8 max-w-2xl mx-auto">
+            <p className="body-base text-muted-foreground mb-8 max-w-2xl mx-auto">
               If you have any questions about our policies or would like more 
               detailed information, please don't hesitate to contact us.
             </p>

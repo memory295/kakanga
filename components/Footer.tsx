@@ -52,35 +52,7 @@ const Footer = () => {
               </div>
             </div>
 
-            {/* Other Links */}
-            <div>
-              <h4 className="font-heading font-semibold text-white text-lg mb-4 relative pb-2">
-                Other links
-                <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary"></span>
-              </h4>
-              <ul className="space-y-2">
-                <li>
-                  <a href="https://cira.mw" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                    NCIC (now CIRA)
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.mra.mw" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                    MRA
-                  </a>
-                </li>
-                <li>
-                  <a href="https://www.malawi.gov.mw" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
-                    <ArrowRight className="w-4 h-4 text-primary" />
-                    PPDA
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Services */}
+            {/* Our Services (moved up) */}
             <div>
               <h4 className="font-heading font-semibold text-white text-lg mb-4 relative pb-2">
                 Our Services
@@ -155,6 +127,34 @@ const Footer = () => {
                     <ArrowRight className="w-4 h-4 text-primary" />
                     Structural construction
                   </Link>
+                </li>
+              </ul>
+            </div>
+
+            {/* Other Links (moved down) */}
+            <div>
+              <h4 className="font-heading font-semibold text-white text-lg mb-4 relative pb-2">
+                Other links
+                <span className="absolute bottom-0 left-0 w-12 h-0.5 bg-primary"></span>
+              </h4>
+              <ul className="space-y-2">
+                <li>
+                  <a href="https://cira.mw" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                    <ArrowRight className="w-4 h-4 text-primary" />
+                    NCIC (now CIRA)
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.mra.mw" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                    <ArrowRight className="w-4 h-4 text-primary" />
+                    MRA
+                  </a>
+                </li>
+                <li>
+                  <a href="https://www.malawi.gov.mw" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
+                    <ArrowRight className="w-4 h-4 text-primary" />
+                    PPDA
+                  </a>
                 </li>
               </ul>
             </div>
