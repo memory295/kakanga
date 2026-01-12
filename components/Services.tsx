@@ -50,7 +50,7 @@ const Services = () => {
             .map((service, index) => (
             <div 
               key={service.id}
-              className="group relative bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2"
+              className="group relative bg-white rounded-lg overflow-hidden border border-gray-200 shadow-sm hover:shadow-lg transition-shadow duration-300"
             >
               {/* Image with Overlay */}
               <div className="relative aspect-[4/3] overflow-hidden">
@@ -59,15 +59,15 @@ const Services = () => {
                   alt={service.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-black/10 to-transparent"></div>
               </div>
 
               {/* Content */}
               <div className="p-8">
-                <h3 className="text-xl font-bold mb-4 text-gray-900 group-hover:text-primary transition-colors duration-300 leading-tight">
+                <h3 className="heading-4 mb-4 text-gray-900 group-hover:text-primary transition-colors duration-300 leading-tight">
                   {service.title}
                 </h3>
-                <p className="text-gray-600 text-base mb-6 leading-relaxed line-clamp-3">
+                <p className="body-base mb-6 leading-relaxed line-clamp-3">
                   {service.description}
                 </p>
                 

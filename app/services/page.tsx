@@ -41,10 +41,8 @@ export default function ServicesPage() {
             <span className="caption text-header mb-2 block">
               What We Do
             </span>
-            <h2 className="text-2xl font-bold mb-4">
-              Our Services
-            </h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="heading-3 mb-4">Our Services</h2>
+            <p className="body-base max-w-2xl mx-auto">
               We offer comprehensive construction solutions tailored to meet your every need, from land preparation to complete infrastructure development.
             </p>
           </div>
@@ -69,24 +67,22 @@ export default function ServicesPage() {
 
                   {/* Content */}
                   <div className={`${!isEven ? 'lg:order-1' : ''}`}>
-                    <span className="text-primary text-sm font-medium mb-2 block">
+                    <span className="caption text-primary mb-2 block">
                       Service {String(index + 1).padStart(2, '0')}
                     </span>
-                    <h3 className="text-xl font-semibold mb-4">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 mb-6 leading-relaxed">
+                    <h3 className="heading-4 mb-4">{service.title}</h3>
+                    <p className="body-base mb-6 leading-relaxed">
                       {service.description}
                     </p>
                     
                     {service.features && service.features.length > 0 && (
-                      <div className="space-y-2">
-                        <h4 className="font-semibold text-gray-900 mb-3">Key Features</h4>
+                      <div className="space-y-3">
+                        <h4 className="text-sm font-semibold text-gray-900 uppercase tracking-wide">Key Features</h4>
                         <div className="grid gap-2">
                           {service.features.map((feature, idx) => (
-                            <div key={idx} className="flex items-center gap-2">
-                              <div className="w-1 h-1 bg-primary rounded-full shrink-0"></div>
-                              <span className="text-gray-500 text-xs">{feature}</span>
+                            <div key={idx} className="flex items-center gap-3 text-sm text-gray-600">
+                              <div className="w-2 h-2 bg-primary rounded-full shrink-0"></div>
+                              <span className="font-medium">{feature}</span>
                             </div>
                           ))}
                         </div>
