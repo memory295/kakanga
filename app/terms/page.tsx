@@ -96,7 +96,7 @@ export default function TermsPage() {
               <a href="/contact" className="bg-primary text-primary-foreground hover:bg-primary/90 px-6 py-3 rounded-lg font-medium transition-colors">
                 Contact Us
               </a>
-              <a href="mailto:info@kakangaconstructions.com" className="border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-lg font-medium transition-colors">
+              <a href="mailto:ckakanga@gmail.com" className="border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-lg font-medium transition-colors">
                 Email Us
               </a>
             </div>

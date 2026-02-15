@@ -87,6 +87,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/images/kakangalogo.png" sizes="32x32" />
+        <link rel="shortcut icon" href="/images/kakangalogo.png" />
+        <link rel="apple-touch-icon" href="/images/kakangalogo.png" />
+      </head>
       <body>
         <ClientQueryProvider>
           <AuthProvider>

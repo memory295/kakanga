@@ -154,7 +154,7 @@ export default function PolicyPage() {
                 Contact Us
               </a>
               <a 
-                href="mailto:info@kakangaconstructions.com"
+                href="mailto:ckakanga@gmail.com"
                 className="border border-primary text-primary hover:bg-primary hover:text-primary-foreground px-6 py-3 rounded-lg font-medium transition-colors"
               >
                 Email Us

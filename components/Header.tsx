@@ -36,9 +36,9 @@ const Header = () => {
       <div className="bg-white/90 backdrop-blur-sm py-1 px-4 shadow-sm">
         <div className="container-wide flex justify-between items-center">
           <div className="flex items-center gap-6">
-            <a href="mailto:info@kakangaconstructions.com" className="flex items-center gap-2 contact-info text-foreground/80 hover:text-primary transition-colors">
+            <a href="mailto:ckakanga@gmail.com" className="flex items-center gap-2 contact-info text-foreground/80 hover:text-primary transition-colors">
               <Mail className="w-4 h-4 text-primary" />
-              <span className="hidden sm:inline">info@kakangaconstructions.com</span>
+              <span className="hidden sm:inline">ckakanga@gmail.com</span>
             </a>
             <a href="tel:+265995650428" className="flex items-center gap-2 contact-info text-foreground/80 hover:text-primary transition-colors">
               <Phone className="w-4 h-4 text-primary" />
@@ -66,9 +66,9 @@ const Header = () => {
                 alt="Kakanga Constructions Logo" 
                 className="w-14 h-14 object-contain"
               />
-              <div className="ml-3">
-                <span className="heading-6 text-header-foreground">KAKANGA</span>
-                <span className="block text-[0.6rem] md:text-[0.7rem] text-header-foreground/70 uppercase tracking-widest">Constructions</span>
+              <div className="ml-3 flex flex-col md:flex-row md:items-center md:gap-2">
+                <span className="text-lg md:text-xl font-semibold text-header-foreground">Kakanga</span>
+                <span className="text-lg md:text-xl font-semibold text-header-foreground">Constructions</span>
               </div>
             </div>
           </Link>
