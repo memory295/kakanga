@@ -1,6 +1,23 @@
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import { Shield, Users, Leaf, Award } from "lucide-react";
+import type { Metadata } from "next";
+import { absoluteUrl } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Policies",
+  description:
+    "Read Kakanga Constructions policies on safety, quality assurance, environmental stewardship, and ethics.",
+  alternates: {
+    canonical: absoluteUrl("/policy"),
+  },
+  openGraph: {
+    title: "Kakanga Constructions Policies",
+    description:
+      "Safety, quality, environmental, and ethics policies that guide our construction operations.",
+    url: absoluteUrl("/policy"),
+  },
+};
 
 const policies = [
   {

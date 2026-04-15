@@ -1,7 +1,6 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import Head from 'next/head';
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
 import TeamSection from "@/components/TeamSection";
@@ -43,13 +42,7 @@ export default function AboutPage() {
   }, []);
 
   return (
-    <>
-      <Head>
-        <title>About Us - Our Story, Mission & Values | Kakanga Constructions</title>
-        <meta name="description" content="Learn about Kakanga Constructions, Malawi's leading construction company since 2011. Discover our mission, vision, values, and experienced leadership team committed to building quality infrastructure." />
-        <meta name="keywords" content="about kakanga constructions, malawi construction company, our mission, our vision, construction team, company history, building contractors malawi" />
-      </Head>
-      <Layout>
+    <Layout>
         <PageHeader title="Who We Are" />
       
       {/* Company Overview */}
@@ -243,8 +236,7 @@ export default function AboutPage() {
 
       {/* Our Team */}
       <TeamSection />
-    </Layout>
-    </>
+      </Layout>
   );
 }
 

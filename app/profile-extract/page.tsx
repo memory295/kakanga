@@ -1,5 +1,15 @@
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Profile Extract",
+  description: "Profile extract details for Kakanga Constructions.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function ProfileExtractPage() {
   return (

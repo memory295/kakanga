@@ -1,5 +1,16 @@
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
+import type { Metadata } from "next";
+import { absoluteUrl } from "@/lib/seo";
+
+export const metadata: Metadata = {
+  title: "Terms of Service",
+  description:
+    "Review the terms governing use of Kakanga Constructions website and services.",
+  alternates: {
+    canonical: absoluteUrl("/terms"),
+  },
+};
 
 export default function TermsPage() {
   return (

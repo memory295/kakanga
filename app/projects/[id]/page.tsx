@@ -9,6 +9,8 @@ import { defaultProjects } from '@/lib/default-data';
 import { projectsService } from '@/lib/supabase-service';
 import { notFound } from 'next/navigation';
 import ProjectImageGallery from './ProjectImageGallery';
+import type { Metadata } from 'next';
+import { SITE_NAME, absoluteUrl } from '@/lib/seo';
 
 // Generate static params for all default projects
 export async function generateStaticParams() {
@@ -21,28 +23,71 @@ interface ProjectDetailPageProps {
   params: Promise<{ id: string }>
 }
 
-export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
-  const { id } = await params;
-  let projectWithId: any = null;
-
+async function getProjectById(id: string) {
   if (id.startsWith('default-')) {
     const projectIndex = parseInt(id.replace('default-', ''));
     const defaultProject = defaultProjects[projectIndex];
     if (!defaultProject) {
-      notFound();
+      return null;
     }
-    projectWithId = {
+
+    return {
       id,
       ...defaultProject,
       createdAt: new Date(),
       updatedAt: new Date(),
+    } as any;
+  }
+
+  return (await projectsService.getById(id)) as any;
+}
+
+export async function generateMetadata({ params }: ProjectDetailPageProps): Promise<Metadata> {
+  const { id } = await params;
+  const project = await getProjectById(id);
+
+  if (!project) {
+    return {
+      title: 'Project Not Found',
+      robots: {
+        index: false,
+        follow: false,
+      },
     };
-  } else {
-    const project = await projectsService.getById(id);
-    if (!project) {
-      notFound();
-    }
-    projectWithId = project as any;
+  }
+
+  const description =
+    project.description ||
+    `${project.title} by ${SITE_NAME} in ${project.location}.`;
+  const projectUrl = absoluteUrl(`/projects/${id}`);
+
+  return {
+    title: project.title,
+    description,
+    alternates: {
+      canonical: projectUrl,
+    },
+    openGraph: {
+      title: project.title,
+      description,
+      url: projectUrl,
+      type: 'article',
+      images: [
+        {
+          url: Array.isArray(project.image) ? project.image[0] : project.image,
+          alt: project.title,
+        },
+      ],
+    },
+  };
+}
+
+export default async function ProjectDetailPage({ params }: ProjectDetailPageProps) {
+  const { id } = await params;
+  const projectWithId = await getProjectById(id);
+
+  if (!projectWithId) {
+    notFound();
   }
 
   // Handle both single image (string) and multiple images (array)

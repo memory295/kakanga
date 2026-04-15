@@ -1,5 +1,16 @@
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Equipment",
+  description:
+    "Construction equipment and machinery information from Kakanga Constructions.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function EquipmentPage() {
   return (

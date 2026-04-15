@@ -1,5 +1,15 @@
 import Layout from "@/components/Layout";
 import PageHeader from "@/components/PageHeader";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Company Profile",
+  description: "Company profile information for Kakanga Constructions.",
+  robots: {
+    index: false,
+    follow: false,
+  },
+};
 
 export default function ProfilePage() {
   return (

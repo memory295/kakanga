@@ -6,13 +6,21 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import ClientQueryProvider from "./client-query-provider";
 import { AuthProvider } from "@/contexts/auth-context";
+import {
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_TITLE,
+  absoluteUrl,
+  getSiteUrl,
+} from "@/lib/seo";
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: {
-    default: "Kakanga Constructions - Building Malawi's Future",
-    template: "%s | Kakanga Constructions"
+    default: SITE_TITLE,
+    template: `%s | ${SITE_NAME}`,
   },
-  description: "KAKANGA CONSTRUCTIONS is a leading construction company, based in Malawi and fully registered with all legal regulatory statutory bodies like NCIC (now known as CIRA), PPDA, MRA and others. We specialize in steel works/lubrication, prefabricated structures installation, and structural construction. Building with quality and integrity to move Malawi forward.",
+  description: SITE_DESCRIPTION,
   keywords: [
     "construction",
     "Malawi",
@@ -30,9 +38,9 @@ export const metadata: Metadata = {
     "Kakanga",
     "NCIC unlimited category"
   ],
-  authors: [{ name: "Kakanga Constructions" }],
-  creator: "Kakanga Constructions",
-  publisher: "Kakanga Constructions",
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
   robots: {
     index: true,
     follow: true,
@@ -44,10 +52,10 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://kakangaconstructions.com",
-    siteName: "Kakanga Constructions",
-    title: "Kakanga Constructions - Building Malawi's Future",
-    description: "Leading Civil and Building Construction Company in Malawi. We build with integrity, deliver with pride.",
+    url: absoluteUrl("/"),
+    siteName: SITE_NAME,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
     images: [
       {
         url: "/images/kakangalogo.png",
@@ -59,8 +67,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kakanga Constructions",
-    description: "Leading Civil and Building Construction Company in Malawi.",
+    title: SITE_NAME,
+    description: SITE_DESCRIPTION,
     images: ["/images/kakangalogo.png"],
   },
   icons: {
@@ -76,7 +84,7 @@ export const metadata: Metadata = {
   },
   manifest: "/site.webmanifest",
   alternates: {
-    canonical: "https://kakangaconstructions.com",
+    canonical: absoluteUrl("/"),
   },
 };
 
@@ -85,14 +93,38 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const organizationSchema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: SITE_NAME,
+    url: getSiteUrl(),
+    logo: absoluteUrl("/images/kakangalogo.png"),
+    description: SITE_DESCRIPTION,
+    contactPoint: [
+      {
+        "@type": "ContactPoint",
+        telephone: "+265995650428",
+        contactType: "customer service",
+        areaServed: "MW",
+      },
+    ],
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Karonga",
+      addressCountry: "MW",
+    },
+    sameAs: [],
+  };
+
   return (
     <html lang="en">
-      <head>
-        <link rel="icon" href="/images/kakangalogo.png" sizes="32x32" />
-        <link rel="shortcut icon" href="/images/kakangalogo.png" />
-        <link rel="apple-touch-icon" href="/images/kakangalogo.png" />
-      </head>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema),
+          }}
+        />
         <ClientQueryProvider>
           <AuthProvider>
             <TooltipProvider>
