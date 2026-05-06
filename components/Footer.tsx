@@ -81,7 +81,7 @@ const Footer = () => {
                     }
                   }} className="text-gray-400 hover:text-primary transition-colors text-sm flex items-center gap-2">
                     <ArrowRight className="w-4 h-4 text-primary" />
-                    Steel works/Lubrication
+                    Steel works/Fabrication  
                   </Link>
                 </li>
                 <li>
@@ -173,8 +173,8 @@ const Footer = () => {
                 <li className="flex items-start gap-3">
                   <Phone className="w-5 h-5 text-primary flex-shrink-0 mt-0.5" />
                   <div className="text-gray-400 text-sm">
-                    <p>+265 999 951 283</p>
-                    <p>+265 1 234 567</p>
+                    <p>+265 995 650 428</p>
+                    <p>+265 882 500 960</p>
                   </div>
                 </li>
                 <li className="flex items-start gap-3">
