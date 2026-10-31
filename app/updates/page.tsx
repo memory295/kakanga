@@ -7,6 +7,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { useUpdates } from '@/hooks/use-data';
 import { CalendarDays, ArrowRight, Newspaper } from 'lucide-react';
+import { truncateWords } from '@/lib/utils';
 
 export default function UpdatesPage() {
   const { updates, loading } = useUpdates();
@@ -36,7 +37,11 @@ export default function UpdatesPage() {
                   <div className="flex flex-col justify-center p-8 md:p-12">
                     <Badge className="mb-4 w-fit bg-accent text-accent-foreground">{featured.category}</Badge>
                     <h2 className="heading-3 mb-4 text-white">{featured.title}</h2>
-                    <p className="mb-6 text-white/80">{featured.excerpt}</p>
+                    <div className="mb-4 flex items-center gap-2 text-sm text-white/70">
+                      <CalendarDays className="h-4 w-4" />
+                      {new Date(featured.publishedDate || featured.createdAt).toLocaleDateString()}
+                    </div>
+                    <p className="mb-6 text-white/80">{truncateWords(featured.content)}</p>
                     <span className="flex items-center gap-2 font-semibold text-primary">Read update <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" /></span>
                   </div>
                 </Link>
@@ -52,7 +57,7 @@ export default function UpdatesPage() {
                         <CardContent className="p-6">
                           <Badge variant="secondary" className="mb-3 bg-primary/10 text-primary">{update.category}</Badge>
                           <h3 className="mb-3 line-clamp-2 text-xl font-semibold group-hover:text-primary">{update.title}</h3>
-                          <p className="mb-5 line-clamp-3 text-sm text-muted-foreground">{update.excerpt}</p>
+                          <p className="mb-5 text-sm text-muted-foreground">{truncateWords(update.content)}</p>
                           <div className="flex items-center gap-2 text-xs text-muted-foreground">
                             <CalendarDays className="h-4 w-4" />
                             {new Date(update.publishedDate || update.createdAt).toLocaleDateString()}

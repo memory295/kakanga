@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import CoreValues from "@/components/CoreValues";
+import LatestUpdates from "@/components/LatestUpdates";
 import Contact from "@/components/Contact";
 import Services from "@/components/Services";
 import type { Metadata } from "next";
@@ -27,6 +28,7 @@ export default function Home() {
       <About />
       <Services />
       <CoreValues />
+      <LatestUpdates />
       <Contact />
     </Layout>
   );

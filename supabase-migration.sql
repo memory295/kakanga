@@ -79,7 +79,6 @@ CREATE TABLE IF NOT EXISTS public.vacancies (
 CREATE TABLE IF NOT EXISTS public.updates (
     id uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
     title text NOT NULL,
-    excerpt text NOT NULL,
     content text NOT NULL,
     category text NOT NULL,
     image text,
@@ -89,6 +88,9 @@ CREATE TABLE IF NOT EXISTS public.updates (
     created_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
     updated_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL
 );
+
+ALTER TABLE public.updates ADD COLUMN IF NOT EXISTS excerpt text;
+ALTER TABLE public.updates ALTER COLUMN excerpt DROP NOT NULL;
 
 -- Modify existing tables to allow NULL values in specific columns (in case tables were created with NOT NULL constraints)
 ALTER TABLE public.projects ALTER COLUMN image DROP NOT NULL;

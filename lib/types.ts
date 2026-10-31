@@ -59,7 +59,6 @@ export interface Vacancy {
 export interface Update {
   id: string;
   title: string;
-  excerpt: string;
   content: string;
   category: string;
   image?: string;
@@ -69,6 +68,16 @@ export interface Update {
   createdAt: Date;
   updatedAt: Date;
 }
+
+export const UPDATE_CATEGORIES = [
+  'Company News',
+  'Project Updates',
+  'Announcements',
+  'Community',
+  'Industry News',
+] as const;
+
+export type UpdateCategory = typeof UPDATE_CATEGORIES[number];
 
 export interface User {
   id: string;
@@ -126,9 +135,8 @@ export interface VacancyFormData {
 
 export interface UpdateFormData {
   title: string;
-  excerpt: string;
   content: string;
-  category: string;
+  category: UpdateCategory;
   image?: string;
   publishedDate?: Date;
   isPublished: boolean;

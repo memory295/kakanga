@@ -10,6 +10,7 @@ import { Button } from '@/components/ui/button';
 import { updatesService } from '@/lib/supabase-service';
 import { Update } from '@/lib/types';
 import { ArrowLeft, CalendarDays } from 'lucide-react';
+import { truncateWords } from '@/lib/utils';
 
 export default function UpdateDetailPage() {
   const params = useParams();
@@ -33,7 +34,7 @@ export default function UpdateDetailPage() {
             <span className="flex items-center gap-2"><CalendarDays className="h-4 w-4" />{new Date(update.publishedDate || update.createdAt).toLocaleDateString()}</span>
           </div>
           {update.image && <img src={update.image} alt="" className="mb-8 max-h-[480px] w-full rounded-2xl object-cover shadow-md" />}
-          <p className="mb-8 text-xl leading-relaxed text-muted-foreground">{update.excerpt}</p>
+          <p className="mb-8 text-xl leading-relaxed text-muted-foreground">{truncateWords(update.content, 35)}</p>
           <div className="whitespace-pre-wrap text-base leading-8 text-foreground">{update.content}</div>
           <Link href="/updates" className="mt-10 inline-block">
             <Button variant="outline"><ArrowLeft className="mr-2 h-4 w-4" />Back to Updates</Button>

@@ -1,6 +1,6 @@
 import { supabase } from './supabase';
 
-export async function uploadFile(file: File, folder: 'projects' | 'services' | 'staff'): Promise<string> {
+export async function uploadFile(file: File, folder: 'projects' | 'services' | 'staff' | 'updates'): Promise<string> {
   try {
     // Create a safe filename
     const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
