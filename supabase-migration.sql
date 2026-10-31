@@ -76,6 +76,20 @@ CREATE TABLE IF NOT EXISTS public.vacancies (
     updated_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS public.updates (
+    id uuid DEFAULT uuid_generate_v4() PRIMARY KEY,
+    title text NOT NULL,
+    excerpt text NOT NULL,
+    content text NOT NULL,
+    category text NOT NULL,
+    image text,
+    published_date timestamp with time zone,
+    is_published boolean DEFAULT false NOT NULL,
+    is_featured boolean DEFAULT false NOT NULL,
+    created_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL,
+    updated_at timestamp with time zone DEFAULT timezone('utc'::text, now()) NOT NULL
+);
+
 -- Modify existing tables to allow NULL values in specific columns (in case tables were created with NOT NULL constraints)
 ALTER TABLE public.projects ALTER COLUMN image DROP NOT NULL;
 ALTER TABLE public.projects ALTER COLUMN reference_number DROP NOT NULL;
@@ -99,6 +113,7 @@ DROP TRIGGER IF EXISTS update_projects_updated_at ON public.projects;
 DROP TRIGGER IF EXISTS update_services_updated_at ON public.services;
 DROP TRIGGER IF EXISTS update_staff_updated_at ON public.staff;
 DROP TRIGGER IF EXISTS update_vacancies_updated_at ON public.vacancies;
+DROP TRIGGER IF EXISTS update_updates_updated_at ON public.updates;
 
 -- Create triggers for updated_at
 CREATE TRIGGER update_users_updated_at BEFORE UPDATE ON public.users
@@ -116,6 +131,9 @@ CREATE TRIGGER update_staff_updated_at BEFORE UPDATE ON public.staff
 CREATE TRIGGER update_vacancies_updated_at BEFORE UPDATE ON public.vacancies
     FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
 
+CREATE TRIGGER update_updates_updated_at BEFORE UPDATE ON public.updates
+    FOR EACH ROW EXECUTE FUNCTION update_updated_at_column();
+
 -- Create indexes for better query performance
 CREATE INDEX IF NOT EXISTS idx_users_email ON public.users (email);
 CREATE INDEX IF NOT EXISTS idx_users_role ON public.users (role);
@@ -131,6 +149,9 @@ CREATE INDEX IF NOT EXISTS idx_staff_department ON public.staff (department);
 CREATE INDEX IF NOT EXISTS idx_vacancies_created_at ON public.vacancies (created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_vacancies_is_active ON public.vacancies (is_active);
 CREATE INDEX IF NOT EXISTS idx_vacancies_department ON public.vacancies (department);
+CREATE INDEX IF NOT EXISTS idx_updates_published_date ON public.updates (published_date DESC);
+CREATE INDEX IF NOT EXISTS idx_updates_category ON public.updates (category);
+CREATE INDEX IF NOT EXISTS idx_updates_is_published ON public.updates (is_published);
 
 -- Enable Row Level Security (RLS)
 ALTER TABLE public.users ENABLE ROW LEVEL SECURITY;
@@ -138,6 +159,7 @@ ALTER TABLE public.projects ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.services ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.staff ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.vacancies ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.updates ENABLE ROW LEVEL SECURITY;
 
 -- Drop ALL existing policies for each table to avoid conflicts
 DO $$ 
@@ -173,6 +195,11 @@ BEGIN
     LOOP
         EXECUTE 'DROP POLICY IF EXISTS "' || r.policyname || '" ON public.vacancies';
     END LOOP;
+
+    FOR r IN (SELECT policyname FROM pg_policies WHERE tablename = 'updates' AND schemaname = 'public')
+    LOOP
+        EXECUTE 'DROP POLICY IF EXISTS "' || r.policyname || '" ON public.updates';
+    END LOOP;
 END $$;
 
 -- Create user policies for authenticated users only
@@ -195,6 +222,18 @@ CREATE POLICY "Allow everyone to read staff" ON public.staff
 
 CREATE POLICY "Allow everyone to read vacancies" ON public.vacancies
     FOR SELECT USING (true);
+
+CREATE POLICY "Everyone can read published updates" ON public.updates
+    FOR SELECT USING (is_published = true OR auth.uid() IS NOT NULL);
+
+CREATE POLICY "Authenticated users can insert updates" ON public.updates
+    FOR INSERT WITH CHECK (auth.uid() IS NOT NULL);
+
+CREATE POLICY "Authenticated users can update updates" ON public.updates
+    FOR UPDATE USING (auth.uid() IS NOT NULL);
+
+CREATE POLICY "Authenticated users can delete updates" ON public.updates
+    FOR DELETE USING (auth.uid() IS NOT NULL);
 
 -- Create policies for authenticated write access (only logged in users can edit/delete)
 CREATE POLICY "Authenticated users can insert projects" ON public.projects

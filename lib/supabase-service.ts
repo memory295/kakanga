@@ -7,7 +7,9 @@ import {
   ProjectFormData,
   ServiceFormData,
   StaffFormData,
-  VacancyFormData
+  VacancyFormData,
+  Update,
+  UpdateFormData,
 } from './types';
 
 // Helper function to convert database row to frontend format
@@ -33,6 +35,9 @@ const convertDatabaseFields = (data: any) => {
   if (data.posted_date) converted.postedDate = new Date(data.posted_date);
   if (data.application_deadline) converted.applicationDeadline = new Date(data.application_deadline);
   if (data.is_active !== undefined) converted.isActive = data.is_active;
+  if (data.published_date) converted.publishedDate = new Date(data.published_date);
+  if (data.is_published !== undefined) converted.isPublished = data.is_published;
+  if (data.is_featured !== undefined) converted.isFeatured = data.is_featured;
   
   // Convert timestamps
   if (data.created_at) converted.createdAt = new Date(data.created_at);
@@ -78,6 +83,18 @@ const convertToDatabase = (data: any) => {
   if (data.isActive !== undefined) {
     converted.is_active = data.isActive;
     delete converted.isActive;
+  }
+  if (data.publishedDate) {
+    converted.published_date = data.publishedDate.toISOString();
+    delete converted.publishedDate;
+  }
+  if (data.isPublished !== undefined) {
+    converted.is_published = data.isPublished;
+    delete converted.isPublished;
+  }
+  if (data.isFeatured !== undefined) {
+    converted.is_featured = data.isFeatured;
+    delete converted.isFeatured;
   }
   
   return converted;
@@ -531,6 +548,88 @@ export const vacanciesService = {
       return true;
     } catch (error) {
       console.error('Error deleting vacancy:', error);
+      return false;
+    }
+  },
+};
+
+export const updatesService = {
+  async getAll(includeDrafts = false): Promise<Update[]> {
+    try {
+      let query = supabase
+        .from('updates')
+        .select('*')
+        .order('published_date', { ascending: false })
+        .order('created_at', { ascending: false });
+
+      if (!includeDrafts) {
+        query = query.eq('is_published', true);
+      }
+
+      const { data, error } = await query;
+      if (error) throw error;
+      return (data || []).map(item => convertDatabaseFields(item) as Update);
+    } catch (error) {
+      console.error('Error fetching updates:', error);
+      return [];
+    }
+  },
+
+  async getById(id: string, includeDraft = false): Promise<Update | null> {
+    try {
+      let query = supabase.from('updates').select('*').eq('id', id);
+      if (!includeDraft) query = query.eq('is_published', true);
+      const { data, error } = await query.single();
+      if (error) throw error;
+      return data ? convertDatabaseFields(data) as Update : null;
+    } catch (error) {
+      console.error('Error fetching update:', error);
+      return null;
+    }
+  },
+
+  async create(data: UpdateFormData): Promise<string | null> {
+    try {
+      const dbData = convertToDatabase({
+        ...data,
+        created_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      });
+      const { data: result, error } = await supabase
+        .from('updates')
+        .insert([dbData as any])
+        .select('id')
+        .single();
+      if (error) throw error;
+      return result?.id || null;
+    } catch (error) {
+      console.error('Error creating update:', error);
+      return null;
+    }
+  },
+
+  async update(id: string, data: Partial<UpdateFormData>): Promise<boolean> {
+    try {
+      const dbData = convertToDatabase({
+        ...data,
+        updated_at: new Date().toISOString(),
+      });
+      const { error } = await supabase.from('updates').update(dbData as any).eq('id', id);
+      if (error) throw error;
+      return true;
+    } catch (error) {
+      console.error('Error updating update:', error);
+      return false;
+    }
+  },
+
+  async delete(id: string): Promise<boolean> {
+    try {
+      const { error } = await supabase.from('updates').delete().eq('id', id);
+      if (error) throw error;
+      return true;
+    } catch (error) {
+      console.error('Error deleting update:', error);
       return false;
     }
   },

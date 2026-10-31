@@ -56,6 +56,20 @@ export interface Vacancy {
   updatedAt: Date;
 }
 
+export interface Update {
+  id: string;
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  image?: string;
+  publishedDate?: Date;
+  isPublished: boolean;
+  isFeatured: boolean;
+  createdAt: Date;
+  updatedAt: Date;
+}
+
 export interface User {
   id: string;
   email: string;
@@ -108,4 +122,15 @@ export interface VacancyFormData {
   responsibilities?: string[];
   isActive: boolean;
   applicationDeadline?: Date;
+}
+
+export interface UpdateFormData {
+  title: string;
+  excerpt: string;
+  content: string;
+  category: string;
+  image?: string;
+  publishedDate?: Date;
+  isPublished: boolean;
+  isFeatured: boolean;
 }

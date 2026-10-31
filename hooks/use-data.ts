@@ -6,6 +6,7 @@ import {
   servicesService,
   staffService,
   vacanciesService,
+  updatesService,
 } from '@/lib/supabase-service';
 import {
   defaultProjects,
@@ -13,7 +14,7 @@ import {
   defaultStaff,
   defaultVacancies,
 } from '@/lib/default-data';
-import { Project, Service, Staff, Vacancy } from '@/lib/types';
+import { Project, Service, Staff, Vacancy, Update } from '@/lib/types';
 
 export const useProjects = (dashboardMode = false) => {
   // Seed with defaults immediately to prevent loading state (only for public site)
@@ -278,4 +279,30 @@ export const useVacancies = (dashboardMode = false) => {
     refetch: fetchVacancies,
     refetchActive: fetchActiveVacancies,
   };
+};
+
+export const useUpdates = (dashboardMode = false) => {
+  const [updates, setUpdates] = useState<Update[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  const fetchUpdates = async () => {
+    try {
+      setLoading(true);
+      setError(null);
+      setUpdates(await updatesService.getAll(dashboardMode));
+    } catch (err) {
+      console.error('Error fetching updates:', err);
+      setError('Failed to fetch updates');
+      setUpdates([]);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchUpdates();
+  }, [dashboardMode]);
+
+  return { updates, loading, error, refetch: fetchUpdates };
 };

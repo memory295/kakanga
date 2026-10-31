@@ -33,6 +33,7 @@ export const PUBLIC_STATIC_ROUTES = [
   "/projects",
   "/services",
   "/vacancies",
+  "/updates",
   "/policy",
   "/terms",
 ];

@@ -9,6 +9,7 @@ import {
   FolderOpen, 
   Users, 
   Briefcase, 
+  Newspaper,
   Settings, 
   LogOut,
   Home,
@@ -29,6 +30,7 @@ const navigation = [
   { name: 'Services', href: '/dashboard/services', icon: Settings },
   { name: 'Staff', href: '/dashboard/staff', icon: Users },
   { name: 'Vacancies', href: '/dashboard/vacancies', icon: Briefcase },
+  { name: 'Updates', href: '/dashboard/updates', icon: Newspaper },
 ];
 
 export default function DashboardLayout({ children }: DashboardLayoutProps) {

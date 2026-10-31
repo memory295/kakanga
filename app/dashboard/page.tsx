@@ -2,7 +2,7 @@
 
 import DashboardLayout from '@/components/DashboardLayout';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { FolderOpen, Users, Briefcase, Settings, BarChart3, TrendingUp } from 'lucide-react';
+import { FolderOpen, Users, Briefcase, Settings, BarChart3, TrendingUp, Newspaper } from 'lucide-react';
 import Link from 'next/link';
 import { useAuth } from '@/contexts/auth-context';
 import SupabaseTest from '@/components/SupabaseTest';
@@ -40,6 +40,14 @@ const stats = [
     color: 'text-orange-600',
     bgColor: 'bg-orange-100',
   },
+  {
+    name: 'Published Updates',
+    value: '—',
+    icon: Newspaper,
+    href: '/dashboard/updates',
+    color: 'text-cyan-600',
+    bgColor: 'bg-cyan-100',
+  },
 ];
 
 const quickActions = [
@@ -66,6 +74,12 @@ const quickActions = [
     description: 'Create a job posting',
     href: '/dashboard/vacancies/new',
     icon: Briefcase,
+  },
+  {
+    title: 'Create Update',
+    description: 'Share company news',
+    href: '/dashboard/updates/new',
+    icon: Newspaper,
   },
 ];
 
